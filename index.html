@@ -1,0 +1,1274 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#084c38" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="হিসাব অ্যাপ" />
+    <link rel="manifest" href="data:application/octet-stream;base64,eyJiYWNrZ3JvdW5kX2NvbG9yIjoiIzA4NGMzOCIsImRlc2NyaXB0aW9uIjoiS1NTIOCmkyBMb3ZlYmlyZHMg4oCUIOCmuOCnjeCmn+CmlSwg4Kas4Ka/4KaV4KeN4Kaw4Ka/LCDgpqHgp4fgprLgpr/gpq3gpr7gprDgpr8g4KaG4KawIOCmruCmvuCmuOCmv+CmlSDgprngpr/gprjgpr7gpqwg4KaP4KaVIOCmnOCmvuCmr+CmvOCml+CmvuCmr+CmvOClpCIsImRpciI6Imx0ciIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiZGlzcGxheV9vdmVycmlkZSI6WyJzdGFuZGFsb25lIiwibWluaW1hbC11aSJdLCJpY29ucyI6W3sicHVycG9zZSI6ImFueSIsInNpemVzIjoiMTkyeDE5MiIsInNyYyI6Imljb24tMTkyLnBuZyIsInR5cGUiOiJpbWFnZS9wbmcifSx7InB1cnBvc2UiOiJhbnkiLCJzaXplcyI6IjUxMng1MTIiLCJzcmMiOiJpY29uLTUxMi5wbmciLCJ0eXBlIjoiaW1hZ2UvcG5nIn0seyJwdXJwb3NlIjoibWFza2FibGUiLCJzaXplcyI6IjUxMng1MTIiLCJzcmMiOiJpY29uLW1hc2thYmxlLTUxMi5wbmciLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dLCJpZCI6Ii4uLyIsImxhbmciOiJibiIsIm5hbWUiOiLgprngpr/gprjgpr7gpqwg4KaF4KeN4Kav4Ka+4KaqIOKAlCBLb3JlYW4gU2tpbiBDYXJlIFNob3AiLCJvcmllbnRhdGlvbiI6InBvcnRyYWl0IiwicHJlZmVyX3JlbGF0ZWRfYXBwbGljYXRpb25zIjpmYWxzZSwic2NvcGUiOiIuLi8iLCJzaG9ydF9uYW1lIjoi4Ka54Ka/4Ka44Ka+4KasIOCmheCnjeCmr+CmvuCmqiIsInN0YXJ0X3VybCI6Ii4uLyIsInRoZW1lX2NvbG9yIjoiIzA4NGMzOCJ9" />
+    <script>
+      /* Chrome-এর ইনস্টল অফার (beforeinstallprompt) পেজ লোডের শুরুতেই ধরে রাখা —
+         মূল স্ক্রিপ্ট চলার আগেই ইভেন্টটা এলে যেন হারিয়ে না যায়। */
+      window.__hisabBIP = null;
+      window.__hisabInstalled = false;
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        window.__hisabBIP = e;
+        try { window.dispatchEvent(new Event('hisab-bip-ready')); } catch (err) {}
+      });
+      window.addEventListener('appinstalled', function () { window.__hisabInstalled = true; });
+    </script>
+    <link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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" />
+    <link rel="icon" type="image/png" sizes="512x512" href="data:image/png;base64,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" />
+    <link rel="apple-touch-icon" href="data:image/png;base64,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" />
+    <title>হিসাব অ্যাপ — Korean Skin Care Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#f2f5f3;
+        --surface:#ffffff;
+        --surface2:#e8efec;
+        --ink:#14231d;
+        --ink2:#47635a;
+        --line:#d5e0da;
+        --brand:#0c6b4f;
+        --brand-dark:#084c38;
+        --brand-soft:#dff0e8;
+        --accent:#c2410c;
+        --accent-soft:#fdeadd;
+        --warn:#b45309;
+        --warn-soft:#fdf0d5;
+        --danger:#b3261e;
+        --danger-soft:#fbe3e1;
+        --ok:#0c6b4f;
+        --ok-soft:#dff0e8;
+        --shadow:0 1px 3px rgba(10,40,30,.10),0 4px 14px rgba(10,40,30,.06);
+        --radius:14px;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#0d1512;
+          --surface:#16211c;
+          --surface2:#1d2c25;
+          --ink:#e8f1ec;
+          --ink2:#9db8ac;
+          --line:#2b3f36;
+          --brand:#3ec79b;
+          --brand-dark:#3ec79b;
+          --brand-soft:#173a2d;
+          --accent:#f0925c;
+          --accent-soft:#3a2417;
+          --warn:#e8b34b;
+          --warn-soft:#38300f;
+          --danger:#f08a84;
+          --danger-soft:#3d1d1b;
+          --ok:#3ec79b;
+          --ok-soft:#173a2d;
+          --shadow:0 1px 3px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+        }
+      }
+      *{box-sizing:border-box}
+      html{-webkit-text-size-adjust:100%}
+      body{
+        margin:0;background:var(--bg);color:var(--ink);
+        font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+        font-size:16px;line-height:1.55;
+        padding-bottom:86px;
+      }
+      button,[role="button"],select,input,summary{touch-action:manipulation}
+      button,select,input[type="text"],input[type="number"],input[type="tel"]{min-height:44px;font-family:inherit;font-size:16px}
+      .wrap{max-width:1060px;margin:0 auto;padding:0 14px}
+
+      /* ---------- top bar ---------- */
+      .topbar{
+        background:var(--brand-dark);color:#eafaf2;
+        padding:16px 0 14px;
+      }
+      @media (prefers-color-scheme: dark){ .topbar{background:#0a2e22} }
+      .topbar h1{font-size:21px;margin:0 0 2px;font-weight:700;line-height:1.3}
+      .topbar .sub{font-size:13.5px;color:#bfe3d2;margin:0}
+      .snapshot{
+        display:inline-block;margin-top:9px;font-size:12.5px;font-weight:600;
+        background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+        padding:3px 10px;border-radius:999px;color:#eafaf2;
+      }
+      .shops{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+      .shop-btn{
+        border:1.5px solid rgba(255,255,255,.45);background:transparent;color:#eafaf2;
+        border-radius:999px;padding:8px 16px;font-size:15px;font-weight:600;cursor:pointer;min-height:44px;
+      }
+      .shop-btn[aria-pressed="true"]{background:#fff;color:#084c38;border-color:#fff}
+      .shop-btn:focus-visible,.tab-btn:focus-visible{outline:3px solid #ffd166;outline-offset:2px}
+
+      /* ---------- KPI ---------- */
+      .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 4px}
+      @media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+      .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:13px 14px;box-shadow:var(--shadow)}
+      .kpi .label{font-size:13px;color:var(--ink2);font-weight:600;margin:0}
+      .kpi .value{font-size:24px;font-weight:700;margin:2px 0 0;line-height:1.25}
+      .kpi .note{font-size:12.5px;color:var(--ink2);margin:1px 0 0}
+      .kpi.hot .value{color:var(--brand)}
+      .kpi.warnk .value{color:var(--warn)}
+
+      /* ---------- sections / cards ---------- */
+      section.panel{display:none;padding-top:16px}
+      section.panel.active{display:block}
+      h2.sec{font-size:19px;margin:4px 0 10px;font-weight:700}
+      h3.sub{font-size:16px;margin:18px 0 8px;font-weight:700}
+      .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow);margin-bottom:12px}
+      .card p{margin:0 0 8px}
+      .muted{color:var(--ink2);font-size:14px}
+      .grid2{display:grid;gap:12px}
+      @media(min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
+
+      /* alerts */
+      .alert{display:flex;gap:11px;align-items:flex-start;padding:12px 14px;border-radius:12px;margin-bottom:9px;border:1px solid var(--line);background:var(--surface)}
+      .alert .dot{flex:0 0 auto;width:11px;height:11px;border-radius:50%;margin-top:7px}
+      .alert.danger .dot{background:var(--danger)} .alert.warn .dot{background:var(--warn)} .alert.ok .dot{background:var(--ok)}
+      .alert strong{font-weight:700}
+      .alert p{margin:0;font-size:14.5px}
+
+      /* lists */
+      .row-item{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+      .row-item:last-child{border-bottom:none}
+      .row-item .main{flex:1;min-width:0}
+      .row-item .name{font-weight:600;font-size:15.5px}
+      .row-item .meta{font-size:13px;color:var(--ink2)}
+      .row-item .amt{font-weight:700;font-size:16px;white-space:nowrap;text-align:right}
+      .row-item .amt small{display:block;font-weight:500;font-size:12px;color:var(--ink2)}
+
+      .badge{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;vertical-align:middle}
+      .badge.free{background:var(--ok-soft);color:var(--ok)}
+      .badge.paid{background:var(--surface2);color:var(--ink2)}
+      .badge.out{background:var(--danger-soft);color:var(--danger)}
+      .badge.low{background:var(--warn-soft);color:var(--warn)}
+      .badge.okb{background:var(--ok-soft);color:var(--ok)}
+      .badge.booked{background:var(--brand-soft);color:var(--brand)}
+      .badge.pending{background:var(--warn-soft);color:var(--warn)}
+      .badge.done{background:var(--ok-soft);color:var(--ok)}
+
+      /* expiry display — mobile-first: wraps cleanly, never overflows */
+      .exp-date{font-weight:700;white-space:normal;overflow-wrap:break-word}
+      td.exp-cell{white-space:normal;min-width:132px}
+      .exp-amt .exp-date{display:block;font-size:15px}
+      .exp-amt small{white-space:normal}
+      @media(max-width:640px){
+        td.exp-cell{min-width:0}
+        td.exp-cell::before{content:attr(data-l)" : ";color:var(--ink2);font-size:13px;font-weight:600}
+        .exp-row{flex-direction:column;gap:3px}
+        .exp-row .amt{text-align:left}
+        .exp-row .exp-amt .exp-date{display:inline;margin-right:8px}
+      }
+
+      /* stock table -> cards on mobile */
+      .stock-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+      .stock-tools input[type="search"]{flex:1;min-width:180px;min-height:44px;padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px}
+      .stock-tools select{padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+      table.stock{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+      table.stock th{text-align:left;font-size:13px;color:var(--ink2);padding:10px 12px;background:var(--surface2);border-bottom:1px solid var(--line)}
+      table.stock td{padding:11px 12px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
+      table.stock tr:last-child td{border-bottom:none}
+      td.num,th.num{text-align:right;white-space:nowrap}
+      @media(max-width:640px){
+        table.stock thead{display:none}
+        table.stock,table.stock tbody,table.stock tr,table.stock td{display:block;width:100%}
+        table.stock tr{border-bottom:1px solid var(--line);padding:8px 4px}
+        table.stock td{border-bottom:none;padding:3px 12px}
+        td.num{text-align:left}
+        td.num::before{content:attr(data-l)" : ";color:var(--ink2);font-size:13px;font-weight:600}
+      }
+
+      /* forms */
+      form.op{display:grid;gap:10px}
+      @media(min-width:760px){form.op{grid-template-columns:repeat(2,1fr)} form.op .full{grid-column:1/-1}}
+      label.f{display:block;font-size:13.5px;font-weight:600;color:var(--ink2)}
+      label.f input,label.f select{
+        display:block;width:100%;margin-top:4px;padding:9px 11px;border:1.5px solid var(--line);
+        border-radius:10px;background:var(--surface);color:var(--ink);font-weight:400;
+      }
+      .btn{
+        background:var(--brand);color:#fff;border:none;border-radius:11px;padding:11px 20px;
+        font-size:16px;font-weight:700;cursor:pointer;min-height:48px;width:100%;
+      }
+      @media(min-width:760px){.btn{width:auto}}
+      .btn:active{transform:translateY(1px)}
+      .btn.ghost{background:var(--surface);color:var(--brand);border:1.5px solid var(--brand)}
+      .btn.small{min-height:40px;padding:6px 14px;font-size:14px;width:auto}
+      .form-msg{font-size:14.5px;font-weight:600;color:var(--ok);min-height:22px;margin:0}
+      .form-msg.err{color:var(--danger)}
+
+      /* chart */
+      .bars{display:flex;align-items:flex-end;gap:14px;height:170px;padding:14px 6px 0;border-bottom:2px solid var(--line)}
+      .bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end}
+      .bar{width:min(64px,80%);background:var(--brand);border-radius:8px 8px 0 0;min-height:5px}
+      .bar.dim{background:var(--ink2);opacity:.55}
+      .bar-val{font-size:13px;font-weight:700}
+      .bar-lab{font-size:13px;color:var(--ink2);padding-bottom:2px}
+
+      /* rules list */
+      ul.rules{margin:0;padding-left:20px}
+      ul.rules li{margin-bottom:7px;font-size:15px}
+      ul.rules li:last-child{margin-bottom:0}
+
+      /* bottom nav */
+      .tabbar{
+        position:fixed;left:0;right:0;bottom:0;z-index:20;
+        background:var(--surface);border-top:1px solid var(--line);
+        display:flex;padding-bottom:env(safe-area-inset-bottom);
+        box-shadow:0 -3px 14px rgba(10,40,30,.08);
+      }
+      .tab-btn{
+        flex:1;background:none;border:none;color:var(--ink2);cursor:pointer;
+        font-family:inherit;font-size:13px;font-weight:600;padding:9px 2px 8px;min-height:58px;
+        display:flex;flex-direction:column;align-items:center;gap:3px;
+      }
+      .tab-btn svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+      .tab-btn[aria-selected="true"]{color:var(--brand)}
+      .tab-btn[aria-selected="true"] svg{stroke-width:2.3}
+      @media(min-width:900px){
+        .tab-btn{font-size:14.5px}
+      }
+      .empty{padding:20px 14px;text-align:center;color:var(--ink2);font-size:15px;background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius)}
+      footer{padding:22px 0 10px;color:var(--ink2);font-size:13px}
+
+      /* ---------- install as app ---------- */
+      .install-card{
+        background:var(--brand-soft);border:1.5px solid var(--brand);
+        border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:14px;
+      }
+      .install-head{display:flex;gap:12px;align-items:flex-start}
+      .install-ic{
+        flex:0 0 auto;width:48px;height:48px;border-radius:12px;background:var(--brand-dark);
+        display:flex;align-items:center;justify-content:center;
+      }
+      .install-ic svg{width:26px;height:26px;stroke:#eafaf2;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .install-head h2{font-size:18.5px;margin:0 0 3px;font-weight:700;line-height:1.35}
+      .install-head p{margin:0;font-size:14.5px;color:var(--ink2)}
+      @media (prefers-color-scheme: dark){ .install-head p{color:var(--ink)} }
+      .install-btn{margin-top:13px;display:flex;align-items:center;justify-content:center;gap:9px}
+      .install-btn svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      .install-status{
+        margin:11px 0 0;font-size:14px;font-weight:600;line-height:1.5;
+        background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;
+      }
+      .install-status.ready{border-color:var(--brand);color:var(--brand)}
+      .install-status.blocked{border-color:var(--warn);color:var(--warn)}
+      .framed-note{
+        display:none;gap:10px;align-items:flex-start;background:var(--warn-soft);
+        border:1px solid var(--warn);border-radius:12px;padding:12px 13px;margin-top:12px;
+      }
+      .framed-note.show{display:flex}
+      .framed-note p{margin:0;font-size:14.5px}
+      .framed-note svg{flex:0 0 auto;width:21px;height:21px;stroke:var(--warn);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+      .install-hint{font-size:13.5px;color:var(--ink2);margin:9px 0 0;text-align:center}
+      @media(min-width:760px){.install-hint{text-align:left}}
+      .linklike{background:none;border:none;color:var(--brand);font-weight:700;font-size:14.5px;cursor:pointer;padding:6px 2px;text-decoration:underline;min-height:36px;font-family:inherit}
+      .install-steps{display:none;margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+      .install-steps.open{display:block}
+      .step{display:flex;gap:11px;margin-bottom:12px;align-items:flex-start}
+      .step:last-child{margin-bottom:0}
+      .step .n{
+        flex:0 0 auto;width:27px;height:27px;border-radius:50%;background:var(--brand);color:#fff;
+        font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;margin-top:1px;
+      }
+      .step p{margin:0;font-size:15px}
+      .step p .en{font-weight:700}
+      .menu-mock{
+        border:1.5px solid var(--line);border-radius:12px;overflow:hidden;margin:4px 0 14px;background:var(--surface);
+      }
+      .menu-mock .mm-head{
+        display:flex;justify-content:space-between;align-items:center;padding:8px 13px;
+        background:var(--surface2);font-size:13px;font-weight:700;color:var(--ink2);
+      }
+      .menu-mock .mm-row{padding:10px 13px;font-size:14.5px;border-top:1px solid var(--line);color:var(--ink2)}
+      .menu-mock .mm-row.hl{
+        background:var(--brand-soft);color:var(--brand);font-weight:700;
+        box-shadow:inset 0 0 0 2px var(--brand);
+      }
+      @keyframes rowpulse{
+        0%,100%{box-shadow:inset 0 0 0 2px var(--brand)}
+        50%{box-shadow:inset 0 0 0 5px var(--brand);background:var(--brand);color:#fff}
+      }
+      .menu-mock .mm-row.hl.pulse{animation:rowpulse .7s ease-in-out 3}
+      @media (prefers-reduced-motion: reduce){ .menu-mock .mm-row.hl.pulse{animation:none} }
+      .inapp-note{
+        display:flex;gap:10px;align-items:flex-start;background:var(--warn-soft);
+        border:1px solid var(--warn);border-radius:12px;padding:12px 13px;margin-top:12px;
+      }
+      .inapp-note p{margin:0;font-size:14.5px}
+      .inapp-note svg{flex:0 0 auto;width:21px;height:21px;stroke:var(--warn);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+    </style>
+  </head>
+  <body>
+
+    <div class="topbar">
+      <div class="wrap">
+        <h1>সব হিসাব এক জায়গায়</h1>
+        <p class="sub">Korean Skin Care Shop (KSS) · Lovebirds Korean Cosmetics · পাইকারি (koreasourcebd.com)</p>
+        <span class="snapshot">নভেম্বর ২০২৬-এর পুরো হিসাব এন্ট্রি করা হয়েছে — ১ থেকে ২৩ নভেম্বর · শিট থেকে নেওয়া · সব পণ্যের মেয়াদ শেষের তারিখসহ</span>
+        <div class="shops" role="group" aria-label="দোকান বেছে নিন">
+          <button class="shop-btn" data-shop="all" aria-pressed="true">সব দোকান</button>
+          <button class="shop-btn" data-shop="kss" aria-pressed="false">KSS (খুচরা)</button>
+          <button class="shop-btn" data-shop="lb" aria-pressed="false">Lovebirds</button>
+          <button class="shop-btn" data-shop="ws" aria-pressed="false">পাইকারি</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar" aria-label="প্রধান অংশ">
+      <div class="tabwrap" style="display:contents;width:100%">
+        <button class="tab-btn" data-tab="dash" aria-selected="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>
+          ড্যাশবোর্ড</button>
+        <button class="tab-btn" data-tab="sales" aria-selected="false">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 11h-13z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg>
+          বিক্রি</button>
+        <button class="tab-btn" data-tab="stock" aria-selected="false">
+          <svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+          স্টক</button>
+        <button class="tab-btn" data-tab="delivery" aria-selected="false">
+          <svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg>
+          ডেলিভারি</button>
+        <button class="tab-btn" data-tab="report" aria-selected="false">
+          <svg viewBox="0 0 24 24"><path d="M5 20V10M11 20V4M17 20v-8M3 20h18"/></svg>
+          রিপোর্ট</button>
+      </div>
+    </nav>
+
+    <main class="wrap">
+
+      <!-- ============ DASHBOARD ============ -->
+      <section class="panel active" id="panel-dash" aria-label="ড্যাশবোর্ড">
+
+        <!-- ===== ফোনে অ্যাপ হিসেবে বসান ===== -->
+        <div class="install-card" id="install-card">
+          <div class="install-head">
+            <span class="install-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>
+            </span>
+            <div>
+              <h2>ফোনে অ্যাপ হিসেবে বসান</h2>
+              <p>একবার বসালেই হোম স্ক্রিনে “হিসাব অ্যাপ”-এর আইকন আসবে — অন্য অ্যাপের মতো এক চাপেই খুলবে, প্রতিবার লিংক খোঁজা লাগবে না।</p>
+            </div>
+          </div>
+          <button class="btn install-btn" id="install-btn" type="button">
+            <svg viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>
+            <span id="install-btn-text">অ্যাপ ইনস্টল করুন</span>
+          </button>
+          <p class="install-status" id="install-status" role="status">Chrome-এর ইনস্টল অপশন আসছে কিনা দেখা হচ্ছে…</p>
+          <div class="framed-note" id="framed-note">
+            <svg viewBox="0 0 24 24"><path d="M12 8v5M12 16.5v.5"/><path d="M10.3 3.8L2.6 17a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.8a2 2 0 0 0-3.4 0z"/></svg>
+            <p><strong>কেন সরাসরি ইনস্টল হচ্ছে না:</strong> এই পেজটা এখন Muse-এর পেজের <em>ভিতরের ফ্রেমে</em> চলছে — এই অবস্থায় Chrome কোনো ওয়েবসাইটকেই সরাসরি “Install app” দেয় না, তাই বোতাম চাপলে শুধু ধাপগুলো দেখায়। সমাধান: চ্যাটের লিংকটা কপি করে <strong>Chrome অ্যাপটা আলাদা করে খুলে</strong> সেখানে পেস্ট করে পেজটা খুলুন — তখন এই বোতাম চাপলেই সরাসরি ইনস্টল বাক্স আসবে।</p>
+          </div>
+          <p class="install-hint"><span id="install-hint-text">বোতামে ইনস্টল শুরু না হলে</span> <button class="linklike" id="install-steps-toggle" type="button" aria-expanded="false">ধাপে ধাপে দেখুন</button></p>
+
+          <div class="install-steps" id="install-steps">
+            <!-- Android / Chrome -->
+            <div id="steps-android">
+              <div class="step"><span class="n">১</span><p>Chrome-এর একদম উপরে ডানদিকের <strong>⋮ (তিনটি ডট)</strong> বোতাম চাপুন।</p></div>
+              <div class="menu-mock" aria-hidden="true">
+                <div class="mm-head"><span>Chrome মেনু</span><span>⋮</span></div>
+                <div class="mm-row">New tab</div>
+                <div class="mm-row">History</div>
+                <div class="mm-row">Downloads</div>
+                <div class="mm-row">Share…</div>
+                <div class="mm-row hl">⬇&nbsp; Install app / Add to Home screen</div>
+                <div class="mm-row">Settings</div>
+              </div>
+              <div class="step"><span class="n">২</span><p>মেনুটা আঙুল দিয়ে <strong>উপরে টেনে স্ক্রল করুন</strong> — নিচের দিকে <span class="en">“Install app”</span> অথবা <span class="en">“Add to Home screen”</span> লেখা পাবেন (উপরের ছবিতে সবুজ করে দেখানো হয়েছে), সেটা চাপুন। ঠিকানা বারের ডানদিকে <strong>ইনস্টল আইকন (⬇)</strong> থাকলে সেটা চাপলেও সরাসরি বসবে।</p></div>
+              <div class="step"><span class="n">৩</span><p><span class="en">“Install” / “Add”</span> চাপলেই হোম স্ক্রিনে আইকন চলে আসবে। এরপর থেকে আইকন চাপলেই অ্যাপ খুলবে।</p></div>
+            </div>
+            <!-- Samsung Internet -->
+            <div id="steps-samsung" style="display:none">
+              <div class="step"><span class="n">১</span><p>Samsung Internet-এর নিচে ডানদিকের <strong>☰ (তিন লাইন)</strong> বোতাম চাপুন।</p></div>
+              <div class="step"><span class="n">২</span><p><span class="en">“Add page to”</span> চাপুন, তারপর <span class="en">“Home screen”</span> বেছে নিন।</p></div>
+              <div class="step"><span class="n">৩</span><p><span class="en">“Add”</span> চাপলেই হোম স্ক্রিনে আইকন চলে আসবে। এরপর থেকে আইকন চাপলেই অ্যাপ খুলবে।</p></div>
+            </div>
+            <!-- iPhone / Safari -->
+            <div id="steps-ios" style="display:none">
+              <div class="step"><span class="n">১</span><p>এই পেজটা <strong>Safari</strong> ব্রাউজারে খুলুন, তারপর নিচের মাঝখানের <strong>Share</strong> বোতাম (বাক্স থেকে তীর ওঠা আইকন) চাপুন।</p></div>
+              <div class="step"><span class="n">২</span><p>তালিকাটা স্ক্রল করে <span class="en">“Add to Home Screen”</span> চাপুন।</p></div>
+              <div class="step"><span class="n">৩</span><p>উপরে ডানদিকে <span class="en">“Add”</span> চাপলেই হোম স্ক্রিনে আইকন চলে আসবে।</p></div>
+            </div>
+            <div class="inapp-note">
+              <svg viewBox="0 0 24 24"><path d="M12 8v5M12 16.5v.5"/><path d="M10.3 3.8L2.6 17a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.8a2 2 0 0 0-3.4 0z"/></svg>
+              <p><strong>অপশনটা না পেলে:</strong> Muse অ্যাপ বা Messenger-এর <em>ভিতরে</em> লিংক খুললে ইনস্টলের অপশন আসে না। তখন চ্যাটে পাওয়া লিংকটা কপি করে <strong>Chrome অ্যাপে</strong> পেস্ট করে খুলুন, তারপর ধাপগুলো আবার করুন।</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi hot">
+            <p class="label">নভেম্বর মোট বিক্রি (১–২৩ নভে.)</p>
+            <p class="value" id="kpi-month">৳৪,৫৩,২০৭</p>
+            <p class="note" id="kpi-month-note">২০২টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া</p>
+          </div>
+          <div class="kpi">
+            <p class="label">KSS — নভেম্বর</p>
+            <p class="value" id="kpi-kss">৳৩,১৬,৯৯৭</p>
+            <p class="note">১১২টি অর্ডার</p>
+          </div>
+          <div class="kpi">
+            <p class="label">Lovebirds — নভেম্বর</p>
+            <p class="value" id="kpi-lb">৳১,৩৬,২১০</p>
+            <p class="note">৯০টি অর্ডার</p>
+          </div>
+          <div class="kpi">
+            <p class="label">আজ — ২৩ নভেম্বর</p>
+            <p class="value" id="kpi-today">৳৭,৩০০</p>
+            <p class="note" id="kpi-today-note">৪টি অর্ডার (KSS) · পিকআপ ব্যাচে COD বাকি ৳৯,৭৭০</p>
+          </div>
+        </div>
+
+        <h3 class="sub">সতর্কতা</h3>
+        <div class="alert danger">
+          <span class="dot"></span>
+          <p><strong>স্টক আউট:</strong> COSRX Salicylic Acid Cleanser 150ml — KSS স্টক ০ (২৩ নভেম্বর)। পাইকারি সাইটে মোট <strong>২৭টি পণ্য</strong> স্টক আউট (মোট ১৫৬টির মধ্যে)।</p>
+        </div>
+        <div class="alert warn">
+          <span class="dot"></span>
+          <p><strong>মেয়াদ শেষ:</strong> Anua Probiotics 10ml-এর মেয়াদ শেষ হয়েছে ২৮ অক্টোবর ২০২৬ — বিক্রির আগে যাচাই করা দরকার।</p>
+        </div>
+        <div class="alert warn">
+          <span class="dot"></span>
+          <p><strong>মেয়াদ সবচেয়ে কাছে:</strong> Time Revolution Night Repair set (Lovebirds) — মেয়াদ শেষ <strong>২৮ নভেম্বর ২০২৬</strong>; এরপর ৩ ডিসেম্বর দুটি পণ্য। শিট অনুযায়ী ৩০ দিনের মধ্যে ৩টি ও ৯০ দিনের মধ্যে ২৬টি পণ্যের মেয়াদ শেষ হবে — তারিখসহ পুরো তালিকা “স্টক” অংশে।</p>
+        </div>
+        <div class="alert warn">
+          <span class="dot"></span>
+          <p><strong>কম স্টক (৩ পিস বা কম):</strong> CARE:NEL Anti-Melasma Cica Serum-সহ কয়েকটি পণ্য — স্টক অংশে “কম স্টক” ফিল্টারে পুরো তালিকা দেখুন।</p>
+        </div>
+        <div class="alert ok">
+          <span class="dot"></span>
+          <p><strong>ফ্রি ডেলিভারি অফার চলছে:</strong> ৳৩,০০০+ অর্ডারে ডেলিভারি সম্পূর্ণ ফ্রি · ৳৫,০০০+ অর্ডারে ফ্রি শিট মাস্ক উপহার · Medicube TXA Capsule Cream থাকলেই ডেলিভারি ফ্রি।</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3 class="sub" style="margin-top:0">সপ্তাহ অনুযায়ী বিক্রি — নভেম্বর (KSS + Lovebirds)</h3>
+            <div class="bars" role="img" aria-label="বার চার্ট: ১ থেকে ৭ নভেম্বর ১,২৪,৮৩০ টাকা, ৮ থেকে ১৪ নভেম্বর ১,৪৩,৮৬৯ টাকা, ১৫ থেকে ২১ নভেম্বর ১,৭০,২৩৮ টাকা, ২২ থেকে ২৩ নভেম্বর ১৪,২৭০ টাকা">
+              <div class="bar-col"><span class="bar-val">৳১,২৪,৮৩০</span><div class="bar dim" style="height:66%"></div><span class="bar-lab">১–৭ নভে. · ৬১ অর্ডার</span></div>
+              <div class="bar-col"><span class="bar-val">৳১,৪৩,৮৬৯</span><div class="bar dim" style="height:77%"></div><span class="bar-lab">৮–১৪ নভে. · ৬৩ অর্ডার</span></div>
+              <div class="bar-col"><span class="bar-val">৳১,৭০,২৩৮</span><div class="bar" style="height:92%"></div><span class="bar-lab">১৫–২১ নভে. · ৭০ অর্ডার</span></div>
+              <div class="bar-col"><span class="bar-val">৳১৪,২৭০</span><div class="bar" style="height:12%"></div><span class="bar-lab">২২–২৩ নভে. · ৮ অর্ডার</span></div>
+            </div>
+            <p class="muted" style="margin-top:10px">সবচেয়ে বেশি বিক্রির দিন: <strong>১৯ নভেম্বর — ৳৭০,৯৮০ (৩৪টি অর্ডার)</strong>, যেদিন Lovebirds-এ ৳৪৬,৩৫০ বিক্রি হয়েছিল। প্রতিদিনের আলাদা হিসাব নিচের তালিকায়।</p>
+          </div>
+
+          <div class="card">
+            <h3 class="sub" style="margin-top:0">দোকানভেদে অবস্থা</h3>
+            <div class="row-item"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,১৬,৯৯৭</span><small>১১২টি অর্ডার · আজ ৳৭,৩০০</small></div></div>
+            <div class="row-item"><div class="main"><div class="name">Lovebirds Korean Cosmetics</div><div class="meta">খুচরা · আলাদা স্টক শিট</div></div><div class="amt">মাসে ৳১,৩৬,২১০<small>৯০টি অর্ডার · শেষ বিক্রি ২০ নভে.</small></div></div>
+            <div class="row-item"><div class="main"><div class="name">পাইকারি — koreasourcebd.com</div><div class="meta">লগইন ছাড়া দাম দেখা যায় না · ন্যূনতম অর্ডার ৳৮,০০০ বা একই পণ্য ৩+ পিস</div></div><div class="amt">১৫৬টি পণ্য<small>২৭টি স্টক আউট</small></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="sub" style="margin-top:0">প্রতিদিনের হিসাব — নভেম্বর ২০২৬</h3>
+          <table class="stock" aria-label="প্রতিদিনের বিক্রির হিসাব">
+            <thead><tr><th>তারিখ</th><th class="num">KSS (৳)</th><th class="num">Lovebirds (৳)</th><th class="num">অর্ডার</th><th class="num">মোট (৳)</th></tr></thead>
+            <tbody id="daily-body"></tbody>
+            <tfoot><tr style="background:var(--surface2);font-weight:700"><td>মোট (১–২৩ নভে.)</td><td class="num" data-l="KSS">৳৩,১৬,৯৯৭</td><td class="num" data-l="Lovebirds">৳১,৩৬,২১০</td><td class="num" data-l="অর্ডার">২০২টি</td><td class="num" data-l="মোট">৳৪,৫৩,২০৭</td></tr></tfoot>
+          </table>
+          <p class="muted" style="margin-top:10px">সব টাকা পণ্যের দাম — ডেলিভারি চার্জ আলাদা। কোনো দিনের অর্ডারগুলো দেখতে “বিক্রি” অংশে গিয়ে তারিখ বেছে নিন।</p>
+        </div>
+      </section>
+
+      <!-- ============ SALES ============ -->
+      <section class="panel" id="panel-sales" aria-label="বিক্রি">
+        <h2 class="sec">নভেম্বরের সব বিক্রি — ১–২৩ নভেম্বর ২০২৬</h2>
+        <p class="muted" id="sales-summary" style="margin:-4px 0 12px">সব দোকান মিলিয়ে ২০২টি অর্ডার · মোট ৳৪,৫৩,২০৭ (পণ্যের দাম, ডেলিভারি চার্জ ছাড়া)</p>
+        <div class="stock-tools">
+          <input type="search" id="sales-search" placeholder="কাস্টমার বা পণ্যের নাম খুঁজুন… যেমন: মিম, Rice Toner" aria-label="বিক্রি খুঁজুন" />
+          <select id="sales-date" aria-label="তারিখ অনুযায়ী ফিল্টার"><option value="all">সব তারিখ</option></select>
+        </div>
+        <div class="card">
+          <div id="sales-list"></div>
+          <div class="row-item" style="border-top:2px solid var(--line);margin-top:4px">
+            <div class="main"><div class="name">মোট</div></div>
+            <div class="amt" id="sales-total">৳৪,৫৩,২০৭</div>
+          </div>
+        </div>
+
+        <h3 class="sub">অপারেটর — নতুন বিক্রি যোগ করুন</h3>
+        <div class="card">
+          <form class="op" id="sale-form">
+            <label class="f">কাস্টমারের নাম (প্রথম নাম)
+              <input type="text" id="sf-name" placeholder="যেমন: মিম" autocomplete="off" />
+            </label>
+            <label class="f">দোকান
+              <select id="sf-shop">
+                <option value="kss">KSS (খুচরা)</option>
+                <option value="lb">Lovebirds</option>
+                <option value="ws">পাইকারি</option>
+              </select>
+            </label>
+            <label class="f full">পণ্য (স্টক থেকে কমবে)
+              <select id="sf-product"></select>
+            </label>
+            <label class="f">পরিমাণ (পিস)
+              <input type="number" id="sf-qty" value="1" min="1" step="1" inputmode="numeric" />
+            </label>
+            <label class="f">মোট দাম (৳) — ডেলিভারি চার্জ ছাড়া
+              <input type="number" id="sf-price" min="0" step="1" inputmode="numeric" placeholder="যেমন: ১৫০০" />
+            </label>
+            <label class="f">ডেলিভারি
+              <select id="sf-delivery">
+                <option value="80">ঢাকার ভিতরে — ৳৮০</option>
+                <option value="130">ঢাকার বাইরে — ৳১৩০</option>
+                <option value="0">ফ্রি ডেলিভারি</option>
+              </select>
+            </label>
+            <div class="full">
+              <p class="form-msg" id="sale-msg" role="status"></p>
+              <button type="submit" class="btn">বিক্রি যোগ করুন — স্টক অটো কমবে</button>
+            </div>
+          </form>
+          <p class="muted" style="margin-top:10px">নিয়ম: অর্ডার ৳৩,০০০+ হলে বা Medicube TXA Capsule Cream থাকলে ডেলিভারি ফ্রি বেছে নিন। ৳৫,০০০+ হলে পার্সেলে ফ্রি শিট মাস্ক দিতে ভুলবেন না।</p>
+        </div>
+      </section>
+
+      <!-- ============ STOCK ============ -->
+      <section class="panel" id="panel-stock" aria-label="স্টক">
+        <h2 class="sec">স্টক — KSS + Lovebirds একসাথে</h2>
+        <div class="kpis" style="margin-top:0">
+          <div class="kpi"><p class="label">মোট পণ্য (এই তালিকায়)</p><p class="value" id="st-count">–</p><p class="note">Master Stock অনুযায়ী দুই দোকান মিলিয়ে</p></div>
+          <div class="kpi"><p class="label">মোট পিস</p><p class="value" id="st-pcs">–</p><p class="note">দুই দোকানের Current Stock যোগ</p></div>
+          <div class="kpi warnk"><p class="label">কম স্টক (১–৩ পিস)</p><p class="value" id="st-low">–</p><p class="note">রিস্টক দরকার</p></div>
+          <div class="kpi warnk"><p class="label">স্টক আউট</p><p class="value" id="st-out">–</p><p class="note">এই তালিকায়</p></div>
+        </div>
+        <div class="stock-tools">
+          <input type="search" id="st-search" placeholder="পণ্যের নাম খুঁজুন… যেমন: Medicube, Rice Toner" aria-label="পণ্য খুঁজুন" />
+          <select id="st-filter" aria-label="স্টক অবস্থা ফিল্টার">
+            <option value="all">সব অবস্থা</option>
+            <option value="low">শুধু কম স্টক</option>
+            <option value="out">শুধু স্টক আউট</option>
+            <option value="ok">শুধু ঠিক আছে</option>
+            <option value="exp90">মেয়াদ ৯০ দিনের মধ্যে শেষ</option>
+            <option value="expnone">মেয়াদের তারিখ শিটে নেই</option>
+          </select>
+        </div>
+        <table class="stock" aria-label="স্টক তালিকা">
+          <thead><tr><th>পণ্য</th><th>দোকান</th><th class="num">বিক্রয় দাম</th><th class="num">স্টক (পিস)</th><th>মেয়াদ শেষ (Expiry)</th><th>অবস্থা</th></tr></thead>
+          <tbody id="stock-body"></tbody>
+        </table>
+        <p class="muted" id="stock-empty" style="display:none;margin-top:10px">এই ফিল্টারে কোনো পণ্য পাওয়া যায়নি।</p>
+        <p class="muted" style="margin-top:8px">মেয়াদের তারিখ স্টক শিটের Expiry কলাম থেকে নেওয়া। যেসব পণ্যের তারিখ শিটে লেখা নেই, সেখানে “শিটে তারিখ নেই” দেখাবে।</p>
+
+        <h3 class="sub">মেয়াদের পুরো তালিকা — শিট অনুযায়ী (আগে শেষ হবে এমন পণ্য আগে)</h3>
+        <p class="muted" id="exp-summary" style="margin:-4px 0 12px">লোড হচ্ছে…</p>
+        <div class="stock-tools">
+          <input type="search" id="exp-search" placeholder="মেয়াদের তালিকায় পণ্য খুঁজুন… যেমন: Rice, Snail" aria-label="মেয়াদের তালিকায় খুঁজুন" />
+          <select id="exp-filter" aria-label="মেয়াদ অনুযায়ী ফিল্টার">
+            <option value="all">সব মেয়াদ</option>
+            <option value="30">৩০ দিনের মধ্যে শেষ</option>
+            <option value="90">৯০ দিনের মধ্যে শেষ</option>
+            <option value="2026">২০২৬-এ শেষ</option>
+            <option value="2027">২০২৭-এ শেষ</option>
+          </select>
+        </div>
+        <div class="card">
+          <div id="expiry-list"></div>
+        </div>
+
+        <h3 class="sub">অপারেটর — স্টক যোগ করুন (নতুন চালান)</h3>
+        <div class="card">
+          <form class="op" id="stock-form">
+            <label class="f full">পণ্য
+              <select id="tf-product"></select>
+            </label>
+            <label class="f">যোগ হবে (পিস)
+              <input type="number" id="tf-qty" value="1" min="1" step="1" inputmode="numeric" />
+            </label>
+            <div>
+              <p class="form-msg" id="stock-msg" role="status"></p>
+              <button type="submit" class="btn">স্টকে যোগ করুন</button>
+            </div>
+          </form>
+          <p class="muted" style="margin-top:10px">নিয়ম: পণ্যের আগের row থাকলে পরিমাণ সেই row-তেই যোগ হয় — নতুন row নয়।</p>
+        </div>
+      </section>
+
+      <!-- ============ DELIVERY ============ -->
+      <section class="panel" id="panel-delivery" aria-label="ডেলিভারি">
+        <h2 class="sec">আজকের পাঠাও পিকআপ — ২৩ নভেম্বর ২০২৬</h2>
+        <div class="card">
+          <div id="delivery-list"></div>
+          <div class="row-item" style="border-top:2px solid var(--line);margin-top:4px">
+            <div class="main"><div class="name">মোট COD</div><div class="meta">ডেলিভারি চার্জসহ আদায়যোগ্য</div></div>
+            <div class="amt" id="delivery-total">৳৯,৭৭০</div>
+          </div>
+          <p class="muted">“অবস্থা বদলান” চাপলে পার্সেলের অবস্থা এই সেশনেই বদলাবে (বুক হয়েছে → ডেলিভারি হয়েছে)। পিকআপ বুকিং হয় প্রতিদিন সকাল ৯টার রানে; সকাল ১০টার পরের অর্ডার পরের দিন যায়।</p>
+        </div>
+
+        <div class="card">
+          <h3 class="sub" style="margin-top:0">ডেলিভারির নিয়ম</h3>
+          <ul class="rules">
+            <li>ঢাকার ভিতরে ডেলিভারি চার্জ <strong>৳৮০</strong>, ঢাকার বাইরে <strong>৳১৩০</strong> (খুচরা)।</li>
+            <li>অর্ডার <strong>৳৩,০০০+</strong> হলে ডেলিভারি চার্জ সম্পূর্ণ ফ্রি।</li>
+            <li>অর্ডার <strong>৳৫,০০০+</strong> হলে ফ্রি শিট মাস্ক উপহার — পার্সেলে অবশ্যই দিতে হবে।</li>
+            <li>অর্ডারে <strong>Medicube TXA Capsule Cream</strong> থাকলেই ডেলিভারি ফ্রি।</li>
+            <li>পাইকারি (koreasourcebd.com) ডেলিভারি সারা দেশে ফ্ল্যাট <strong>৳১৫০</strong>।</li>
+            <li>Memo-তে HOLD লেখা অর্ডার পিকআপে যায় না, HOLD না ওঠা পর্যন্ত।</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ EXPENSE & REPORT ============ -->
+      <section class="panel" id="panel-report" aria-label="খরচ ও রিপোর্ট">
+        <h2 class="sec">খরচ ও মাসিক রিপোর্ট</h2>
+
+        <div class="card">
+          <h3 class="sub" style="margin-top:0">আজকের খরচ</h3>
+          <div id="expense-list">
+            <p class="muted" id="expense-empty">আজ এখনো কোনো খরচ যোগ হয়নি। নিচের ফর্মে যোগ করলেই হিসাব আপডেট হবে।</p>
+          </div>
+          <div class="row-item" style="border-top:2px solid var(--line);margin-top:4px">
+            <div class="main"><div class="name">মোট খরচ</div></div>
+            <div class="amt" id="expense-total">৳০</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="sub" style="margin-top:0">অপারেটর — খরচ যোগ করুন</h3>
+          <form class="op" id="expense-form">
+            <label class="f">খরচের খাত
+              <select id="ef-cat">
+                <option>প্যাকেজিং সামগ্রী</option>
+                <option>পাঠাও / কুরিয়ার খরচ</option>
+                <option>পণ্য কেনা (চালান)</option>
+                <option>দোকান / গুদাম খরচ</option>
+                <option>বিজ্ঞাপন (Facebook)</option>
+                <option>অন্যান্য</option>
+              </select>
+            </label>
+            <label class="f">টাকার পরিমাণ (৳)
+              <input type="number" id="ef-amt" min="1" step="1" inputmode="numeric" placeholder="যেমন: ৫০০" />
+            </label>
+            <label class="f full">বিবরণ (ঐচ্ছিক)
+              <input type="text" id="ef-note" placeholder="কিসের খরচ, সংক্ষেপে" autocomplete="off" />
+            </label>
+            <div class="full">
+              <p class="form-msg" id="expense-msg" role="status"></p>
+              <button type="submit" class="btn">খরচ যোগ করুন</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3 class="sub" style="margin-top:0">নভেম্বর ২০২৬ — মাসিক অবস্থা (১–২৩ নভে. এন্ট্রি করা)</h3>
+            <div class="row-item"><div class="main"><div class="name">মোট বিক্রি (১–২৩ নভে.)</div><div class="meta">২০২টি অর্ডার · প্রতিদিন গড়ে ৳১৯,৭০৫</div></div><div class="amt" id="rep-total">৳৪,৫৩,২০৭</div></div>
+            <div class="row-item"><div class="main"><div class="name">KSS বিক্রি</div><div class="meta">১১২টি অর্ডার · সবচেয়ে বড় একক অর্ডার: সেনা — ৳২৭,৮৫০ (১৪ নভে.)</div></div><div class="amt">৳৩,১৬,৯৯৭</div></div>
+            <div class="row-item"><div class="main"><div class="name">Lovebirds বিক্রি</div><div class="meta">৯০টি অর্ডার · সবচেয়ে বেশি একদিনে: ১৯ নভে. ৳৪৬,৩৫০</div></div><div class="amt">৳১,৩৬,২১০</div></div>
+            <div class="row-item"><div class="main"><div class="name">খরচের রেকর্ড</div><div class="meta">Business Hisab শিটে নভেম্বরের খরচের এন্ট্রি পাওয়া যায়নি — তাই লাভের হিসাব এখানে দেখানো হয়নি; কেনা দামসহ লাভ মাসিক প্রফিট শিটে হিসাব হয়</div></div><div class="amt">রেকর্ড নেই</div></div>
+            <div class="row-item"><div class="main"><div class="name">বিক্রি − এই সেশনে যোগ করা খরচ</div><div class="meta">নিচের ফর্মে খরচ যোগ করলে এখান থেকে কমবে</div></div><div class="amt" id="net-today">৳৪,৫৩,২০৭<small>খরচ যোগ হলে কমবে</small></div></div>
+          </div>
+
+          <div class="card">
+            <h3 class="sub" style="margin-top:0">মেয়াদ (Expiry) রিপোর্ট — তারিখসহ</h3>
+            <div class="row-item"><div class="main"><div class="name">মেয়াদের তারিখসহ পণ্য (শিট অনুযায়ী)</div><div class="meta">KSS ৭৫টি + Lovebirds ৯৬টি · মেয়াদ ২৮ নভে. ২০২৬ থেকে ২৫ ডিসে. ২০২৭ পর্যন্ত</div></div><div class="amt">১৭১টি<small>মোট ৫৩১ পিস</small></div></div>
+            <div class="row-item"><div class="main"><div class="name">৩০ দিনের মধ্যে মেয়াদ শেষ</div><div class="meta">Time Revolution Night Repair set (২৮ নভে.) · Heartleaf Cleansing Oil ও Velvet Finish Cushion (৩ ডিসে.)</div></div><div class="amt">৩টি<small>৯০ দিনের মধ্যে ২৬টি</small></div></div>
+            <div id="exp-nearest"></div>
+            <div class="row-item"><div class="main"><div class="name">বিক্রির অগ্রাধিকার</div><div class="meta">যার মেয়াদ আগে শেষ, সেটা আগে বিক্রি · ৩০ দিনের কম থাকলে জরুরি · তারিখসহ পুরো তালিকা “স্টক” অংশে</div></div></div>
+            <div class="row-item"><div class="main"><div class="name">সতর্কতা</div><div class="meta">Anua Probiotics 10ml — মেয়াদ শেষ ২৮ অক্টো. ২০২৬, যাচাই বাকি</div></div><div class="amt"><span class="badge out">যাচাই করুন</span></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="sub" style="margin-top:0">লয়্যালটি স্ট্যাম্প কার্ড</h3>
+          <ul class="rules">
+            <li>প্রতি অর্ডারে <strong>১টি স্ট্যাম্প</strong> (ফোন নম্বর = কার্ড)। বাতিল/ফেরত অর্ডারে স্ট্যাম্প নয়।</li>
+            <li><strong>৫টি অর্ডার</strong> হলেই VIP — এরপর থেকে সব অর্ডারে ডেলিভারি সবসময় ফ্রি।</li>
+            <li><strong>১০টি স্ট্যাম্পে</strong> স্পেশাল গিফট বক্স; তারপর নতুন কার্ড শুরু, কিন্তু VIP ফ্রি ডেলিভারি থেকে যায় (পরের গিফট ২০তম অর্ডারে)।</li>
+            <li>প্রতিটি পার্সেলের সঙ্গে আপডেট করা কার্ড যায়।</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="sub" style="margin-top:0">বিশ্বাসের তথ্য (কাস্টমারদের জন্য)</h3>
+          <ul class="rules">
+            <li>ব্যবসার বয়স <strong>৬ বছর</strong> · ১০০% অথেনটিক কোরিয়ান পণ্য।</li>
+            <li>মালিক Rashidul Islam কোরিয়ায় ১৩ বছর ধরে আছেন — প্রতিটি পণ্য নিজে হাতে কিনে পাঠান।</li>
+            <li>যোগাযোগ: +880 1575-588152 · koreanskincareshopbd@gmail.com · Gangni 7110</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer>
+        <p>নভেম্বর ২০২৬-এর ১–২৩ তারিখের সব বিক্রি (২০২টি অর্ডার) শিট থেকে এন্ট্রি করা হয়েছে। স্টকের প্রতিটি পণ্যের পাশে শিটের মেয়াদ শেষের তারিখ দেওয়া আছে, আর ১৭১টি পণ্যের তারিখসহ পুরো মেয়াদের তালিকা “স্টক” অংশে আছে। এই পেজটি শেয়ার করলে সবাই একই হিসাব দেখতে পাবে। অপারেটরের যোগ করা বিক্রি/খরচ/স্টক শুধু এই সেশনে থাকে — স্থায়ী হিসাবের জন্য শিটই মূল রেকর্ড, প্রতিদিনের এন্ট্রি শিটে ওঠে।</p>
+      </footer>
+    </main>
+
+    <script>
+      /* ---------- helpers ---------- */
+      var BN = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+      function bn(n){ return String(n).replace(/[0-9]/g, function(d){ return BN[+d]; }); }
+      function money(n){ return '৳' + bn(Number(n).toLocaleString('en-IN')); }
+      function el(id){ return document.getElementById(id); }
+      var MONTHS_BN = ['জানু.','ফেব.','মার্চ','এপ্রি.','মে','জুন','জুলা.','আগ.','সেপ্টে.','অক্টো.','নভে.','ডিসে.'];
+      function fmtDate(dstr){
+        var p = dstr.split('-'); if (p.length !== 3) return dstr;
+        return bn(parseInt(p[2],10)) + ' ' + MONTHS_BN[parseInt(p[1],10)-1];
+      }
+
+      /* ---------- data (snapshot: 23 Nov 2026, from the shop sheets) ---------- */
+      var SHOPNAME = { kss:'KSS', lb:'Lovebirds', ws:'পাইকারি' };
+      /* ex = মেয়াদ শেষের তারিখ (স্টক শিটের Expiry কলাম থেকে), ed = ISO তারিখ (বাকি দিন হিসাবের জন্য), en = বাড়তি নোট */
+      var products = [
+        { id:1,  name:'Medicube TXA Niacinamide Capsule Cream 55g',        shop:'kss', price:2490, stock:6,  ex:'৫ নভে. ২০২৮',    ed:'2028-11-05' },
+        { id:2,  name:'Medicube Collagen Night Wrapping Mask 75ml',        shop:'kss', price:1990, stock:4,  ex:'১ জুন ২০২৯',     ed:'2029-06-01' },
+        { id:3,  name:'CARE:NEL Anti-Melasma Cica Intensive Serum 30ml',    shop:'kss', price:1400, stock:3,  ex:'২৩ ফেব. ২০২৯',   ed:'2029-02-23' },
+        { id:4,  name:'Anua Niacinamide 10% + TXA 4% Serum 30ml',          shop:'kss', price:2050, stock:5,  ex:'৫ জুলা. ২০২৯',   ed:'2029-07-05', en:'আরেক ব্যাচ: ২৩ জুলা. ২০২৯' },
+        { id:5,  name:'Anua Niacinamide 10% + TXA 4% Serum 10ml',          shop:'kss', price:950,  stock:8,  ex:'১৩ এপ্রি. ২০২৯', ed:'2029-04-13' },
+        { id:6,  name:"I'm From Rice Toner 150ml",                          shop:'kss', price:1850, stock:23, ex:'৮ আগ. ২০২৭',     ed:'2027-08-08', en:'Old Version' },
+        { id:7,  name:'COSRX Advanced Snail 92 Cream (Tube) 100g',         shop:'kss', price:1650, stock:4,  ex:'ডিসে. ২০২৮',     ed:'2028-12-31', en:'শিটে শুধু মাস-বছর লেখা' },
+        { id:8,  name:'COSRX Salicylic Acid Daily Gentle Cleanser 150ml',  shop:'kss', price:1050, stock:0,  ex:'সেপ্টে. ২০২৮',   ed:'2028-09-30', en:'আরেক ব্যাচ: জানু. ২০২৯' },
+        { id:9,  name:'Beauty of Joseon Relief Sun Aqua Fresh 50ml',       shop:'kss', price:1500, stock:7,  ex:'১১ মার্চ ২০২৯',  ed:'2029-03-11' },
+        { id:10, name:'Beauty of Joseon Relief Sun Rice + Probiotics 50ml',shop:'kss', price:1500, stock:9,  ex:'৫ ফেব. ২০২৯',    ed:'2029-02-05' },
+        { id:11, name:'SKIN1004 Madagascar Centella Ampoule Foam 125ml',   shop:'kss', price:1530, stock:6,  ex:'১১ মে ২০২৯',     ed:'2029-05-11' },
+        { id:12, name:'Tonymoly Gimiya Whitening Cream 50ml',              shop:'kss', price:3400, stock:3,  ex:'২ মার্চ ২০২৯',   ed:'2029-03-02' },
+        { id:13, name:'COSRX Acne Pimple Master Patch',                    shop:'kss', price:350,  stock:12, ex:null,             ed:null },
+        { id:14, name:"I'm From Rice Toner 150ml",                          shop:'lb',  price:1850, stock:5,  ex:'২৫ মার্চ ২০২৭',  ed:'2027-03-25' },
+        { id:15, name:'COSRX Advanced Snail 92 Cream (Tube) 100g',         shop:'lb',  price:1650, stock:1,  ex:'ডিসে. ২০২৮',     ed:'2028-12-31', en:'শিটে শুধু মাস-বছর লেখা' },
+        { id:16, name:'Anua Azelaic Acid Serum 30ml',                      shop:'lb',  price:1750, stock:1,  ex:'১৭ জুন ২০২৯',    ed:'2029-06-17' },
+        { id:17, name:'COSRX Salicylic Acid Daily Gentle Cleanser 150ml',  shop:'lb',  price:1050, stock:2,  ex:null,             ed:null }
+      ];
+
+      /* ---------- expiry helpers ---------- */
+      var MONTHS_FULL = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+      function fmtExp(iso){
+        if (!iso) return 'শিটে তারিখ নেই';
+        var p = iso.split('-'); if (p.length !== 3) return iso;
+        return bn(parseInt(p[2],10)) + ' ' + MONTHS_FULL[parseInt(p[1],10)-1] + ' ' + bn(p[0]);
+      }
+      function daysLeft(iso){
+        if (!iso) return null;
+        var t = new Date(); t.setHours(0,0,0,0);
+        var e = new Date(iso + 'T00:00:00');
+        return Math.round((e - t) / 86400000);
+      }
+      function expBadge(iso){
+        var d = daysLeft(iso);
+        if (d === null) return '<span class="badge paid">তারিখ নেই</span>';
+        if (d < 0) return '<span class="badge out">মেয়াদ শেষ</span>';
+        if (d <= 30) return '<span class="badge out">' + bn(d) + ' দিন বাকি</span>';
+        if (d <= 90) return '<span class="badge low">' + bn(d) + ' দিন বাকি</span>';
+        return '<span class="badge okb">' + bn(d) + ' দিন বাকি</span>';
+      }
+      /* মেয়াদের পুরো তালিকা — 'Expiry 2027' শিট থেকে (স্টক > ০, মেয়াদ অনুযায়ী সাজানো হবে) । n=নাম, s=দোকান, p=বিক্রয় দাম, c=ক্লিয়ারেন্স দাম, q=স্টক, e=মেয়াদ শেষের তারিখ */
+      var expiryList = [{"n":"Time Revolution Night Repair set","s":"lb","p":600,"c":600,"q":2,"e":"2026-11-28"},{"n":"Heartleaf + Vitamin Pore Control Cleansing Oil 200ml","s":"lb","p":650,"c":500,"q":2,"e":"2026-12-03"},{"n":"Velvet Finish Cushion","s":"lb","p":500,"c":400,"q":1,"e":"2026-12-03"},{"n":"2X First Essence","s":"lb","p":1200,"c":1000,"q":6,"e":"2027-01-01"},{"n":"Aloe 99% Soothing Gel","s":"lb","p":300,"c":null,"q":1,"e":"2027-01-04"},{"n":"Snail Mucin All In One Brightening Cream","s":"lb","p":600,"c":null,"q":1,"e":"2027-01-05"},{"n":"Tonymoly Intense Care Gold 24k Sleeping Pack 150ml","s":"kss","p":1400,"c":null,"q":1,"e":"2027-01-09"},{"n":"UV Sun Pro Sun Fluid Set 100ml","s":"lb","p":1000,"c":null,"q":2,"e":"2027-01-10"},{"n":"Dabo Dark Out Tone Up Primer 30ml","s":"kss","p":500,"c":null,"q":4,"e":"2027-01-11"},{"n":"Lacto Fit Diet Pink Color","s":"kss","p":1500,"c":null,"q":1,"e":"2027-01-17"},{"n":"Daito Pink Color","s":"lb","p":1500,"c":null,"q":2,"e":"2027-01-17"},{"n":"Vitamin Blemish Care Cream 50g","s":"lb","p":750,"c":null,"q":1,"e":"2027-01-17"},{"n":"Houttuynia Cordata Cica Soothing Gel 300ml","s":"lb","p":900,"c":null,"q":1,"e":"2027-01-23"},{"n":"Super Volcanic Pore Clay Mask","s":"lb","p":1300,"c":null,"q":5,"e":"2027-01-24"},{"n":"Bio Ex Cell Toning Peeling Gel","s":"lb","p":800,"c":null,"q":3,"e":"2027-01-28"},{"n":"Magic Massage Pack","s":"lb","p":700,"c":null,"q":1,"e":"2027-02-05"},{"n":"Premier Ampoule in Eye Cream","s":"lb","p":250,"c":null,"q":2,"e":"2027-02-05"},{"n":"Rose Hyaluronic Hydra Wash Off Pack","s":"lb","p":900,"c":null,"q":6,"e":"2027-02-05"},{"n":"Damage Care Oil Serum 80ml","s":"lb","p":800,"c":null,"q":1,"e":"2027-02-07"},{"n":"Tonymoly Retinol Red Wrinkle Focus Eye Cream 30ml","s":"kss","p":1600,"c":null,"q":18,"e":"2027-12-09"},{"n":"Cica Plus Soothing Gel","s":"lb","p":400,"c":null,"q":2,"e":"2027-02-15"},{"n":"Gimiya Whitening Tone Up Sun Cream","s":"lb","p":900,"c":null,"q":2,"e":"2027-02-15"},{"n":"Dr. Bangiwon Nano Bubble Cleansing Foam 200ml","s":"kss","p":800,"c":null,"q":2,"e":"2027-02-18"},{"n":"Innisfree Long Lasting Sunscreen EX 60ml","s":"kss","p":1450,"c":null,"q":2,"e":"2027-02-19"},{"n":"TONYMOLY Intense Care Gold 24K Snail Foam Cleanser 150ml","s":"kss","p":1100,"c":null,"q":2,"e":"2027-02-21"},{"n":"Professional Defence Shampoo 100ml","s":"lb","p":300,"c":null,"q":1,"e":"2027-02-21"},{"n":"Silk Hair Repair Treatment","s":"lb","p":500,"c":null,"q":1,"e":"2027-02-21"},{"n":"Silk Hair Repair Pack","s":"lb","p":650,"c":null,"q":1,"e":"2027-02-28"},{"n":"Hyobidam Fermented Skincare 3pc Set","s":"lb","p":400,"c":null,"q":3,"e":"2027-03-06"},{"n":"Dhop L-Carnitine Black Coffee 60 Capsule","s":"kss","p":2000,"c":null,"q":1,"e":"2027-03-09"},{"n":"Tonymoly Collagen Peptide V Fit Gua Sha Cream Set 50+50ml","s":"kss","p":3200,"c":null,"q":4,"e":"2027-03-11"},{"n":"Gold Kiwi Brightening Serum Set","s":"lb","p":2000,"c":null,"q":1,"e":"2027-03-11"},{"n":"Heartleaf Mild Soothing Sun 50g","s":"lb","p":500,"c":null,"q":1,"e":"2027-03-11"},{"n":"IOPE Retinol Serum in Gel Mask","s":"kss","p":150,"c":null,"q":1,"e":"2027-03-12"},{"n":"Collagen Whitening Cream","s":"lb","p":700,"c":null,"q":2,"e":"2027-03-13"},{"n":"Facewash + Essence Set 50+70ml","s":"lb","p":2000,"c":null,"q":1,"e":"2027-03-17"},{"n":"Snail Firming Soothing Gel","s":"lb","p":400,"c":null,"q":2,"e":"2027-03-18"},{"n":"Underarm Whitening Multi Deo Cream","s":"lb","p":800,"c":null,"q":2,"e":"2027-03-21"},{"n":"Vitamin Blemish Care Toner 200ml","s":"lb","p":1000,"c":null,"q":1,"e":"2027-03-22"},{"n":"Missha Amazon Red Clay Pore Mask 110ml","s":"kss","p":1300,"c":null,"q":1,"e":"2027-03-25"},{"n":"Amazon Red Clay Pore Mask","s":"lb","p":800,"c":null,"q":2,"e":"2027-03-25"},{"n":"Rice Toner 150ml","s":"lb","p":1200,"c":null,"q":4,"e":"2027-03-25"},{"n":"Good Cera Super Ceramide Cream","s":"lb","p":900,"c":null,"q":1,"e":"2027-03-26"},{"n":"Donginbi Red Ginseng Daily Defense Kit","s":"kss","p":null,"c":null,"q":2,"e":"2027-03-29"},{"n":"Isaknox Mela Care For All Ampoule 7ml","s":"kss","p":500,"c":null,"q":1,"e":"2027-04-01"},{"n":"Massage Cream","s":"lb","p":1300,"c":null,"q":1,"e":"2027-04-01"},{"n":"Mary&May Vegan Blackberry Complex Cream Essence 30ml","s":"kss","p":null,"c":null,"q":9,"e":"2027-04-02"},{"n":"Vegan Blackberry Cream Essence","s":"lb","p":null,"c":null,"q":4,"e":"2027-04-03"},{"n":"Donginbi Red Ginseng Activating Concentrated 2pcs Set 15+15ml","s":"kss","p":null,"c":null,"q":2,"e":"2027-04-14"},{"n":"Aloe Tone Up Mineral Sunscreen","s":"lb","p":550,"c":null,"q":4,"e":"2027-04-15"},{"n":"Holika Holika Black Snail Repair Cleansing Foam 100ml","s":"kss","p":800,"c":null,"q":2,"e":"2027-04-17"},{"n":"Vegan Calendula Peptide Ageless 110g","s":"lb","p":1000,"c":null,"q":1,"e":"2027-04-17"},{"n":"Argan Therapy Repairing Shampoo","s":"lb","p":300,"c":null,"q":1,"e":"2027-04-25"},{"n":"Intense Care Gold 24k Snail Capsule BB Cream","s":"lb","p":1700,"c":null,"q":1,"e":"2027-04-30"},{"n":"Dr.Scarlet Biotin Anti Hair Loss Shampoo","s":"lb","p":2500,"c":null,"q":1,"e":"2027-05-02"},{"n":"Isaknox Mela Care For All Clean Solution 100ml","s":"kss","p":4990,"c":null,"q":1,"e":"2027-05-05"},{"n":"Dr. Belmore Cica Touch Lip Balm Coral 5.5g","s":"kss","p":800,"c":null,"q":2,"e":"2027-05-06"},{"n":"Rice Cleansing Oil 150ml","s":"lb","p":800,"c":null,"q":5,"e":"2027-05-09"},{"n":"Tonymoly Retinol Red Radiance Cream","s":"kss","p":3300,"c":null,"q":3,"e":"2027-05-10"},{"n":"Red Retinol Radiance Cream","s":"lb","p":3300,"c":null,"q":2,"e":"2027-05-10"},{"n":"GNC Collagen Perfection Tablet 800mg x 84 tab","s":"kss","p":2500,"c":null,"q":1,"e":"2027-05-12"},{"n":"Lab on Lab Glutathione Vita White 500mg x 60 tab","s":"kss","p":2500,"c":null,"q":3,"e":"2027-05-12"},{"n":"Mugwort Essence 150ml","s":"lb","p":1500,"c":null,"q":1,"e":"2027-05-12"},{"n":"The Face Shop Natural Sun Eco No Shine Sun Powder SPF30 PA++ 13g","s":"kss","p":1600,"c":null,"q":1,"e":"2027-05-13"},{"n":"Tenzero Cica Relief Water Cream 50g","s":"kss","p":1300,"c":null,"q":1,"e":"2027-05-16"},{"n":"Advanced Snail Radiance Dual Essence","s":"lb","p":1450,"c":null,"q":2,"e":"2027-05-16"},{"n":"Tenzero Aloe Tone Up Mineral Sunscreen","s":"kss","p":550,"c":null,"q":1,"e":"2027-05-20"},{"n":"Rose Water Toner 250ml","s":"lb","p":1450,"c":null,"q":8,"e":"2027-05-21"},{"n":"AHA/BHA Treatment Toner 150ml","s":"lb","p":1200,"c":null,"q":1,"e":"2027-05-23"},{"n":"Galac Whitening Vita Serum","s":"lb","p":1500,"c":null,"q":1,"e":"2027-05-23"},{"n":"Holika Holika 24k Gold Repair Ampoule 100ml","s":"kss","p":5400,"c":null,"q":1,"e":"2027-05-24"},{"n":"Holika Holika Watermelon 96% Soothing Gel 390ml","s":"kss","p":1800,"c":null,"q":2,"e":"2027-05-25"},{"n":"Centella Air Fit Suncream Plus","s":"lb","p":900,"c":null,"q":2,"e":"2027-05-26"},{"n":"Advanced Snail 96 Mucin Power Essence 100ml","s":"lb","p":1350,"c":null,"q":11,"e":"2027-05-28"},{"n":"Centella Toning Toner 210ml","s":"lb","p":1350,"c":null,"q":2,"e":"2027-05-30"},{"n":"Relaxing Deep Moisture Daily Cream 130ml","s":"lb","p":800,"c":null,"q":1,"e":"2027-06-02"},{"n":"Manyo Pure Bean Scrub Pack 7g","s":"kss","p":null,"c":null,"q":5,"e":"2027-06-05"},{"n":"Hyaluronic Acid Moisturizing Sun 50g","s":"lb","p":600,"c":null,"q":1,"e":"2027-06-06"},{"n":"Gounbal Premium Foot Cream 110g","s":"kss","p":1200,"c":null,"q":2,"e":"2027-06-09"},{"n":"Tenzero Green Tangerine Vita C Mist 120ml","s":"kss","p":1200,"c":null,"q":1,"e":"2027-06-13"},{"n":"Green Tea 500g","s":"lb","p":null,"c":null,"q":1,"e":"2027-06-18"},{"n":"Anua Peach 77 Niacin Essence Toner 250ml","s":"kss","p":1900,"c":null,"q":1,"e":"2027-06-23"},{"n":"I'm From Rice Mask 110g","s":"kss","p":null,"c":null,"q":2,"e":"2027-06-24"},{"n":"Red Bean Water Gel","s":"lb","p":800,"c":null,"q":1,"e":"2027-06-27"},{"n":"Skin Whitening Lightens and Evens Skin Tone","s":"lb","p":1800,"c":null,"q":1,"e":"2027-06-30"},{"n":"Foodaholic Sun Multi Sun Cream 250ml","s":"kss","p":1650,"c":null,"q":5,"e":"2027-07-01"},{"n":"Isaknox Tervina Regenerating Special Gift Set 3pcs","s":"kss","p":1300,"c":null,"q":2,"e":"2027-07-03"},{"n":"TE'RVINA AD Regenerating Skincare Special Set 3pcs","s":"lb","p":700,"c":null,"q":1,"e":"2027-07-03"},{"n":"Glow Balm","s":"lb","p":1100,"c":null,"q":5,"e":"2027-07-04"},{"n":"Dhop Glutathione Niacinamide Complex Softgel 30 Softgel","s":"kss","p":2000,"c":null,"q":2,"e":"2027-07-07"},{"n":"Derma House Stretch Care Cream 180ml","s":"kss","p":1500,"c":null,"q":1,"e":"2027-07-08"},{"n":"Lacto Fit Diet Beguni Color","s":"kss","p":1800,"c":null,"q":3,"e":"2027-07-09"},{"n":"Beguni Color","s":"lb","p":1800,"c":null,"q":1,"e":"2027-07-09"},{"n":"DONGINBI Red Ginseng Sunscreen Cream Multi-Perfection SPF50+ PA++++ 20ml","s":"kss","p":1000,"c":null,"q":3,"e":"2027-07-11"},{"n":"Centella Soothing Cream 30ml","s":"lb","p":null,"c":null,"q":1,"e":"2027-07-11"},{"n":"Beyond Angel Aqua Moisture Barrier Sunquid SPF50+ PA++++ 50ml","s":"kss","p":1600,"c":null,"q":3,"e":"2027-07-14"},{"n":"Red Ginseng Moisture Cleansing Oil","s":"lb","p":1800,"c":null,"q":3,"e":"2027-07-14"},{"n":"The Face Shop Special Care Hand Mask","s":"kss","p":300,"c":null,"q":2,"e":"2027-07-18"},{"n":"AGE-R Glutathione Glow Capsule Cream","s":"lb","p":2000,"c":null,"q":1,"e":"2027-07-21"},{"n":"COSRX Advanced Snail 96 Mucin Power Essence 100ml","s":"kss","p":1350,"c":null,"q":75,"e":"2027-07-23"},{"n":"Perfect Cover BB Cream","s":"lb","p":900,"c":null,"q":1,"e":"2027-08-01"},{"n":"Rice Facial Cleansing Cream","s":"lb","p":1000,"c":null,"q":1,"e":"2027-08-05"},{"n":"ON the Body Cotton Foot Scrub","s":"lb","p":900,"c":null,"q":2,"e":"2027-08-06"},{"n":"Volcanic BHA Pore Cleansing Foam 150ml","s":"lb","p":1200,"c":null,"q":2,"e":"2027-08-06"},{"n":"Ryo Damage Care and Nourishing Shampoo 112ml","s":"kss","p":350,"c":null,"q":1,"e":"2027-08-07"},{"n":"I'm From Rice Toner 150ml","s":"kss","p":1500,"c":null,"q":23,"e":"2027-08-08"},{"n":"COSRX Advanced Snail 92 All in One Cream (100ml)","s":"kss","p":1500,"c":null,"q":8,"e":"2027-08-11"},{"n":"Sooryehan White Brightening Mask","s":"kss","p":150,"c":null,"q":1,"e":"2027-08-15"},{"n":"SKIN1004 Madagascar Travel Kit","s":"kss","p":2300,"c":null,"q":1,"e":"2027-08-19"},{"n":"Donginbi Mini Set 15+15+5+7","s":"lb","p":900,"c":null,"q":1,"e":"2027-08-19"},{"n":"Snail Peptide Eye Cream","s":"lb","p":1200,"c":null,"q":2,"e":"2027-08-19"},{"n":"Tonymoly Gimiya Whitening Cream 30ml","s":"kss","p":1800,"c":null,"q":2,"e":"2027-08-20"},{"n":"Beyond Phyto Gamic Cleansing Liquid 200ml","s":"kss","p":1500,"c":null,"q":1,"e":"2027-08-22"},{"n":"Phytoganic Cleansing Liquid 200ml","s":"lb","p":1500,"c":null,"q":3,"e":"2027-08-22"},{"n":"Calming Moisture Sun Cream Set","s":"lb","p":null,"c":null,"q":1,"e":"2027-08-25"},{"n":"No Sebum Finish Powder","s":"lb","p":500,"c":null,"q":2,"e":"2027-08-25"},{"n":"Cosrx The 6 Peptide Skin Booster 150ml","s":"kss","p":2100,"c":null,"q":17,"e":"2027-08-27"},{"n":"Centella Ampoule Foam 20ml","s":"lb","p":null,"c":null,"q":1,"e":"2027-08-27"},{"n":"Cosrx Advanced Snail Peptide Eye Cream 25ml","s":"kss","p":1600,"c":null,"q":1,"e":"2027-09-03"},{"n":"Lipvive Sugar Balm Rosy Red 4.8g","s":"kss","p":400,"c":null,"q":7,"e":"2027-09-08"},{"n":"Beer Yeast 81 Dandruff Oily Shampoo 500ml","s":"lb","p":null,"c":null,"q":2,"e":"2027-09-08"},{"n":"Blemish Care Serum + Cream Set","s":"lb","p":2500,"c":null,"q":1,"e":"2027-09-09"},{"n":"Houttuynia Cordata Cica Watery Cream","s":"lb","p":1550,"c":null,"q":1,"e":"2027-09-10"},{"n":"Empanami The Original Mask Aloe","s":"kss","p":150,"c":null,"q":2,"e":"2027-09-11"},{"n":"Honey Milk Lip Oil","s":"lb","p":700,"c":null,"q":2,"e":"2027-09-11"},{"n":"Dr. Groot Multi Perfection Hair Loss Conditioner","s":"lb","p":1500,"c":null,"q":1,"e":"2027-09-12"},{"n":"Rosemary Root Enhancer","s":"lb","p":1500,"c":null,"q":1,"e":"2027-09-13"},{"n":"Innisfree Super Volcanic Pore Clay Mask","s":"kss","p":1200,"c":null,"q":9,"e":"2027-09-17"},{"n":"1025 Dokdo Cleanser 150ml","s":"lb","p":null,"c":null,"q":1,"e":"2027-09-26"},{"n":"Purito Wonder Relief Centella Serum 15ml","s":"kss","p":650,"c":null,"q":1,"e":"2027-10-09"},{"n":"Wonder Releaf Centella Serum 15ml","s":"lb","p":300,"c":null,"q":1,"e":"2027-10-09"},{"n":"Holidays Premium Quality Collagen White 500mg","s":"kss","p":1700,"c":null,"q":2,"e":"2027-10-12"},{"n":"Premium Quality Collagen White","s":"lb","p":1500,"c":null,"q":2,"e":"2027-10-12"},{"n":"Glutathione Vitamin Concentrated Serum","s":"lb","p":1500,"c":null,"q":5,"e":"2027-10-13"},{"n":"Visible Difference Hand Cream 100g","s":"lb","p":650,"c":null,"q":1,"e":"2027-10-14"},{"n":"Sooryehan Bon Cleansing Foam 100ml","s":"kss","p":500,"c":null,"q":6,"e":"2027-10-16"},{"n":"Young Plan Low Molecular Fish Collagen Brightening","s":"kss","p":1450,"c":null,"q":7,"e":"2027-10-16"},{"n":"Niacinamide 10%, TXA 4 Serum","s":"lb","p":1500,"c":null,"q":7,"e":"2027-10-17"},{"n":"Cleansing Oil 200ml","s":"lb","p":1400,"c":null,"q":5,"e":"2027-10-21"},{"n":"Beyond Total Recovery Creamy Body Wash 150ml","s":"kss","p":500,"c":null,"q":1,"e":"2027-10-22"},{"n":"Nutri D Day Fish Collagen 500mg","s":"kss","p":1400,"c":null,"q":5,"e":"2027-10-27"},{"n":"Fish Collagen 500mg","s":"lb","p":1400,"c":null,"q":2,"e":"2027-10-27"},{"n":"Medicube PDRN Pink Peptide Serum Set 80ml","s":"kss","p":3600,"c":null,"q":1,"e":"2027-10-29"},{"n":"Peach 70 + Niacin Serum Set 30ml","s":"lb","p":3300,"c":null,"q":3,"e":"2027-10-31"},{"n":"Skin1004 Centella Tone Brightening Boosting Toner 210ml","s":"kss","p":1800,"c":null,"q":1,"e":"2027-11-04"},{"n":"Jeju Fresh Aloe Soothing Gel","s":"lb","p":900,"c":null,"q":1,"e":"2027-11-04"},{"n":"Tenzero Relief Cica Mist 120ml","s":"kss","p":1200,"c":null,"q":1,"e":"2027-11-08"},{"n":"VT Cosmetics Reedle Shot Synergy Repair Cream 300 50ml","s":"kss","p":1700,"c":null,"q":1,"e":"2027-11-10"},{"n":"CARE:NEL Anti-Melasma Cica Treatment Toner 155ml","s":"kss","p":1550,"c":null,"q":1,"e":"2027-11-11"},{"n":"Aloe 99% Soothing Gel 300ml","s":"lb","p":1400,"c":null,"q":2,"e":"2027-11-11"},{"n":"Argan Therapy Moisture Hair Essence 145ml","s":"lb","p":null,"c":null,"q":4,"e":"2027-11-11"},{"n":"Beyond Deep Moisture Smoothing Body Emulsion","s":"kss","p":450,"c":null,"q":1,"e":"2027-11-12"},{"n":"Moisture Lip Balm 4g","s":"lb","p":750,"c":null,"q":4,"e":"2027-11-12"},{"n":"Sooryehan Bon Extra Moisture Skin Care Trial Set","s":"kss","p":100,"c":null,"q":4,"e":"2027-11-13"},{"n":"Holika Holika Light Soothing Gel 55ml","s":"kss","p":350,"c":null,"q":3,"e":"2027-11-16"},{"n":"Heartleaf 77 Soothing Toner 500ml","s":"lb","p":1800,"c":null,"q":1,"e":"2027-11-18"},{"n":"I'm From Ginseng Mask 120g","s":"kss","p":1800,"c":null,"q":9,"e":"2027-11-21"},{"n":"Ceramide Shot Cream","s":"lb","p":800,"c":null,"q":1,"e":"2027-11-24"},{"n":"Curl & Volume-Up Mascara","s":"lb","p":350,"c":null,"q":2,"e":"2027-11-25"},{"n":"Age Focus Prime Double Effect Skincare Special Set","s":"lb","p":6000,"c":null,"q":1,"e":"2027-12-02"},{"n":"Medytox NEURADERM Core Time Ampoule 15ml","s":"kss","p":2500,"c":null,"q":1,"e":"2027-12-04"},{"n":"The Saem Cell Renew Bio Micro Peel Soft Gel 160ml","s":"kss","p":1600,"c":null,"q":1,"e":"2027-12-05"},{"n":"Cell Renew Micro Peel Gel","s":"lb","p":1600,"c":null,"q":3,"e":"2027-12-05"},{"n":"Manyo Pure Cleansing Oil 200ml","s":"kss","p":2100,"c":null,"q":4,"e":"2027-12-08"},{"n":"Tonymoly Bio EX Cell Peptide Eye Solution Mini Box 30ml","s":"kss","p":1600,"c":null,"q":13,"e":"2027-12-12"},{"n":"Bio Ex Cell Peptide Eye Solution +7","s":"lb","p":1500,"c":null,"q":7,"e":"2027-12-12"},{"n":"Epona Dual Effect Tox Serum 12ml","s":"kss","p":3600,"c":null,"q":1,"e":"2027-12-17"},{"n":"Cica Relief Water Cream 50g","s":"lb","p":1200,"c":null,"q":2,"e":"2027-12-17"},{"n":"B.B Lab Low Molecular Collagen Glutathione White 2g x 30","s":"kss","p":2500,"c":null,"q":2,"e":"2027-12-18"},{"n":"Kerasys Colour Lab Amino Acid and Protein Natural Black 20g x 3","s":"kss","p":900,"c":null,"q":2,"e":"2027-12-18"},{"n":"Holika Holika Make Up Sun Cream Matte Tone Up SPF50+ PA+++ 35ml x 2","s":"kss","p":1350,"c":null,"q":6,"e":"2027-12-25"}];
+
+      function expCellHTML(p){
+        if (!p.ed) return '<span class="muted">শিটে তারিখ লেখা নেই</span>';
+        var h = '<span class="exp-date">' + p.ex + '</span><br>' + expBadge(p.ed);
+        if (p.en) h += '<br><span class="muted" style="font-size:12.5px">' + p.en + '</span>';
+        return h;
+      }
+
+      /* Full November 2026 sales from the DSR sheets (1-23 Nov): 202 orders. t = product total, delivery excluded. */
+      var monthSales = [{"d":"2026-11-23","c":"Sezan","s":"kss","city":"Narayanganj","items":"Cosrx Salicylic Acid Daily Gently Cleanser 150ml","t":1050},{"d":"2026-11-23","c":"Hosna","s":"kss","city":"","items":"CARE:NEL Anti-Melasma Cica Intensive Serum 30ml + Carenel Anti Melasma Cica Cream 40ml","t":2500},{"d":"2026-11-23","c":"Rashida Akter","s":"kss","city":"Dhaka","items":"COSRX Acne Pimple Patch","t":350},{"d":"2026-11-23","c":"লোপা","s":"kss","city":"যশোর","items":"Tonymoly Gimiya Whitening Cream 50ml","t":3400},{"d":"2026-11-22","c":"তাজনোভা আফরোজা","s":"kss","city":"চট্টগ্রাম","items":"Skin1004 Madagascar Centella Ampoule Foam 125ml + Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml","t":2900},{"d":"2026-11-22","c":"মিন্টু","s":"kss","city":"","items":"Beauty of Joseon Relief Sun  Rice + Niacinamide 50ml + Beauty of joseon Glow Deep Serum Rice + Alpha Arbutin 30ml","t":3000},{"d":"2026-11-22","c":"Mukta","s":"kss","city":"","items":"Vibrant Glamour Retinol Cream 30g ×-1","t":-800},{"d":"2026-11-22","c":"সালমা","s":"kss","city":"চট্টগ্রাম","items":"I'm From Rice Toner 30ml + The Face Shop Rice Ceramide Moisturizer Cream 50ml","t":1870},{"d":"2026-11-21","c":"নাইমা সুলতানা","s":"kss","city":"","items":"ISA KNOX Tervina AD Regenerating Skincare 7-Piece Special Set","t":11000},{"d":"2026-11-21","c":"জিনিয়া","s":"kss","city":"নারায়ণগঞ্জ","items":"Carenel Derma Alpha Arbutin Glutathione Whitening Cream 45ml + Carenel Niacinamide Zinc Serum 30ml","t":2249},{"d":"2026-11-21","c":"ফারহানা খানম","s":"kss","city":"চট্টগ্রাম","items":"Beauty of Joseon Relief Sun Rice + Probiotics","t":1450},{"d":"2026-11-21","c":"Ruma akter","s":"kss","city":"","items":"SKINFOOD Tometo Tone up sun cream","t":1550},{"d":"2026-11-21","c":"Rajvi Riya","s":"kss","city":"Sherpur","items":"Medicube Collagen Night Wrapping Mask 75ml + Carenel Derma Alpha Arbutin Glutathione Whitening Cream 45ml + SKIN1004 Madagascar Centella Tea-Trica Relief Ampoule 30ml","t":4050},{"d":"2026-11-20","c":"Rashida Ali Dina","s":"lb","city":"Dhaka","items":"Lacto Fit Pink","t":1500},{"d":"2026-11-20","c":"","s":"lb","city":"","items":"No Sebum Finish Powder","t":500},{"d":"2026-11-20","c":"","s":"lb","city":"","items":"Time Revolution Serum First Essence 30ml","t":500},{"d":"2026-11-19","c":"Arif","s":"kss","city":"Dhaka","items":"SKIN1004 Centella Tone Brightening Capsule Ampoule (100ml)","t":1850},{"d":"2026-11-19","c":"Wahida Naher","s":"kss","city":"","items":"I'm From Rice Toner 30ml","t":700},{"d":"2026-11-19","c":"Kona","s":"kss","city":"Dhaka","items":"Laneige Lip Sleeping Mask 3g + Numbuzin Glutathione Vitamin Concentrated Serum 30ml + Medicube Zero Pore Blackhead Mud Mask 100g + Mary & May Glutathione Eye Cream Special Set 30ml+12ml+12ml","t":4380},{"d":"2026-11-19","c":"Farhana","s":"kss","city":"Dhaka","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml","t":1000},{"d":"2026-11-19","c":"Orin Islam","s":"kss","city":"Faridpur","items":"Arencia Vitamin C Booster Shot 30ml + Mary & May Glutathione Eye Cream Special Set 30ml+12ml+12ml","t":1900},{"d":"2026-11-19","c":"Sraboni","s":"kss","city":"Rajshahi","items":"SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml + The Ordinary Glycolic Acid 7% Exfoliating Toner 240ml Korean Version + Derma House Stretch Care Cream 180ml","t":4750},{"d":"2026-11-19","c":"Shamsad jahan","s":"kss","city":"Dhaka","items":"Innisfree Long Lasting Sunscreen EX 60ml ×3 + Innisfree Green Tea Amino Hydrating Cleansing Foam 150g","t":5600},{"d":"2026-11-19","c":"Miftahul jannat touse","s":"kss","city":"","items":"Medicube Collagen Night Wrapping Mask 75ml","t":1950},{"d":"2026-11-19","c":"রুমা দাস","s":"kss","city":"হবিগঞ্জ","items":"Carenel Anti Melasma Cica Cream 40ml","t":1100},{"d":"2026-11-19","c":"Mim","s":"kss","city":"","items":"Medicube Collagen Jelly Cream 50ml","t":1400},{"d":"2026-11-19","c":"Nasreen Hossain Nupur","s":"lb","city":"Dhaka","items":"Isaknox Age Focus Prime Double Effect Eye For All Cream Special Set","t":8800},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Isaknox Age Focus Prime Wrinkle For All Serum Special Set","t":8400},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"UV Sun Pro Sunstick","t":1800},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Nature Republic Argan Essential Deep Care Hair Pack 200ml","t":1800},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Isaknox Rice Cleansing Cream 200ml","t":2450},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Nature Republic Argan Essential Moist Hair Mist 220ml","t":1700},{"d":"2026-11-19","c":"Rose Asa","s":"lb","city":"Dhaka","items":"Medicube TXA Niacinamide 15 Serum 30ml","t":2000},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Advanced Snail 92 All in One Cream","t":1400},{"d":"2026-11-19","c":"Jennifer Hasan","s":"lb","city":"Dhaka","items":"LACTO Fit Purple","t":1500},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"LACTO Fit Pink","t":1000},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Time Revolution Set","t":2000},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Skin Whitening 120 Tab","t":1600},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Supplement & Glutathione Gummies USA","t":1500},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Retinol Cream 30g","t":600},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Damage Care Shampoo ×3","t":900},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Magic Massage Pack","t":700},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"True Mushroom Oil Cream","t":500},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Vegan Blackberry Cream Essence","t":1400},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Essence 30ml","t":700},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Chogongin Massage Cream 150ml","t":1500},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Rich Cleansing Cream","t":1500},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Cell Renew Micro Peel Gel","t":1000},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Isaknox UV Sunpro Sun Fluid 100ml","t":1600},{"d":"2026-11-19","c":"","s":"lb","city":"","items":"Propolis Light Ampoule 30 ml","t":0},{"d":"2026-11-18","c":"Navilajahannowrin","s":"kss","city":"","items":"Medicube Collagen Jelly Cream 50ml + Biodance Bio-Collagen Real Deep Mask 34g","t":2000},{"d":"2026-11-18","c":"Israt Jahan Jella","s":"kss","city":"Chapainawabganj","items":"Medicube Collagen Night Wrapping Mask 75ml + Dr. Althea 345 Relief Cream New Version + SKIN1004 Centella Tone Brightening Capsule Ampoule (100ml) + Laneige Lip Sleeping Mask 3g","t":5900},{"d":"2026-11-18","c":"Jabin","s":"kss","city":"Dhaka","items":"COSRX Advanced Snail 96 Mucin Power Essence 100ml + Anua Heartleaf 77 Soothing Toner 500ml","t":3090},{"d":"2026-11-18","c":"Priyanka newar (Anushka)","s":"lb","city":"Dhaka","items":"The Saem City Ardor Love in Paris France Eau de Perfume 30ml ×2","t":3500},{"d":"2026-11-18","c":"Ummay Sumaiya","s":"lb","city":"Sylhet","items":"Fish Collagen Brightening","t":1200},{"d":"2026-11-18","c":"","s":"lb","city":"","items":"Vegan Blackberry Cream Essence","t":400},{"d":"2026-11-17","c":"Tahana","s":"kss","city":"Bogura","items":"Medicube TXA Niacinamide Capsule Cream","t":2250},{"d":"2026-11-17","c":"Meh","s":"kss","city":"","items":"Cosrx Salicylic Acid Daily Gently Cleanser 150ml","t":1050},{"d":"2026-11-17","c":"Samira","s":"kss","city":"Dhaka","items":"SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml","t":850},{"d":"2026-11-17","c":"রাজু","s":"kss","city":"","items":"SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml","t":850},{"d":"2026-11-17","c":"Ishrat Jahan","s":"lb","city":"Chittagong","items":"Collagen Peptide V Fit Gua Sha Cream Set / Tonymoly 50+50 ×2","t":5000},{"d":"2026-11-17","c":"Ishrat Jahan (Friend)","s":"lb","city":"Chattogram","items":"Collagen Peptide V Fit Gua Sha Cream Set 50+50 Tonymoly","t":2500},{"d":"2026-11-17","c":"Sahina Akter","s":"lb","city":"Dhaka","items":"COSRX The Vitamin C 23 Serum 20ml","t":1800},{"d":"2026-11-17","c":"Shahnaz Islam","s":"lb","city":"Khulna","items":"Multi Functional Supplement","t":1400},{"d":"2026-11-17","c":"","s":"lb","city":"","items":"Rose Water Cleansing Foam 100ml","t":350},{"d":"2026-11-17","c":"","s":"lb","city":"","items":"Damage Care Shampoo","t":300},{"d":"2026-11-17","c":"","s":"lb","city":"","items":"Vitamin Milk Whitening Cream 55g","t":400},{"d":"2026-11-16","c":"Shirin Khan","s":"kss","city":"Dhaka","items":"I'm From Rice Toner 150ml","t":1350},{"d":"2026-11-16","c":"Sadia Afrin","s":"kss","city":"","items":"Isntree Hyaluronic Acid Watery Sun Gel 50ml + Beauty of joseon Ground Rice and Honey Glow Mask 150ml + Medicube TXA Niacinamide Capsule Cream","t":5640},{"d":"2026-11-16","c":"Israt jahan mimi","s":"kss","city":"Shantipada","items":"COSRX Advanced Snail 96 Mucin Power Essence 100ml + Medicube Collagen Night Wrapping Mask 75ml + SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml","t":4090},{"d":"2026-11-16","c":"Taslima Dewan","s":"kss","city":"Dhaka","items":"Celimax Retinal Shot Tightening Booster 15ml","t":1399},{"d":"2026-11-16","c":"রাসেল","s":"kss","city":"ফেনী সদর","items":"COSRX Advanced Snail 96 Mucin Power Essence 100ml ×3 + Cosrx AHA/BHA Clarifying Treatment Toner 150ml ×4 + Arencia Vitamin C Booster Shot 30ml ×4 + Medicube Kojic Acid Turmeric Niacinamide Serum 30ml + PURITO Mighty Bamboo Panthenol Cream 100ml + Dabo PDRN Pink Collagen PDRN Brightening UV Sunscreen 50ml ×2","t":14940},{"d":"2026-11-16","c":"Begum Khodeja","s":"lb","city":"Dhaka","items":"Ryo Root:Gen For Scalp Hair Loss Care Scalp Essence 80ml ×2","t":3700},{"d":"2026-11-15","c":"Chadni","s":"kss","city":"","items":"COSRX The Vitamin C 23 Serum 20ml","t":1900},{"d":"2026-11-15","c":"Jannatul Ferdous (Saiful)","s":"lb","city":"Dhaka","items":"Innisfree Cherry Blossom Glow Tone-up Cream (Skin Fit) SPF50+ PA++++ 50ml","t":1800},{"d":"2026-11-15","c":"Mousumi Akhtar (Nidhi)","s":"lb","city":"Dhaka","items":"Dr. Melaxin Mela-CE Ferulic Bubble Toner 150ml","t":2500},{"d":"2026-11-15","c":"Sania Ahamed","s":"lb","city":"Dhaka","items":"Dongsung Rannce Cream 10g ×5","t":4500},{"d":"2026-11-15","c":"","s":"lb","city":"","items":"Vitamin C Boosting Serum (30 ml)","t":1800},{"d":"2026-11-14","c":"Bina","s":"kss","city":"Dhaka","items":"Beauty of Joseon Relief Sun Rice + Probiotics","t":1450},{"d":"2026-11-14","c":"Jarin Prodhan","s":"kss","city":"Dhaka","items":"Celimax Retinal Shot Tightening Booster 15ml + Medicube PDRN Pink Collagen Capsule Cream 55g","t":3400},{"d":"2026-11-14","c":"Faria","s":"kss","city":"Dhaka","items":"Medicube PDRN Pink Collagen Capsule Cream 55g","t":2000},{"d":"2026-11-14","c":"রোজা","s":"kss","city":"","items":"Medicube PDRN Pink Collagen Capsule Cream 55g ×-1","t":-1950},{"d":"2026-11-14","c":"Sena","s":"kss","city":"Dhaka","items":"Mary & May Glutathione Eye Cream Special Set 30ml+12ml+12ml + Medicube PDRN Pink Tone Up Sun Cream (X2 Double Set) + Round Lab 1025 Dokdo Toner Set + Medicube PDRN Pink Collagen Glow Jelly Mist Serum (1+1 Set) + Numbuzin No. 5 Glutathione Vitamin Concentrated Serum (X2 Double Set) + Round Lab Birch Juice Moisturizing Sun Cream (1+1 Special Set) + Anua PDRN Hyaluronic Acid 100 Moisturizing Cream (Double Set) + Manyo Glutathione 7 Dark Spot Serum (Special Set with Gifts)","t":27850},{"d":"2026-11-14","c":"Shamima Ahmed","s":"kss","city":"Dhaka","items":"Dr. Althea 345 Relief Cream Mist 60ml","t":1500},{"d":"2026-11-14","c":"Faria","s":"kss","city":"Dhaka","items":"Medicube PDRN Pink Collagen Capsule Cream 55g ×-1","t":-2000},{"d":"2026-11-14","c":"রায়হান সরকার","s":"kss","city":"","items":"SKIN1004 Centella Hyalu-Cica Water-Fit Sun Serum 50ml","t":1350},{"d":"2026-11-14","c":"Sabikunnaher","s":"kss","city":"Cox's Bazar","items":"Anua PDRN Hyaluronic Acid Hydrating Capsule Mist 100ml + Anua Azelaic Acid 10 Hyaluron Redness Soothing Serum 30ml","t":4250},{"d":"2026-11-14","c":"Shamim Ahmed","s":"lb","city":"Sunamgonj","items":"Rice Ceramide Moisture Cream","t":1250},{"d":"2026-11-14","c":"","s":"lb","city":"","items":"Rice Bran Facial Foaming Cleanser 150ml","t":950},{"d":"2026-11-13","c":"Moon","s":"kss","city":"Dhaka","items":"The Face Shop Rice Water Bright Foaming Cleanser 50ml + I'm From Rice Toner 30ml + SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml","t":2020},{"d":"2026-11-13","c":"Happy","s":"kss","city":"Dhaka","items":"Carenel Cicavita B5 Salicylic Acid Gently Cleanser 150ml","t":1100},{"d":"2026-11-13","c":"Priota","s":"kss","city":"Dhaka","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml + Dr. Althea 345 Relief Cream Mist 60ml","t":2500},{"d":"2026-11-13","c":"Roza","s":"kss","city":"Nilphamari","items":"Innisfree Green Tea Amino Hydrating Cleansing Foam 150g + The Ordinary Niacinamide 10% + Zinc 1% Serum 30ml","t":2450},{"d":"2026-11-13","c":"Rubi Mir","s":"kss","city":"Dhaka","items":"SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml","t":850},{"d":"2026-11-12","c":"Somaiya Akter (Saiful)","s":"lb","city":"Cumilla","items":"Collagen Jelly Cream 110ml","t":2400},{"d":"2026-11-11","c":"Sadia Afrin Samanta","s":"kss","city":"Dhaka","items":"COSRX Hyaluronic Acid Intensive Cream 100g + Tenzero Solution Cleaning Tea Tree Sheet Mask 25ml + Tenzero Pumpkin Sheet Mask 25ml","t":1900},{"d":"2026-11-11","c":"Farah","s":"kss","city":"","items":"Dr. Althea 147 Barrier Cream 50ml + COSRX Hyaluronic Acid Intensive Cream 100g","t":3500},{"d":"2026-11-11","c":"Farjana Rahman","s":"kss","city":"Narayanganj","items":"SKIN1004 Centella Tone Brightening Capsule Ampoule (100ml)","t":1850},{"d":"2026-11-11","c":"Abida Akter","s":"kss","city":"","items":"Dr. Althea 345 Relief Cream 15ml + Anua Azelaic Acid 10 Hyaluron Redness Soothing Serum 10ml","t":1850},{"d":"2026-11-11","c":"Nadiya","s":"kss","city":"Dhaka","items":"Anua 100+ PDRN Hyaluronic Acid Capsule 100 Serum","t":1990},{"d":"2026-11-11","c":"Sharmin Hamid","s":"kss","city":"","items":"Cosrx Salicylic Acid Daily Gently Cleanser 150ml","t":1050},{"d":"2026-11-11","c":"Saindahon Surovi","s":"lb","city":"Dhaka","items":"Good Cera Super Ceramide Cream","t":1300},{"d":"2026-11-11","c":"","s":"lb","city":"","items":"Vitamin Blemish Care Cream 50g","t":900},{"d":"2026-11-11","c":"Miftahul Jannat Maisha","s":"lb","city":"Dhaka","items":"Glutathione Vitamin Concentrated Serum","t":1500},{"d":"2026-11-11","c":"Rabeul Islam","s":"lb","city":"Khulna","items":"COSRX Salicylic Acid Daily Gentle Cleanser 150ml","t":1000},{"d":"2026-11-11","c":"","s":"lb","city":"","items":"Collagen Jelly Cream","t":1450},{"d":"2026-11-11","c":"Orbita Orin","s":"lb","city":"Munshiganj","items":"Rice Bran Facial Foaming Cleanser 150ml ×2","t":1900},{"d":"2026-11-10","c":"No Name","s":"kss","city":"Dhaka","items":"SKIN1004 Centella Hyalu-Cica Water-Fit Sun Serum Set 50+50ml + Olinig Ultra Vita Pack","t":8300},{"d":"2026-11-10","c":"Meherun Necha","s":"kss","city":"Madaripur","items":"Medicube Collagen Night Wrapping Mask 75ml","t":1950},{"d":"2026-11-10","c":"Sami","s":"kss","city":"Borol Purbo Para","items":"Beaute Glutathione Brightening Tone Up Cream 45ml ×2 + Nature Skin UV Tone Up Sun Cream 55ml + Illiyoon Ceramide Ato Concentrate Cream 30ml + SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml + The Face Shop Rice Water Bright Foaming Cleanser 50ml","t":4450},{"d":"2026-11-10","c":"Suchi","s":"kss","city":"Tangail Sadar","items":"Nella White Snow Fermented Underarm Whitening Cream With Green Tea 50ml","t":1000},{"d":"2026-11-10","c":"Asha","s":"kss","city":"Dhaka","items":"Dabo All in One Black Snail Repair Cream (100ml)","t":800},{"d":"2026-11-10","c":"Khurshid Rahman","s":"kss","city":"Bogra","items":"Ryo Hair Loss Expert Care Shampoo For Oily Scalp 400ml","t":1900},{"d":"2026-11-10","c":"ফাইজা (Faiza)","s":"lb","city":"Chittagong","items":"COSRX Salicylic Acid Daily Gentle Cleanser 150ml","t":1050},{"d":"2026-11-10","c":"","s":"lb","city":"","items":"345 Relief Cream 50ml New Version","t":1850},{"d":"2026-11-10","c":"","s":"lb","city":"","items":"Mugwort Essence 150ml","t":1500},{"d":"2026-11-10","c":"","s":"lb","city":"","items":"Anua Azelaic Acid 10 Hyaluron Redness Soothing Serum 30ml","t":2150},{"d":"2026-11-09","c":"Masud Rana","s":"kss","city":"Rajshahi","items":"The Face Shop Rice Ceramide Moisturizer Cream 50ml","t":1200},{"d":"2026-11-09","c":"Nusrat","s":"kss","city":"Dhaka","items":"SKIN1004 Centella Tone Brightening Capsule Ampoule (100ml)","t":1850},{"d":"2026-11-09","c":"Helena Akter","s":"kss","city":"Manikganj","items":"Anua Azelaic Acid 10 Hyaluron Redness Soothing Serum 10ml","t":950},{"d":"2026-11-09","c":"Mithila Islam Mim Baishakei","s":"kss","city":"Sylhet","items":"Mary & May Glutathione Eye Cream Special Set + K-SECRET Seoul 1988 Retinal Eye Cream","t":1900},{"d":"2026-11-09","c":"Rashidul vai er wife","s":"kss","city":"","items":"Natural Republic Jeju Sparkling Mud Foam Cleanser 150ml + APLB Glutathione Niacinamide Body Lotion 300ml + Holika Holika Good Cera Super Ceramide Family Oil Cream 200ml + Mise en Scene Perfect Serum Styling 80ml + Raip R3 Argan Hair Oil Original 100ml","t":0},{"d":"2026-11-09","c":"আকলিমা খাতুন (Munni)","s":"lb","city":"Khulna","items":"Niacinamide 10% Zinc 1 Serum","t":1250},{"d":"2026-11-08","c":"Farzana Boby","s":"kss","city":"Narayanganj","items":"Anua Niacinamide 10 TXA 4 Serum 10ml","t":900},{"d":"2026-11-08","c":"Abeda Sultana","s":"kss","city":"Dhaka","items":"Medicube PDRN Pink Peptide Serum 30ml + Medicube PDRN Pink Niacinamide Milky Toner 150ml + Medicube PDRN Pink Collagen Capsule Cream 55g","t":5639},{"d":"2026-11-08","c":"Khadija Akter","s":"kss","city":"Kishoreganj","items":"BOJ Glow Deep Serum Rice + Alpha Arbutin 30ml + Beauty of Joseon Relief Sun Rice + Probiotics","t":3000},{"d":"2026-11-08","c":"Mehedy","s":"kss","city":"Dhaka","items":"SKIN1004 Centella Tone Brightening Capsule Ampoule (100ml) + The Ordinary Niacinamide 10% + Zinc 1% Serum","t":2400},{"d":"2026-11-08","c":"Soha","s":"kss","city":"Dhaka","items":"Missha Soft Finish Sun Milk SPF50+ (70ml)","t":1200},{"d":"2026-11-08","c":"Samina Nisha","s":"kss","city":"Dhaka","items":"Illiyoon Ceramide Ato Concentrate Cream 30ml","t":650},{"d":"2026-11-08","c":"Marzia Sultana","s":"kss","city":"Mymensingh","items":"SKIN1004 Centella Hyalu-Cica Water-Fit Sun Serum 50ml","t":1350},{"d":"2026-11-08","c":"Zakiya","s":"kss","city":"Sherpur","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml + Dr. Althea 345 Relief Cream New Version + SKIN1004 Centella Hyalu-Cica Water-Fit Sun Serum Set 50+50ml","t":4000},{"d":"2026-11-08","c":"Hia","s":"kss","city":"Dhaka","items":"Skin1004 Centella Light Cleansing Oil 30ml + SKIN1004 Madagascar Centella Tone Brightening Ampoule 50ml + Illiyoon Ceramide Ato Concentrate Cream 30ml + Raip R3 Argan Hair Oil Original 100ml","t":3500},{"d":"2026-11-08","c":"Mim","s":"kss","city":"Jhenaidah","items":"Beauty of Joseon Relief Sun Rice + Probiotics + Medicube Deep Vita C Capsule Cream 55g + The Face Shop Rice Water Bright Cleansing Foam 150ml + The Saem Cell Renew Bio Micro Peel Soft Gel 160ml","t":6040},{"d":"2026-11-08","c":"Jesika Zaman Brighty","s":"lb","city":"Dhaka","items":"Donginbi Mini Set 15+15+5+7","t":900},{"d":"2026-11-08","c":"","s":"lb","city":"","items":"Premier Ampoule in Eye Cream","t":300},{"d":"2026-11-08","c":"Nadia Morshed","s":"lb","city":"Dhaka","items":"Gimiya Whitening Serum","t":1500},{"d":"2026-11-08","c":"Mushina Khan","s":"lb","city":"Dhanmondi","items":"ISOI Blemish Care Serum Set 20ml+5ml","t":3000},{"d":"2026-11-08","c":"Nazifa Jannat","s":"lb","city":"Cumilla","items":"Retinol Red Wrinkle Focus Eye Cream","t":1880},{"d":"2026-11-08","c":"","s":"lb","city":"","items":"Amino Clear Foaming Cleanser 150ml","t":1350},{"d":"2026-11-08","c":"Tuly Akter","s":"lb","city":"Dhaka","items":"Retinal Shot Tightening Booster","t":1500},{"d":"2026-11-08","c":"Monisha Hasnat","s":"lb","city":"Dhaka","items":"Glow Balm","t":1100},{"d":"2026-11-07","c":"Lopa","s":"kss","city":"Jessore","items":"Carenel Anti Melasma Cica Cream 40ml + Tonymoly Gimiya Whitening Serum 30ml + APLB Glutathione Niacinamide Body Lotion 300ml","t":4500},{"d":"2026-11-07","c":"Mitu","s":"kss","city":"Dhaka","items":"Beauty of joseon Relief Sun Aqua Fresh 10ml","t":390},{"d":"2026-11-07","c":"Md Baijid Hossain","s":"kss","city":"Pirojpur","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml ×2 + The Face Shop Rice Ceramide Moisturizer Cream 50ml + Beauty of joseon Relief Sun Rice + Probiotics 10ml","t":3600},{"d":"2026-11-07","c":"Raushan Minu","s":"kss","city":"Dhaka","items":"Beauty of Joseon Relief Sun Rice + Probiotics","t":1450},{"d":"2026-11-07","c":"Farjana","s":"kss","city":"Joypurhat","items":"Beauty of Joseon Relief Sun Rice + Probiotics","t":1450},{"d":"2026-11-07","c":"Ema Khala","s":"kss","city":"","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml ×2 + The Face Shop Rice Ceramide Moisturizer Cream 50ml ×2 + SKIN1004 Madagascar Centella Tea-Trica Relief Ampoule 30ml + Dabo All in One Black Snail Repair Cream (100ml) + SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml","t":5600},{"d":"2026-11-07","c":"Mahmuda Sumi","s":"lb","city":"Cumilla","items":"Rice Toner 150ml","t":1400},{"d":"2026-11-07","c":"","s":"lb","city":"","items":"Relief Sun Rice + Probiotics","t":1400},{"d":"2026-11-06","c":"Anika","s":"kss","city":"Bhola","items":"Medicube TXA Niacinamide Capsule Cream","t":2250},{"d":"2026-11-06","c":"Abdul Kadir","s":"kss","city":"Moulvibazar","items":"BOJ Glow Serum Propolis + Niacinamide 30ml + BOJ Glow Deep Serum Rice + Alpha Arbutin 30ml","t":3100},{"d":"2026-11-06","c":"Shenin","s":"kss","city":"Dhaka","items":"Beaute Glutathione Brightening Tone Up Cream 45ml + Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml","t":2200},{"d":"2026-11-06","c":"Mahaya Afrin (Ayesha Shidika)","s":"lb","city":"Brahmanbaria","items":"Tenzero UV Tone Up Sun Cream 70g","t":550},{"d":"2026-11-06","c":"","s":"lb","city":"","items":"Magic Cushion N23","t":500},{"d":"2026-11-06","c":"","s":"lb","city":"","items":"Rice Water Bright Foaming Cleanser 150ml","t":980},{"d":"2026-11-06","c":"Marzia Neha","s":"lb","city":"Dhaka","items":"Rice Water Bright Foaming Cleanser 150ml","t":1000},{"d":"2026-11-05","c":"Sabrina Mahjabin","s":"kss","city":"Faridpur","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml","t":1000},{"d":"2026-11-05","c":"Abida","s":"kss","city":"Tongi","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml + Axis-Y Dark Spot Correcting Glow Serum 50ml","t":2200},{"d":"2026-11-05","c":"Swastika Barua","s":"kss","city":"Chattogram","items":"Missha Soft Finish Sun Milk SPF50+ (70ml)","t":1200},{"d":"2026-11-05","c":"Zaima Mahi","s":"lb","city":"Dhaka","items":"Cicalfate Restorative Protective Cream 100ml","t":1500},{"d":"2026-11-05","c":"Zayda Perveen (Lufun Nahar)","s":"lb","city":"Khulna","items":"Mugwort Essence 150ml","t":1500},{"d":"2026-11-05","c":"","s":"lb","city":"","items":"Rice Toner 150ml","t":1200},{"d":"2026-11-05","c":"Nusrat Yesmin","s":"lb","city":"Narayanganj","items":"Rose Water Cleansing Foam 100ml","t":350},{"d":"2026-11-05","c":"","s":"lb","city":"","items":"Jeju Green Tea CICA Hydrating Facial Foam","t":700},{"d":"2026-11-05","c":"","s":"lb","city":"","items":"Rice Bran Facial Foaming Cleanser 150ml","t":1000},{"d":"2026-11-05","c":"","s":"lb","city":"","items":"Floria Brightening Hyaluron Peeling Gel","t":700},{"d":"2026-11-05","c":"","s":"lb","city":"","items":"Nano Bubble Cleansing Foam 200ml ×2","t":1400},{"d":"2026-11-05","c":"","s":"lb","city":"","items":"Solid Lip Essence","t":700},{"d":"2026-11-04","c":"Monirul Islam","s":"kss","city":"Magura","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml","t":800},{"d":"2026-11-04","c":"Tamanna Himi","s":"kss","city":"Dhaka","items":"Dr. Althea 345 Relief Cream New Version","t":1850},{"d":"2026-11-04","c":"Ayat Hasan","s":"kss","city":"Dhamrai","items":"Missha Essence Sun Milk 70ml","t":1190},{"d":"2026-11-04","c":"Afshin Ayaat","s":"kss","city":"Dhaka","items":"SKIN1004 Madagascar Centella Tone Brightening Ampoule 50ml","t":1300},{"d":"2026-11-04","c":"Nahida","s":"kss","city":"Chattagram","items":"Holika Holika Good Cera Super Ceramide Cream 60ml","t":900},{"d":"2026-11-04","c":"Rose Asa","s":"lb","city":"Dhaka","items":"Rice Ceramide Moisture Cream","t":1200},{"d":"2026-11-04","c":"Sabrina Najnin Rupa","s":"lb","city":"Gazipur","items":"Protein Bonding Treatment","t":1400},{"d":"2026-11-03","c":"রিয়া","s":"kss","city":"","items":"Dr. Althea Melaclear Cream (20ml) + Mary & May Glutathione Eye Cream Special Set","t":2450},{"d":"2026-11-03","c":"Emon","s":"kss","city":"","items":"Anua 7+ Rice Ceramide Hydrating Barrier Serum","t":2100},{"d":"2026-11-03","c":"Rehnika","s":"kss","city":"Shariatpur","items":"Dr. Althea 345 Relief Cream New Version","t":1850},{"d":"2026-11-03","c":"Azmana Tabassum","s":"kss","city":"Dhaka","items":"Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml ×4","t":5800},{"d":"2026-11-03","c":"Fahmida","s":"kss","city":"Dhaka","items":"Carenel Derma Alpha Arbutin Glutathione Whitening Cream 45ml","t":1200},{"d":"2026-11-03","c":"Umme Kulsum","s":"kss","city":"Jessore","items":"Beauty of Joseon Relief Sun Rice + Probiotics + Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml + Laneige Lip Sleeping Mask 20g","t":4500},{"d":"2026-11-03","c":"Faisal Kibria","s":"kss","city":"Jashore","items":"Carenel Derma Alpha Arbutin Glutathione Whitening Cream 45ml","t":1250},{"d":"2026-11-03","c":"Md Alamin Sharker","s":"lb","city":"Narsingdi","items":"Niacinamide 20% Serum","t":1300},{"d":"2026-11-03","c":"","s":"lb","city":"","items":"Relief Sun Aqua Fresh Rice + B5 50ml","t":1400},{"d":"2026-11-02","c":"Ayesha Ali","s":"kss","city":"","items":"The Face Shop Rice Ceramide Moisturizer Cream 50ml","t":1200},{"d":"2026-11-02","c":"জেসমিন","s":"kss","city":"","items":"Cosrx Salicylic Acid Daily Gently Cleanser 150ml + Medicube TXA Niacinamide Capsule Cream + Anua Niacinamide 10% + TXA 4% Serum 30ml","t":5450},{"d":"2026-11-02","c":"Saif Rahman mahi","s":"kss","city":"গোপালগঞ্জ","items":"Beauty of Joseon Relief Sun Rice + Probiotics","t":1450},{"d":"2026-11-02","c":"Moni","s":"kss","city":"Dhaka","items":"Tonymoly Retinol Red Wrinkle Focus Eye Cream 30ml + 3WB Luxury Gounbal Foot Cream 110g + Dabo All in One Black Snail Repair Cream (100ml) + Anjo 24K Gold Prime Ampoule + Anjo Premium Snail Repair Cream","t":6000},{"d":"2026-11-01","c":"Emu","s":"kss","city":"","items":"Foodaholic Cica Plus Soothing Gel + COSRX Advanced Snail 92 All in One Cream (100ml)","t":1850},{"d":"2026-11-01","c":"Faraz","s":"kss","city":"Dhaka","items":"Dabo All in One Black Snail Repair Cream (100ml) + Dr. Althea 345 Relief Cream New Version","t":2850},{"d":"2026-11-01","c":"Farjana","s":"kss","city":"Dhaka","items":"Missha Perfect Cover BB Cream No23","t":900},{"d":"2026-11-01","c":"Rafiya Akter","s":"kss","city":"খুলনা","items":"Medicube Collagen Night Wrapping Mask 75ml + Holika Holika Good Cera Super Ceramide Cream 60ml","t":3450},{"d":"2026-11-01","c":"Hania Zahra","s":"kss","city":"শুক্রাবাদ","items":"Ryo Root Gen for Women Shampoo 100ml","t":300},{"d":"2026-11-01","c":"Akter Munni","s":"kss","city":"Dhaka","items":"Anua Azelaic Acid 10 Hyaluron Redness Soothing Serum 30ml","t":2150},{"d":"2026-11-01","c":"Femus Cosmetics","s":"kss","city":"Bamundi","items":"The Face Shop Rice Water Bright Cleansing Foam 150ml ×8 + SKIN1004 Centella Tone Brightening Capsule Ampoule (100ml) ×3 + SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml ×6 + Dabo White Sun Block Cream + Dabo All in One Black Snail Repair Cream (100ml) ×2 + Dr. Althea 345 Relief Cream New Version + The Face Shop Rice Ceramide Moisturizer Cream 50ml ×2 + Dabo Tea Tree Nature Collection Foam Cleanser 150ml + COSRX Acne Pimple Patch ×2 + SKIN1004 Madagascar Centella Tea-Trica Relief Ampoule 30ml ×2","t":20870},{"d":"2026-11-01","c":"Tanya Lulu (Rasif)","s":"lb","city":"Dhaka","items":"Angetring Gloss Set","t":550},{"d":"2026-11-01","c":"Natasha Rahaman","s":"lb","city":"Dhaka","items":"Rice Ceramide Moisture Cream","t":1250},{"d":"2026-11-01","c":"Ummay Sumaiya","s":"lb","city":"Sylhet","items":"Tenzero Day Mask Pack Wine Day / Makgeolli Day ×5","t":200},{"d":"2026-11-01","c":"","s":"lb","city":"","items":"Damage Care Shampoo ×2","t":700},{"d":"2026-11-01","c":"","s":"lb","city":"","items":"Soopyeon Hyaluron 3pcs Gift Set","t":400},{"d":"2026-11-01","c":"","s":"lb","city":"","items":"Premium Snail Repair Cream","t":400},{"d":"2026-11-01","c":"","s":"lb","city":"","items":"Aloe Tone Up Mineral Sunscreen","t":550}];
+      var dailyData = [{"d":"2026-11-01","kss":32370,"lb":4050,"n":14},{"d":"2026-11-02","kss":14100,"lb":0,"n":4},{"d":"2026-11-03","kss":19150,"lb":2700,"n":9},{"d":"2026-11-04","kss":6040,"lb":2600,"n":7},{"d":"2026-11-05","kss":4400,"lb":9050,"n":12},{"d":"2026-11-06","kss":7550,"lb":3030,"n":7},{"d":"2026-11-07","kss":16990,"lb":2800,"n":8},{"d":"2026-11-08","kss":28679,"lb":11530,"n":18},{"d":"2026-11-09","kss":5900,"lb":1250,"n":6},{"d":"2026-11-10","kss":18400,"lb":6550,"n":10},{"d":"2026-11-11","kss":12140,"lb":8050,"n":12},{"d":"2026-11-12","kss":0,"lb":2400,"n":1},{"d":"2026-11-13","kss":8920,"lb":0,"n":5},{"d":"2026-11-14","kss":37850,"lb":2200,"n":11},{"d":"2026-11-15","kss":1900,"lb":10600,"n":5},{"d":"2026-11-16","kss":27419,"lb":3700,"n":6},{"d":"2026-11-17","kss":5000,"lb":11750,"n":11},{"d":"2026-11-18","kss":10990,"lb":5100,"n":6},{"d":"2026-11-19","kss":24630,"lb":46350,"n":34},{"d":"2026-11-20","kss":0,"lb":2500,"n":3},{"d":"2026-11-21","kss":20299,"lb":0,"n":5},{"d":"2026-11-22","kss":6970,"lb":0,"n":4},{"d":"2026-11-23","kss":7300,"lb":0,"n":4}];
+
+      var deliveries = [
+        { name:'হোসনা',   area:'—',            cod:2630, status:'booked', note:'CARE:NEL সেট' },
+        { name:'সালমা',   area:'—',            cod:2000, status:'booked', note:'Rice Toner + Cream' },
+        { name:'লোপা',    area:'যশোর',         cod:3530, status:'booked', note:'Gimiya Cream · ফ্রি ডেলিভারি (৳৩,০০০+)' },
+        { name:'সেজান',   area:'—',            cod:1180, status:'booked', note:'Salicylic Cleanser' },
+        { name:'রাশিদা আক্তার', area:'ঢাকা',   cod:430,  status:'booked', note:'Pimple Patch' }
+      ];
+
+      var expenses = [];
+      var currentShop = 'all';
+
+      function statusOf(p){
+        if (p.stock <= 0) return { key:'out', label:'স্টক আউট', cls:'out' };
+        if (p.stock <= 3) return { key:'low', label:'কম স্টক', cls:'low' };
+        return { key:'ok', label:'ঠিক আছে', cls:'okb' };
+      }
+
+      /* ---------- render: sales (full month) ---------- */
+      function renderSales(){
+        var list = el('sales-list'); list.innerHTML = '';
+        var q = ((el('sales-search') && el('sales-search').value) || '').toLowerCase();
+        var df = el('sales-date') ? el('sales-date').value : 'all';
+        var shown = monthSales.filter(function(s){
+          if (currentShop !== 'all' && s.s !== currentShop) return false;
+          if (df !== 'all' && s.d !== df) return false;
+          if (q && (s.c + ' ' + s.items).toLowerCase().indexOf(q) === -1) return false;
+          return true;
+        });
+        if (!shown.length){
+          list.innerHTML = '<p class="muted" style="padding:8px 0">এই ফিল্টারে কোনো বিক্রি পাওয়া যায়নি। তারিখ বা খোঁজ বদলে দেখুন।</p>';
+        }
+        shown.forEach(function(s){
+          var d = document.createElement('div'); d.className = 'row-item';
+          d.innerHTML = '<div class="main"><div class="name"></div><div class="meta"></div></div>' +
+            '<div class="amt"></div>';
+          var cust = s.c ? s.c : 'মেমো এন্ট্রি (নাম লেখা নেই)';
+          d.querySelector('.name').textContent = fmtDate(s.d) + ' · ' + cust + ' · ' + SHOPNAME[s.s];
+          d.querySelector('.meta').textContent = s.items + (s.city ? ' · ' + s.city : '');
+          var amt = d.querySelector('.amt');
+          var badge = '';
+          if (s.t < 0) badge = ' <span class="badge out">ফেরত</span>';
+          else if (s.t === 0) badge = ' <span class="badge paid">উপহার / ব্যক্তিগত</span>';
+          else if (s.free) badge = ' <span class="badge free">ফ্রি ডেলিভারি</span>';
+          amt.innerHTML = money(s.t) + badge;
+          list.appendChild(d);
+        });
+        var total = shown.reduce(function(a,s){ return a + s.t; }, 0);
+        el('sales-total').textContent = money(total);
+        var scopeTxt = currentShop === 'all' ? 'সব দোকান মিলিয়ে' : SHOPNAME[currentShop] + ' — ';
+        el('sales-summary').textContent = scopeTxt + ' ' + bn(shown.length) + 'টি অর্ডার দেখাচ্ছে · মোট ' + money(total) + ' (পণ্যের দাম, ডেলিভারি চার্জ ছাড়া)';
+        return total;
+      }
+
+      /* ---------- render: daily table ---------- */
+      function renderDaily(){
+        var body = el('daily-body'); if (!body) return; body.innerHTML = '';
+        dailyData.forEach(function(r){
+          var tr = document.createElement('tr');
+          var best = (r.kss + r.lb) >= 40000;
+          tr.innerHTML = '<td><strong></strong></td>' +
+            '<td class="num" data-l="KSS"></td><td class="num" data-l="Lovebirds"></td>' +
+            '<td class="num" data-l="অর্ডার"></td><td class="num" data-l="মোট"></td>';
+          tr.children[0].querySelector('strong').textContent = fmtDate(r.d) + (r.d === '2026-11-19' ? ' ★' : '');
+          tr.children[1].textContent = r.kss ? money(r.kss) : '—';
+          tr.children[2].textContent = r.lb ? money(r.lb) : '—';
+          tr.children[3].textContent = bn(r.n) + 'টি';
+          tr.children[4].innerHTML = '<strong>' + money(r.kss + r.lb) + '</strong>';
+          if (best) tr.style.background = 'var(--ok-soft)';
+          body.appendChild(tr);
+        });
+        var sel = el('sales-date');
+        if (sel && sel.options.length <= 1){
+          dailyData.slice().reverse().forEach(function(r){
+            var o = document.createElement('option');
+            o.value = r.d; o.textContent = fmtDate(r.d) + ' — ' + bn(r.n) + 'টি অর্ডার';
+            sel.appendChild(o);
+          });
+        }
+      }
+
+      /* ---------- render: deliveries ---------- */
+      function renderDeliveries(){
+        var list = el('delivery-list'); list.innerHTML = '';
+        deliveries.forEach(function(dv, i){
+          var d = document.createElement('div'); d.className = 'row-item';
+          var badge = dv.status === 'done'
+            ? '<span class="badge done">ডেলিভারি হয়েছে</span>'
+            : '<span class="badge booked">পিকআপ বুক হয়েছে</span>';
+          d.innerHTML = '<div class="main"><div class="name"></div><div class="meta"></div></div>' +
+            '<div class="amt"></div>';
+          d.querySelector('.name').innerHTML = dv.name + ' ' + badge;
+          d.querySelector('.meta').textContent = dv.note + (dv.area !== '—' ? ' · এলাকা: ' + dv.area : '');
+          var amt = d.querySelector('.amt');
+          amt.innerHTML = 'COD ' + money(dv.cod);
+          var btn = document.createElement('button');
+          btn.className = 'btn ghost small'; btn.type = 'button';
+          btn.textContent = dv.status === 'done' ? 'আবার বুক করুন' : 'ডেলিভারি হয়েছে করুন';
+          btn.style.marginTop = '6px';
+          btn.addEventListener('click', function(){
+            deliveries[i].status = deliveries[i].status === 'done' ? 'booked' : 'done';
+            renderDeliveries(); refreshTotals();
+          });
+          amt.appendChild(document.createElement('br'));
+          amt.appendChild(btn);
+          list.appendChild(d);
+        });
+        var total = deliveries.reduce(function(a,dv){ return a + dv.cod; }, 0);
+        el('delivery-total').textContent = money(total);
+      }
+
+      /* ---------- render: stock ---------- */
+      function renderStock(){
+        var q = (el('st-search').value || '').toLowerCase();
+        var f = el('st-filter').value;
+        var body = el('stock-body'); body.innerHTML = '';
+        var rows = products.filter(function(p){
+          if (currentShop !== 'all' && p.shop !== currentShop) return false;
+          if (q && p.name.toLowerCase().indexOf(q) === -1) return false;
+          if (f === 'exp90'){ var d = daysLeft(p.ed); if (d === null || d > 90) return false; }
+          else if (f === 'expnone'){ if (p.ed) return false; }
+          else if (f !== 'all' && statusOf(p).key !== f) return false;
+          return true;
+        });
+        rows.forEach(function(p){
+          var st = statusOf(p);
+          var tr = document.createElement('tr');
+          tr.innerHTML = '<td><strong></strong></td><td></td>' +
+            '<td class="num" data-l="দাম"></td><td class="num" data-l="স্টক"></td>' +
+            '<td class="exp-cell" data-l="মেয়াদ শেষ"></td>' +
+            '<td><span class="badge ' + st.cls + '">' + st.label + '</span></td>';
+          tr.children[0].querySelector('strong').textContent = p.name;
+          tr.children[1].textContent = SHOPNAME[p.shop];
+          tr.children[2].textContent = money(p.price);
+          tr.children[3].textContent = bn(p.stock) + ' পিস';
+          tr.children[4].innerHTML = expCellHTML(p);
+          body.appendChild(tr);
+        });
+        el('stock-empty').style.display = rows.length ? 'none' : 'block';
+
+        var scope = products.filter(function(p){ return currentShop==='all' || p.shop===currentShop; });
+        el('st-count').textContent = bn(scope.length) + 'টি';
+        el('st-pcs').textContent = bn(scope.reduce(function(a,p){ return a+p.stock; },0)) + ' পিস';
+        el('st-low').textContent = bn(scope.filter(function(p){ return p.stock>=1 && p.stock<=3; }).length) + 'টি';
+        el('st-out').textContent = bn(scope.filter(function(p){ return p.stock<=0; }).length) + 'টি';
+        fillProductSelects();
+      }
+
+      function fillProductSelects(){
+        ['sf-product','tf-product'].forEach(function(id){
+          var sel = el(id); if (!sel) return;
+          var cur = sel.value;
+          sel.innerHTML = '';
+          products.forEach(function(p){
+            var o = document.createElement('option');
+            o.value = p.id;
+            o.textContent = p.name + ' (' + SHOPNAME[p.shop] + ') — স্টক ' + bn(p.stock) + ' পিস · মেয়াদ: ' + (p.ex ? p.ex : 'শিটে তারিখ নেই');
+            sel.appendChild(o);
+          });
+          if (cur) sel.value = cur;
+        });
+      }
+
+      /* ---------- render: expiry list (full, from the sheet) ---------- */
+      function expirySorted(){
+        return expiryList.slice().sort(function(a,b){ return a.e < b.e ? -1 : (a.e > b.e ? 1 : 0); });
+      }
+      function renderExpiry(){
+        var listEl = el('expiry-list'); if (!listEl) return;
+        var q = ((el('exp-search') && el('exp-search').value) || '').toLowerCase();
+        var f = el('exp-filter') ? el('exp-filter').value : 'all';
+        var sorted = expirySorted();
+        var scoped = sorted.filter(function(x){ return currentShop === 'all' || x.s === currentShop; });
+        var shown = scoped.filter(function(x){
+          if (q && x.n.toLowerCase().indexOf(q) === -1) return false;
+          if (f === '30'){ var d = daysLeft(x.e); if (d === null || d > 30) return false; }
+          else if (f === '90'){ var d2 = daysLeft(x.e); if (d2 === null || d2 > 90) return false; }
+          else if (f === '2026' && x.e.indexOf('2026-') !== 0) return false;
+          else if (f === '2027' && x.e.indexOf('2027-') !== 0) return false;
+          return true;
+        });
+        listEl.innerHTML = '';
+        if (!shown.length){
+          listEl.innerHTML = '<p class="muted" style="padding:8px 0">এই ফিল্টারে কোনো পণ্য পাওয়া যায়নি।</p>';
+        }
+        shown.forEach(function(x){
+          var d = document.createElement('div'); d.className = 'row-item exp-row';
+          d.innerHTML = '<div class="main"><div class="name"></div><div class="meta"></div></div>' +
+            '<div class="amt exp-amt"></div>';
+          d.querySelector('.name').textContent = x.n;
+          var meta = SHOPNAME[x.s] + ' · স্টক ' + bn(x.q) + ' পিস';
+          if (x.p) meta += ' · দাম ' + money(x.p);
+          if (x.c) meta += ' · ক্লিয়ারেন্স ' + money(x.c);
+          d.querySelector('.meta').textContent = meta;
+          d.querySelector('.exp-amt').innerHTML = '<span class="exp-date">' + fmtExp(x.e) + '</span><small>' + expBadge(x.e) + '</small>';
+          listEl.appendChild(d);
+        });
+        var pcs = scoped.reduce(function(a,x){ return a + x.q; }, 0);
+        var n30 = scoped.filter(function(x){ var d = daysLeft(x.e); return d !== null && d <= 30; }).length;
+        var n90 = scoped.filter(function(x){ var d = daysLeft(x.e); return d !== null && d <= 90; }).length;
+        var scopeTxt = currentShop === 'all' ? 'দুই দোকান মিলিয়ে' : SHOPNAME[currentShop] + ' — ';
+        el('exp-summary').textContent = scopeTxt + ' মেয়াদের তারিখসহ ' + bn(scoped.length) + 'টি পণ্য · মোট ' + bn(pcs) + ' পিস · ৩০ দিনের মধ্যে শেষ ' + bn(n30) + 'টি · ৯০ দিনের মধ্যে ' + bn(n90) + 'টি। তারিখ শিটের Expiry কলাম থেকে; “দিন বাকি” আজকের তারিখে হিসাব করা।';
+        renderExpNearest(scoped);
+      }
+      function renderExpNearest(scoped){
+        var box = el('exp-nearest'); if (!box) return;
+        var near = (scoped || expirySorted()).slice(0, 3);
+        box.innerHTML = '';
+        near.forEach(function(x){
+          var d = document.createElement('div'); d.className = 'row-item';
+          d.innerHTML = '<div class="main"><div class="name"></div><div class="meta"></div></div><div class="amt"></div>';
+          d.querySelector('.name').textContent = x.n;
+          d.querySelector('.meta').textContent = SHOPNAME[x.s] + ' · স্টক ' + bn(x.q) + ' পিস' + (x.p ? ' · দাম ' + money(x.p) : '');
+          d.querySelector('.amt').innerHTML = fmtExp(x.e) + '<small>' + expBadge(x.e) + '</small>';
+          box.appendChild(d);
+        });
+      }
+
+      /* ---------- render: expenses ---------- */
+      function renderExpenses(){
+        var list = el('expense-list'); list.innerHTML = '';
+        if (!expenses.length){
+          list.innerHTML = '<p class="muted">আজ এখনো কোনো খরচ যোগ হয়নি। নিচের ফর্মে যোগ করলেই হিসাব আপডেট হবে।</p>';
+        }
+        expenses.forEach(function(x){
+          var d = document.createElement('div'); d.className = 'row-item';
+          d.innerHTML = '<div class="main"><div class="name"></div><div class="meta"></div></div><div class="amt"></div>';
+          d.querySelector('.name').textContent = x.cat;
+          d.querySelector('.meta').textContent = x.note || '';
+          d.querySelector('.amt').textContent = money(x.amt);
+          list.appendChild(d);
+        });
+        var total = expenses.reduce(function(a,x){ return a + x.amt; }, 0);
+        el('expense-total').textContent = money(total);
+        return total;
+      }
+
+      /* ---------- totals / dashboard ---------- */
+      function shopFilter(s){ return currentShop === 'all' ? true : s.s === currentShop; }
+      function refreshTotals(){
+        var mTotal = monthSales.filter(shopFilter).reduce(function(a,s){ return a + s.t; }, 0);
+        var mCount = monthSales.filter(shopFilter).length;
+        var tTotal = monthSales.filter(function(s){ return s.d === '2026-11-23' && shopFilter(s); })
+                               .reduce(function(a,s){ return a + s.t; }, 0);
+        var tCount = monthSales.filter(function(s){ return s.d === '2026-11-23' && shopFilter(s); }).length;
+        var eTotal = expenses.reduce(function(a,x){ return a + x.amt; }, 0);
+        var codOpen = deliveries.filter(function(d){ return d.status !== 'done'; })
+                                .reduce(function(a,d){ return a + d.cod; }, 0);
+        el('kpi-month').textContent = money(mTotal);
+        el('kpi-month-note').textContent = bn(mCount) + 'টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া';
+        el('kpi-today').textContent = money(tTotal);
+        el('kpi-today-note').textContent = bn(tCount) + 'টি অর্ডার' + (currentShop !== 'lb' ? ' · পিকআপ ব্যাচে COD বাকি ' + money(codOpen) : '');
+        if (el('rep-total')) el('rep-total').textContent = money(monthSales.reduce(function(a,s){ return a + s.t; }, 0));
+        el('net-today').innerHTML = money(monthSales.reduce(function(a,s){ return a + s.t; }, 0) - eTotal) + '<small>খরচ যোগ হলে কমবে</small>';
+        el('sum-kss').textContent = bn(monthSales.filter(function(s){ return s.s === 'kss'; })
+                          .reduce(function(a,s){ return a + s.t; }, 0).toLocaleString('en-IN'));
+        renderSales();
+      }
+
+      /* ---------- tabs ---------- */
+      document.querySelectorAll('.tab-btn').forEach(function(b){
+        b.addEventListener('click', function(){
+          document.querySelectorAll('.tab-btn').forEach(function(x){ x.setAttribute('aria-selected','false'); });
+          b.setAttribute('aria-selected','true');
+          document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+          el('panel-' + b.getAttribute('data-tab')).classList.add('active');
+          window.scrollTo({ top:0 });
+        });
+      });
+
+      /* ---------- shop switcher ---------- */
+      document.querySelectorAll('.shop-btn').forEach(function(b){
+        b.addEventListener('click', function(){
+          document.querySelectorAll('.shop-btn').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+          b.setAttribute('aria-pressed','true');
+          currentShop = b.getAttribute('data-shop');
+          renderStock(); renderExpiry(); refreshTotals();
+        });
+      });
+
+      el('st-search').addEventListener('input', renderStock);
+      el('sales-search').addEventListener('input', renderSales);
+      el('sales-date').addEventListener('change', renderSales);
+      el('st-filter').addEventListener('change', renderStock);
+      el('exp-search').addEventListener('input', renderExpiry);
+      el('exp-filter').addEventListener('change', renderExpiry);
+
+      /* ---------- operator: add sale ---------- */
+      el('sale-form').addEventListener('submit', function(ev){
+        ev.preventDefault();
+        var msg = el('sale-msg'); msg.classList.remove('err');
+        var pid = +el('sf-product').value;
+        var qty = parseInt(el('sf-qty').value, 10) || 0;
+        var price = parseInt(el('sf-price').value, 10);
+        var name = el('sf-name').value.trim();
+        var shop = el('sf-shop').value;
+        var dc = +el('sf-delivery').value;
+        var p = products.filter(function(x){ return x.id === pid; })[0];
+        if (!name){ msg.textContent = 'কাস্টমারের নাম লিখুন।'; msg.classList.add('err'); return; }
+        if (!p || qty < 1){ msg.textContent = 'পণ্য ও পরিমাণ ঠিক করে দিন।'; msg.classList.add('err'); return; }
+        if (isNaN(price) || price < 0){ msg.textContent = 'মোট দাম লিখুন।'; msg.classList.add('err'); return; }
+        if (p.stock < qty){ msg.textContent = 'স্টকে মাত্র ' + bn(p.stock) + ' পিস আছে — এর বেশি বিক্রি যাবে না।'; msg.classList.add('err'); return; }
+        p.stock -= qty;
+        var free = dc === 0;
+        monthSales.unshift({ d:'2026-11-23', c:name, s:shop, city:'', items: p.name + ' × ' + bn(qty), t: price, free: free });
+        deliveries.push({ name:name, area:'—', cod: price + dc, status:'booked', note: p.name + ' × ' + bn(qty) + (free ? ' · ফ্রি ডেলিভারি' : '') });
+        msg.textContent = 'যোগ হয়েছে ✓ ' + p.name + ' — স্টক এখন ' + bn(p.stock) + ' পিস। ডেলিভারি তালিকাতেও উঠেছে।';
+        el('sf-price').value = ''; el('sf-name').value = '';
+        renderStock(); renderDeliveries(); refreshTotals();
+      });
+
+      /* ---------- operator: add stock ---------- */
+      el('stock-form').addEventListener('submit', function(ev){
+        ev.preventDefault();
+        var msg = el('stock-msg'); msg.classList.remove('err');
+        var pid = +el('tf-product').value;
+        var qty = parseInt(el('tf-qty').value, 10) || 0;
+        var p = products.filter(function(x){ return x.id === pid; })[0];
+        if (!p || qty < 1){ msg.textContent = 'পণ্য ও পরিমাণ ঠিক করে দিন।'; msg.classList.add('err'); return; }
+        p.stock += qty;
+        msg.textContent = 'যোগ হয়েছে ✓ ' + p.name + ' (' + SHOPNAME[p.shop] + ') — স্টক এখন ' + bn(p.stock) + ' পিস।';
+        renderStock();
+      });
+
+      /* ---------- operator: add expense ---------- */
+      el('expense-form').addEventListener('submit', function(ev){
+        ev.preventDefault();
+        var msg = el('expense-msg'); msg.classList.remove('err');
+        var amt = parseInt(el('ef-amt').value, 10);
+        if (isNaN(amt) || amt < 1){ msg.textContent = 'টাকার পরিমাণ লিখুন।'; msg.classList.add('err'); return; }
+        expenses.push({ cat: el('ef-cat').value, amt: amt, note: el('ef-note').value.trim() });
+        msg.textContent = 'খরচ যোগ হয়েছে ✓ মোট আজকের খরচ এখন ' + money(expenses.reduce(function(a,x){ return a+x.amt; },0)) + '।';
+        el('ef-amt').value = ''; el('ef-note').value = '';
+        renderExpenses(); refreshTotals();
+      });
+
+      /* ---------- সার্ভিস ওয়ার্কার — সরাসরি ইনস্টলের শর্ত ---------- */
+      if ('serviceWorker' in navigator){
+        var registerSW = function(){
+          try {
+            /* আগে পুরো অ্যাপের স্কোপে চেষ্টা; সার্ভার না দিলে ডিফল্ট স্কোপে ফলব্যাক */
+            navigator.serviceWorker.register('data:application/javascript;base64,LyogSGlzYWIgQXBwIOKAlCBzZXJ2aWNlIHdvcmtlcgogICBDaHJvbWUtZXIgZGlyZWN0IGluc3RhbGwgKGJlZm9yZWluc3RhbGxwcm9tcHQpIGVyIGpvbm5vIGZldGNoIGhhbmRsZXIgdGhha2EKICAgaW5zdGFsbGFiaWxpdHktciBla3RhIHNob3J0by4gTmV0d29yay1maXJzdDogc29ic29tb3kgbm90dW4gaGlzYWIgYWdlLAogICBuZXR3b3JrIG5hIHRoYWtsZSBjYWNoZSB0aGVrZSBwdXJhbiB2ZXJzaW9uLiAqLwp2YXIgQ0FDSEUgPSAnaGlzYWItYXBwLXYxJzsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignaW5zdGFsbCcsIGZ1bmN0aW9uIChlKSB7CiAgc2VsZi5za2lwV2FpdGluZygpOwp9KTsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignYWN0aXZhdGUnLCBmdW5jdGlvbiAoZSkgewogIGUud2FpdFVudGlsKAogICAgY2FjaGVzLmtleXMoKS50aGVuKGZ1bmN0aW9uIChrZXlzKSB7CiAgICAgIHJldHVybiBQcm9taXNlLmFsbChrZXlzLm1hcChmdW5jdGlvbiAoaykgewogICAgICAgIHJldHVybiBrID09PSBDQUNIRSA/IG51bGwgOiBjYWNoZXMuZGVsZXRlKGspOwogICAgICB9KSk7CiAgICB9KS50aGVuKGZ1bmN0aW9uICgpIHsgcmV0dXJuIHNlbGYuY2xpZW50cy5jbGFpbSgpOyB9KQogICk7Cn0pOwoKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdmZXRjaCcsIGZ1bmN0aW9uIChlKSB7CiAgaWYgKGUucmVxdWVzdC5tZXRob2QgIT09ICdHRVQnKSByZXR1cm47CiAgZS5yZXNwb25kV2l0aCgKICAgIGZldGNoKGUucmVxdWVzdCkudGhlbihmdW5jdGlvbiAocmVzKSB7CiAgICAgIHZhciBjb3B5ID0gcmVzLmNsb25lKCk7CiAgICAgIGNhY2hlcy5vcGVuKENBQ0hFKS50aGVuKGZ1bmN0aW9uIChjKSB7IGMucHV0KGUucmVxdWVzdCwgY29weSk7IH0pOwogICAgICByZXR1cm4gcmVzOwogICAgfSkuY2F0Y2goZnVuY3Rpb24gKCkgewogICAgICByZXR1cm4gY2FjaGVzLm1hdGNoKGUucmVxdWVzdCk7CiAgICB9KQogICk7Cn0pOwo=', { scope: '../' })
+              .catch(function(){ return navigator.serviceWorker.register('data:application/javascript;base64,LyogSGlzYWIgQXBwIOKAlCBzZXJ2aWNlIHdvcmtlcgogICBDaHJvbWUtZXIgZGlyZWN0IGluc3RhbGwgKGJlZm9yZWluc3RhbGxwcm9tcHQpIGVyIGpvbm5vIGZldGNoIGhhbmRsZXIgdGhha2EKICAgaW5zdGFsbGFiaWxpdHktciBla3RhIHNob3J0by4gTmV0d29yay1maXJzdDogc29ic29tb3kgbm90dW4gaGlzYWIgYWdlLAogICBuZXR3b3JrIG5hIHRoYWtsZSBjYWNoZSB0aGVrZSBwdXJhbiB2ZXJzaW9uLiAqLwp2YXIgQ0FDSEUgPSAnaGlzYWItYXBwLXYxJzsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignaW5zdGFsbCcsIGZ1bmN0aW9uIChlKSB7CiAgc2VsZi5za2lwV2FpdGluZygpOwp9KTsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignYWN0aXZhdGUnLCBmdW5jdGlvbiAoZSkgewogIGUud2FpdFVudGlsKAogICAgY2FjaGVzLmtleXMoKS50aGVuKGZ1bmN0aW9uIChrZXlzKSB7CiAgICAgIHJldHVybiBQcm9taXNlLmFsbChrZXlzLm1hcChmdW5jdGlvbiAoaykgewogICAgICAgIHJldHVybiBrID09PSBDQUNIRSA/IG51bGwgOiBjYWNoZXMuZGVsZXRlKGspOwogICAgICB9KSk7CiAgICB9KS50aGVuKGZ1bmN0aW9uICgpIHsgcmV0dXJuIHNlbGYuY2xpZW50cy5jbGFpbSgpOyB9KQogICk7Cn0pOwoKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdmZXRjaCcsIGZ1bmN0aW9uIChlKSB7CiAgaWYgKGUucmVxdWVzdC5tZXRob2QgIT09ICdHRVQnKSByZXR1cm47CiAgZS5yZXNwb25kV2l0aCgKICAgIGZldGNoKGUucmVxdWVzdCkudGhlbihmdW5jdGlvbiAocmVzKSB7CiAgICAgIHZhciBjb3B5ID0gcmVzLmNsb25lKCk7CiAgICAgIGNhY2hlcy5vcGVuKENBQ0hFKS50aGVuKGZ1bmN0aW9uIChjKSB7IGMucHV0KGUucmVxdWVzdCwgY29weSk7IH0pOwogICAgICByZXR1cm4gcmVzOwogICAgfSkuY2F0Y2goZnVuY3Rpb24gKCkgewogICAgICByZXR1cm4gY2FjaGVzLm1hdGNoKGUucmVxdWVzdCk7CiAgICB9KQogICk7Cn0pOwo='); })
+              .catch(function(){});
+          } catch (e) {}
+        };
+        if (document.readyState === 'complete') registerSW();
+        else window.addEventListener('load', registerSW);
+      }
+
+      /* ---------- ফোনে অ্যাপ হিসেবে বসানো (install) ---------- */
+      (function(){
+        var card = el('install-card'); if (!card) return;
+        var btn = el('install-btn'), btnText = el('install-btn-text'),
+            hint = el('install-hint-text'), toggle = el('install-steps-toggle'),
+            steps = el('install-steps'), status = el('install-status'),
+            framedNote = el('framed-note');
+        var ua = navigator.userAgent || '';
+        var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        var isSamsung = /SamsungBrowser/i.test(ua);
+        var isInApp = /(FBAN|FBAV|FB_IAB|Instagram|Messenger|Line\/|KAKAOTALK|Snapchat|TwitterAndroid)/i.test(ua);
+        /* পেজটা অন্য পেজের ফ্রেমের ভিতরে চলছে কিনা (Muse শেয়ার পেজের ভিতরে এমনই হয়) */
+        var isFramed = false;
+        try { isFramed = window.self !== window.top; } catch (e) { isFramed = true; }
+        var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+        if (standalone || window.__hisabInstalled){ card.style.display = 'none'; return; }
+        if (isIOS){
+          el('steps-android').style.display = 'none';
+          el('steps-ios').style.display = 'block';
+          btnText.textContent = 'কীভাবে বসাবেন — ধাপ দেখুন';
+        } else if (isSamsung){
+          el('steps-android').style.display = 'none';
+          el('steps-samsung').style.display = 'block';
+        }
+        function toggleSteps(force){
+          var open = typeof force === 'boolean' ? force : !steps.classList.contains('open');
+          steps.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          toggle.textContent = open ? 'ধাপগুলো লুকান' : 'ধাপে ধাপে দেখুন';
+        }
+        toggle.addEventListener('click', function(){ toggleSteps(); });
+        function pulseMenuRow(){
+          var row = steps.querySelector('.mm-row.hl');
+          if (!row) return;
+          row.classList.remove('pulse');
+          void row.offsetWidth;
+          row.classList.add('pulse');
+        }
+        function setStatus(text, kind){
+          if (!status) return;
+          status.textContent = text;
+          status.classList.remove('ready'); status.classList.remove('blocked');
+          if (kind) status.classList.add(kind);
+        }
+
+        /* ইনস্টল অফার: <head>-এ আগেভাগে ধরা ইভেন্টটাই প্রথম উৎস */
+        var deferredPrompt = window.__hisabBIP || null;
+        var waitingForPrompt = false, waitTimer = null;
+
+        function onPromptReady(){
+          deferredPrompt = window.__hisabBIP || deferredPrompt;
+          if (!deferredPrompt) return;
+          btnText.textContent = 'অ্যাপ ইনস্টল করুন';
+          setStatus('সরাসরি ইনস্টল প্রস্তুত ✓ — “অ্যাপ ইনস্টল করুন” বোতাম চাপলেই Chrome-এর ইনস্টল বাক্স আসবে, তারপর “Install” চাপলেই হোম স্ক্রিনে বসবে।', 'ready');
+          hint.textContent = 'তবু সমস্যা হলে';
+          if (waitingForPrompt){
+            waitingForPrompt = false;
+            if (waitTimer){ clearTimeout(waitTimer); waitTimer = null; }
+            firePrompt();
+          }
+        }
+        window.addEventListener('hisab-bip-ready', onPromptReady);
+        window.addEventListener('beforeinstallprompt', function(e){
+          /* <head>-এর লিসেনার ইতিমধ্যে ধরে রেখেছে; এখানে শুধু অবস্থা আপডেট */
+          onPromptReady();
+        });
+
+        function firePrompt(){
+          if (!deferredPrompt) return false;
+          var dp = deferredPrompt;
+          deferredPrompt = null; window.__hisabBIP = null;
+          try { dp['prompt'](); } catch (e) { return false; }
+          dp.userChoice.then(function(choice){
+            if (choice && choice.outcome === 'accepted'){
+              setStatus('ইনস্টল হচ্ছে ✓ — হোম স্ক্রিনে “হিসাব অ্যাপ” আইকন এলেই সেখান থেকে খুলুন।', 'ready');
+            } else {
+              setStatus('ইনস্টল বাতিল হয়েছে — আবার বোতাম চাপুন, অথবা নিচের ধাপগুলো অনুসরণ করুন।');
+              toggleSteps(true);
+              setTimeout(pulseMenuRow, 350);
+            }
+          });
+          return true;
+        }
+
+        function showFallback(openSteps){
+          if (isFramed){
+            setStatus('এই ফ্রেমের ভিতরে Chrome সরাসরি ইনস্টল দেয় না — নিচের লাল-হলুদ বাক্সে কারণ ও সমাধান দেওয়া আছে।', 'blocked');
+            if (framedNote) framedNote.classList.add('show');
+          } else if (isInApp){
+            setStatus('আপনি এখন অন্য অ্যাপের ভিতরের ব্রাউজারে আছেন — এখানে ইনস্টল হয় না। লিংকটা Chrome-এ খুলুন।', 'blocked');
+          } else if (isIOS){
+            setStatus('iPhone-এ সরাসরি ইনস্টল বাক্স আসে না — নিচের ধাপে Share বোতাম থেকে “Add to Home Screen” চাপলেই বসবে।');
+          } else {
+            setStatus('Chrome এখনো সরাসরি ইনস্টলের অনুমতি দেয়নি। পেজটা একবার রিলোড করে ৫–১০ সেকেন্ড অপেক্ষা করে আবার বোতাম চাপুন; তাতেও না হলে নিচের ধাপে মেনু থেকে বসান।', 'blocked');
+          }
+          if (openSteps){
+            toggleSteps(true);
+            steps.scrollIntoView({ behavior:'smooth', block:'nearest' });
+            setTimeout(pulseMenuRow, 350);
+          }
+        }
+
+        btn.addEventListener('click', function(){
+          if (deferredPrompt){ firePrompt(); return; }
+          if (isIOS || isSamsung){ showFallback(true); return; }
+          /* অফারটা কখনো কখনো একটু দেরিতে আসে — অল্প অপেক্ষা করে দেখা */
+          waitingForPrompt = true;
+          setStatus('Chrome-এর ইনস্টল অপশনের জন্য অপেক্ষা করা হচ্ছে…');
+          waitTimer = setTimeout(function(){
+            waitingForPrompt = false; waitTimer = null;
+            showFallback(true);
+          }, 2500);
+        });
+        window.addEventListener('appinstalled', function(){
+          card.style.display = 'none';
+        });
+
+        /* শুরুর অবস্থা — ধাপগুলো এখন আর নিজে থেকে খুলবে না, বোতামই প্রধান পথ */
+        if (deferredPrompt){
+          onPromptReady();
+        } else if (isFramed){
+          framedNote.classList.add('show');
+          setStatus('বোতাম চাপলেও এখানে সরাসরি ইনস্টল হবে না — কারণটা নিচের বাক্সে লেখা আছে। Chrome-এ আলাদা করে খুললেই বোতামে সরাসরি ইনস্টল হবে।', 'blocked');
+          hint.textContent = 'Chrome-এ খোলার পরেও মেনু দিয়ে বসাতে চাইলে';
+        } else if (isInApp){
+          setStatus('আপনি এখন অন্য অ্যাপের ভিতরে আছেন — ইনস্টল করতে হলে আগে লিংকটা Chrome-এ খুলুন।', 'blocked');
+          if (!isIOS) btnText.textContent = 'Chrome-এ খুলে বসান — ধাপ দেখুন';
+          hint.textContent = 'কীভাবে Chrome-এ খুলবেন, দেখুন';
+        } else if (isIOS){
+          setStatus('iPhone-এ: নিচের Share বোতাম থেকে “Add to Home Screen” চাপলেই হোম স্ক্রিনে বসবে — ধাপগুলো নিচে দেওয়া আছে।');
+        } else {
+          setStatus('“অ্যাপ ইনস্টল করুন” বোতাম চাপুন — Chrome ইনস্টলের অনুমতি দিলেই সরাসরি ইনস্টল বাক্স আসবে।');
+          /* কয়েক সেকেন্ডেও অফার না এলে সেটা লুকানো থাকবে না, কারণসহ জানানো হবে */
+          setTimeout(function(){
+            if (!deferredPrompt && !window.__hisabBIP) showFallback(false);
+          }, 6000);
+        }
+      })();
+
+      /* ---------- init ---------- */
+      renderStock();
+      renderExpiry();
+      renderDaily();
+      renderDeliveries();
+      renderExpenses();
+      refreshTotals();
+    </script>
+  </body>
+</html>
