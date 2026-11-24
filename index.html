@@ -1700,11 +1700,16 @@
       var dailyData = [{"d":"2026-11-01","kss":32370,"lb":4050,"n":14},{"d":"2026-11-02","kss":14100,"lb":0,"n":4},{"d":"2026-11-03","kss":19150,"lb":2700,"n":9},{"d":"2026-11-04","kss":6040,"lb":2600,"n":7},{"d":"2026-11-05","kss":4400,"lb":9050,"n":12},{"d":"2026-11-06","kss":7550,"lb":3030,"n":7},{"d":"2026-11-07","kss":16990,"lb":2800,"n":8},{"d":"2026-11-08","kss":28679,"lb":11530,"n":18},{"d":"2026-11-09","kss":5900,"lb":1250,"n":6},{"d":"2026-11-10","kss":18400,"lb":6550,"n":10},{"d":"2026-11-11","kss":12140,"lb":8050,"n":12},{"d":"2026-11-12","kss":0,"lb":2400,"n":1},{"d":"2026-11-13","kss":8920,"lb":0,"n":5},{"d":"2026-11-14","kss":37850,"lb":2200,"n":11},{"d":"2026-11-15","kss":1900,"lb":10600,"n":5},{"d":"2026-11-16","kss":27419,"lb":3700,"n":6},{"d":"2026-11-17","kss":5000,"lb":11750,"n":11},{"d":"2026-11-18","kss":10990,"lb":5100,"n":6},{"d":"2026-11-19","kss":24630,"lb":46350,"n":34},{"d":"2026-11-20","kss":0,"lb":2500,"n":3},{"d":"2026-11-21","kss":20299,"lb":0,"n":5},{"d":"2026-11-22","kss":6970,"lb":0,"n":4},{"d":"2026-11-23","kss":7300,"lb":0,"n":4}];
 
       var deliveries = [
-        { d:'2026-11-23', name:'হোসনা',   area:'—',            cod:2630, status:'booked', note:'CARE:NEL সেট' },
-        { d:'2026-11-23', name:'সালমা',   area:'—',            cod:2000, status:'booked', note:'Rice Toner + Cream' },
-        { d:'2026-11-23', name:'লোপা',    area:'যশোর',         cod:3530, status:'booked', note:'Gimiya Cream · ফ্রি ডেলিভারি (৳৩,০০০+)' },
-        { d:'2026-11-23', name:'সেজান',   area:'—',            cod:1180, status:'booked', note:'Salicylic Cleanser' },
-        { d:'2026-11-23', name:'রাশিদা আক্তার', area:'ঢাকা',   cod:430,  status:'booked', note:'Pimple Patch' }
+        { d:'2026-11-24', name:'Arrab Hasan', shop:'kss', area:'ঢাকা', cod:3080, status:'booked', note:'Deep Vita C Capsule Cream + Rice Toner 30ml' },
+        { d:'2026-11-24', name:'আইরিন', shop:'kss', area:'চাঁদপুর', cod:1950, status:'booked', note:'Capsule Ampoule 100ml' },
+        { d:'2026-11-24', name:'Chadni', shop:'kss', area:'Savar', cod:1530, status:'booked', note:'Aqua Fresh 50ml' },
+        { d:'2026-11-24', name:'Suraiya Islam', shop:'kss', area:'Uttara', cod:1080, status:'booked', note:'Underarm Cream' },
+        { d:'2026-11-24', name:'Sonia Tumpa', shop:'lb', area:'ঢাকা', cod:1930, status:'booked', note:'Jeju Cherry Blossom Glow Tone-Up Cream' },
+        { d:'2026-11-23', name:'হোসনা', shop:'kss', area:'—', cod:2630, status:'booked', note:'CARE:NEL সেট' },
+        { d:'2026-11-23', name:'সালমা', shop:'kss', area:'—', cod:2000, status:'booked', note:'Rice Toner + Cream' },
+        { d:'2026-11-23', name:'লোপা', shop:'kss', area:'যশোর', cod:3530, status:'booked', note:'Gimiya Cream · ফ্রি ডেলিভারি (৳৩,০০০+)' },
+        { d:'2026-11-23', name:'সেজান', shop:'kss', area:'—', cod:1180, status:'booked', note:'Salicylic Cleanser' },
+        { d:'2026-11-23', name:'রাশিদা আক্তার', shop:'kss', area:'ঢাকা', cod:430, status:'booked', note:'Pimple Patch' }
       ];
 
       var expenses = [];
@@ -1792,7 +1797,8 @@
             : '<span class="badge booked">পিকআপ বুক হয়েছে</span>';
           d.innerHTML = '<div class="main"><div class="name"></div><div class="meta"></div></div>' +
             '<div class="amt"></div>';
-          d.querySelector('.name').innerHTML = dv.name + ' ' + badge;
+          var shopTag = dv.shop === 'lb' ? '<span class="badge">Lovebirds</span>' : (dv.shop === 'kss' ? '<span class="badge">KSS</span>' : '');
+          d.querySelector('.name').innerHTML = shopTag + ' ' + dv.name + ' ' + badge;
           d.querySelector('.meta').textContent = dv.note + (dv.area !== '—' ? ' · এলাকা: ' + dv.area : '');
           var amt = d.querySelector('.amt');
           amt.innerHTML = 'COD ' + money(dv.cod);
@@ -2157,7 +2163,7 @@
         p.stock -= qty;
         var free = dc === 0;
         monthSales.unshift({ d: TODAY_ISO, c:name, s:shop, city:'', items: p.name + ' × ' + bn(qty), t: price, free: free });
-        deliveries.push({ name:name, area:'—', cod: price + dc, status:'booked', note: p.name + ' × ' + bn(qty) + (free ? ' · ফ্রি ডেলিভারি' : '') });
+        deliveries.push({ d: TODAY_ISO, name:name, shop: shop, area:'—', cod: price + dc, status:'booked', note: p.name + ' × ' + bn(qty) + (free ? ' · ফ্রি ডেলিভারি' : '') });
         msg.textContent = 'যোগ হয়েছে ✓ ' + p.name + ' — স্টক এখন ' + bn(p.stock) + ' পিস। ডেলিভারি তালিকাতেও উঠেছে।';
         el('sf-price').value = ''; el('sf-name').value = '';
         renderStock(); renderDeliveries(); refreshTotals();
