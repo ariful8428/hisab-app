@@ -58,7 +58,7 @@
         margin:0;background:var(--bg);color:var(--ink);
         font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
         font-size:16px;line-height:1.55;
-        padding-bottom:86px;
+        padding-bottom:16px;
       }
       button,[role="button"],select,input,summary{touch-action:manipulation}
       button,select,input[type="text"],input[type="number"],input[type="tel"]{min-height:44px;font-family:inherit;font-size:16px}
@@ -144,6 +144,8 @@
       .focus-back{display:none;background:none;border:none;color:var(--brand);font:inherit;font-weight:700;padding:2px 0 8px;cursor:pointer;text-align:left}
       .panel.focus-only > :not(.fkeep){display:none}
       .panel.focus-only .focus-back{display:block}
+      #panel-dash .fblock{display:none}
+      #panel-dash.focus-only .fblock.fkeep{display:block}
       h2.sec{font-size:19px;margin:4px 0 10px;font-weight:700}
       h3.sub{font-size:16px;margin:18px 0 8px;font-weight:700}
       .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow);margin-bottom:12px}
@@ -346,33 +348,13 @@
       </div>
     </div>
 
-    <nav class="tabbar" aria-label="প্রধান অংশ">
-      <div class="tabwrap" style="display:contents;width:100%">
-        <button class="tab-btn" data-tab="dash" aria-selected="true">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>
-          ড্যাশবোর্ড</button>
-        <button class="tab-btn" data-tab="sales" aria-selected="false">
-          <svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 11h-13z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg>
-          বিক্রি</button>
-        <button class="tab-btn" data-tab="stock" aria-selected="false">
-          <svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
-          স্টক</button>
-        <button class="tab-btn" data-tab="transfer" aria-selected="false">
-          <svg viewBox="0 0 24 24"><path d="M4 7h13l-3-3M20 17H7l3 3"/></svg>
-          ট্রান্সফার</button>
-        <button class="tab-btn" data-tab="delivery" aria-selected="false">
-          <svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg>
-          ডেলিভারি</button>
-        <button class="tab-btn" data-tab="report" aria-selected="false">
-          <svg viewBox="0 0 24 24"><path d="M5 20V10M11 20V4M17 20v-8M3 20h18"/></svg>
-          রিপোর্ট</button>
-      </div>
-    </nav>
+    
 
     <main class="wrap">
 
       <!-- ============ DASHBOARD ============ -->
       <section class="panel active" id="panel-dash" aria-label="ড্যাশবোর্ড">
+        <button type="button" class="focus-back fkeep">← ড্যাশবোর্ডে ফিরুন</button>
 
         <!-- ===== ফোনে অ্যাপ হিসেবে বসান ===== -->
         <div class="pos-head">
@@ -404,13 +386,14 @@
           <button type="button" class="pos-q" data-go="stock" data-focus="fb-new-product"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg></span><span>নতুন পণ্য</span></button>
           <button type="button" class="pos-q" data-go="stock" data-focus="fb-stock-table"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span><span>স্টক</span></button>
           <button type="button" class="pos-q" data-go="stock" data-focus="fb-reorder"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4a3 3 0 0 1 6 0M9 12l2 2 4-4"/></svg></span><span>কিনতে হবে</span></button>
-          <button type="button" class="pos-q" data-go="delivery"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg></span><span>ডেলিভারি</span></button>
+          <button type="button" class="pos-q" data-go="delivery" data-focus="fb-delivery"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg></span><span>ডেলিভারি</span></button>
           <button type="button" class="pos-q" data-go="report" data-focus="fb-customers"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5 6.5-5s5.7 1.5 6.5 5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M17.5 15.5c2 .6 3.5 2 4 4.5"/></svg></span><span>কাস্টমার</span></button>
           <button type="button" class="pos-q" data-go="report" data-focus="fb-expense"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/></svg></span><span>খরচ</span></button>
           <button type="button" class="pos-q" data-go="report" data-focus="fb-monthly"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M5 20V10M11 20V4M17 20v-8M3 20h18"/></svg></span><span>রিপোর্ট</span></button>
           <button type="button" class="pos-q" data-site="https://koreasourcebd.com"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M4 9l1-5h14l1 5M4 9v11h18V9M4 9h18M9 20v-6h6v6"/></svg></span><span>পাইকারি</span></button>
           <button type="button" class="pos-q" data-go="report" data-focus="fb-loyalty"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8z"/></svg></span><span>লয়্যালটি</span></button>
           <button type="button" class="pos-q" data-go="stock" data-focus="expsoon-block"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span>কম মেয়াদ</span></button>
+    <button type="button" class="pos-q" data-go="transfer" data-focus="fb-transfer"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M4 7h13l-3-3M20 17H7l3 3"/></svg></span><span>ট্রান্সফার</span></button>
         </div>
 
         <h3 class="sub">সতর্কতা</h3>
@@ -511,11 +494,6 @@
           </div>
         </div>
 
-        </section>
-
-      <!-- ============ SALES ============ -->
-      <section class="panel" id="panel-sales" aria-label="বিক্রি">
-        <button type="button" class="focus-back fkeep">← বিক্রির সব কিছু দেখুন</button>
         <div class="fblock" id="fb-sales-list">
         <h2 class="sec">নভেম্বরের সব বিক্রি — ১–২৪ নভেম্বর ২০২৬</h2>
         <p class="muted" id="sales-summary" style="margin:-4px 0 12px">সব দোকান মিলিয়ে ২০৭টি অর্ডার · মোট ৳৪,৬২,৩২৭ (পণ্যের দাম, ডেলিভারি চার্জ ছাড়া)</p>
@@ -532,7 +510,7 @@
         </div>
 
         </div>
-        <div class="fblock" id="fb-sale-form">
+<div class="fblock" id="fb-sale-form">
         <h3 class="sub">অপারেটর — নতুন বিক্রি যোগ করুন</h3>
         <div class="card">
           <form class="op" id="sale-form">
@@ -573,12 +551,7 @@
           <p class="muted" style="margin-top:10px">নিয়ম: অর্ডার ৳৩,০০০+ হলে বা Medicube TXA Capsule Cream থাকলে ডেলিভারি ফ্রি বেছে নিন। ৳৫,০০০+ হলে পার্সেলে ফ্রি শিট মাস্ক দিতে ভুলবেন না।</p>
         </div>
         </div>
-      </section>
-
-      <!-- ============ STOCK ============ -->
-      <section class="panel" id="panel-stock" aria-label="স্টক">
-        <button type="button" class="focus-back fkeep">← স্টকের সব কিছু দেখুন</button>
-        <div class="fblock" id="fb-stock-table">
+<div class="fblock" id="fb-stock-table">
         <h2 class="sec">স্টক — KSS + Lovebirds একসাথে</h2>
         <div class="kpis" style="margin-top:0">
           <div class="kpi"><p class="label">মোট পণ্য (এই তালিকায়)</p><p class="value" id="st-count">–</p><p class="note">Master Stock অনুযায়ী দুই দোকান মিলিয়ে</p></div>
@@ -605,7 +578,7 @@
         <p class="muted" style="margin-top:8px">মেয়াদের তারিখ স্টক শিটের Expiry কলাম থেকে নেওয়া। যেসব পণ্যের তারিখ শিটে লেখা নেই, সেখানে “শিটে তারিখ নেই” দেখাবে।</p>
 
         </div>
-        <div class="fblock" id="fb-reorder">
+<div class="fblock" id="fb-reorder">
         <h3 class="sub" id="reorder-card">কিনতে হবে — কম স্টক ও স্টক আউট</h3>
         <p class="muted" id="reorder-summary" style="margin:-4px 0 12px">লোড হচ্ছে…</p>
         <div class="card">
@@ -617,7 +590,7 @@
         </div>
 
         </div>
-        <div class="fblock" id="expsoon-block">
+<div class="fblock" id="expsoon-block">
           <h3 class="sub" id="expsoon-card">কম মেয়াদ — আগে বিক্রি করুন</h3>
         <p class="muted" id="expsoon-summary" style="margin:-4px 0 12px">লোড হচ্ছে…</p>
         <div class="card">
@@ -628,8 +601,7 @@
           <p class="muted" id="expsoon-empty" style="display:none;margin-top:10px">২০২৭ সালের মধ্যে মেয়াদ শেষ হচ্ছে এমন কোনো পণ্য নেই।</p>
         </div>
         </div>
-
-        <div class="fblock" id="fb-expiry-full">
+<div class="fblock" id="fb-expiry-full">
         <h3 class="sub">মেয়াদের পুরো তালিকা — শিট অনুযায়ী (আগে শেষ হবে এমন পণ্য আগে)</h3>
         <p class="muted" id="exp-summary" style="margin:-4px 0 12px">লোড হচ্ছে…</p>
         <div class="stock-tools">
@@ -647,7 +619,7 @@
         </div>
 
         </div>
-        <div class="fblock" id="fb-stock-topup">
+<div class="fblock" id="fb-stock-topup">
         <h3 class="sub">অপারেটর — স্টক যোগ করুন (নতুন চালান)</h3>
         <div class="card">
           <form class="op" id="stock-form">
@@ -668,7 +640,7 @@
           <p class="muted" style="margin-top:10px">নিয়ম: পণ্যের আগের row থাকলে পরিমাণ সেই row-তেই যোগ হয় — নতুন row নয়।</p>
         </div>
         </div>
-        <div class="fblock" id="fb-new-product">
+<div class="fblock" id="fb-new-product">
         <h3 class="sub">অপারেটর — নতুন পণ্য যোগ করুন</h3>
         <div class="card" id="sheet-upload-card" style="margin-bottom:14px">
           <h3 class="sub" style="margin-top:0">শিট আপলোড করুন — একবারে অনেক পণ্য</h3>
@@ -709,11 +681,31 @@
         </div>
 
         </div>
-      </section>
+        <div class="fblock" id="fb-delivery">
+        <h2 class="sec" id="delivery-heading">আজকের পাঠাও পিকআপ — ২৩ নভেম্বর ২০২৬</h2>
+        <div class="card">
+          <div id="delivery-list"></div>
+          <div class="row-item" style="border-top:2px solid var(--line);margin-top:4px">
+            <div class="main"><div class="name">মোট COD</div><div class="meta">ডেলিভারি চার্জসহ আদায়যোগ্য</div></div>
+            <div class="amt" id="delivery-total">৳৯,৭৭০</div>
+          </div>
+          <p class="muted">“অবস্থা বদলান” চাপলে পার্সেলের অবস্থা এই সেশনেই বদলাবে (বুক হয়েছে → ডেলিভারি হয়েছে)। পিকআপ বুকিং হয় প্রতিদিন সকাল ৯টার রানে; সকাল ১০টার পরের অর্ডার পরের দিন যায়।</p>
+        </div>
 
+        <div class="card">
+          <h3 class="sub" style="margin-top:0">ডেলিভারির নিয়ম</h3>
+          <ul class="rules">
+            <li>ঢাকার ভিতরে ডেলিভারি চার্জ <strong>৳৮০</strong>, ঢাকার বাইরে <strong>৳১৩০</strong> (খুচরা)।</li>
+            <li>অর্ডার <strong>৳৩,০০০+</strong> হলে ডেলিভারি চার্জ সম্পূর্ণ ফ্রি।</li>
+            <li>অর্ডার <strong>৳৫,০০০+</strong> হলে ফ্রি শিট মাস্ক উপহার — পার্সেলে অবশ্যই দিতে হবে।</li>
+            <li>অর্ডারে <strong>Medicube TXA Capsule Cream</strong> থাকলেই ডেলিভারি ফ্রি।</li>
+            <li>পাইকারি (koreasourcebd.com) ডেলিভারি সারা দেশে ফ্ল্যাট <strong>৳১৫০</strong>।</li>
+            <li>Memo-তে HOLD লেখা অর্ডার পিকআপে যায় না, HOLD না ওঠা পর্যন্ত।</li>
+          </ul>
+        </div>
+              </div>
 
-      <!-- ============ TRANSFER ============ -->
-      <section class="panel" id="panel-transfer" aria-label="ট্রান্সফার">
+        <div class="fblock" id="fb-transfer">
         <h2 class="sec">পণ্য ট্রান্সফার — KSS ↔ Lovebirds</h2>
         <p class="muted">এক দোকান থেকে আরেক দোকানে পণ্য পাঠানোর হিসাব। নিচে তারিখসহ পুরো তালিকা আছে — কোন তারিখে, কোন পণ্য, কত পিস, কোন দোকান থেকে কোন দোকানে গেল।</p>
         <div class="card">
@@ -766,39 +758,9 @@
           <div id="transfer-list"></div>
           <p class="muted" id="transfer-empty" style="display:none">কোনো ট্রান্সফার পাওয়া যায়নি।</p>
         </div>
-      </section>
+              </div>
 
-      <!-- ============ DELIVERY ============ -->
-      <section class="panel" id="panel-delivery" aria-label="ডেলিভারি">
-        <h2 class="sec" id="delivery-heading">আজকের পাঠাও পিকআপ — ২৩ নভেম্বর ২০২৬</h2>
-        <div class="card">
-          <div id="delivery-list"></div>
-          <div class="row-item" style="border-top:2px solid var(--line);margin-top:4px">
-            <div class="main"><div class="name">মোট COD</div><div class="meta">ডেলিভারি চার্জসহ আদায়যোগ্য</div></div>
-            <div class="amt" id="delivery-total">৳৯,৭৭০</div>
-          </div>
-          <p class="muted">“অবস্থা বদলান” চাপলে পার্সেলের অবস্থা এই সেশনেই বদলাবে (বুক হয়েছে → ডেলিভারি হয়েছে)। পিকআপ বুকিং হয় প্রতিদিন সকাল ৯টার রানে; সকাল ১০টার পরের অর্ডার পরের দিন যায়।</p>
-        </div>
-
-        <div class="card">
-          <h3 class="sub" style="margin-top:0">ডেলিভারির নিয়ম</h3>
-          <ul class="rules">
-            <li>ঢাকার ভিতরে ডেলিভারি চার্জ <strong>৳৮০</strong>, ঢাকার বাইরে <strong>৳১৩০</strong> (খুচরা)।</li>
-            <li>অর্ডার <strong>৳৩,০০০+</strong> হলে ডেলিভারি চার্জ সম্পূর্ণ ফ্রি।</li>
-            <li>অর্ডার <strong>৳৫,০০০+</strong> হলে ফ্রি শিট মাস্ক উপহার — পার্সেলে অবশ্যই দিতে হবে।</li>
-            <li>অর্ডারে <strong>Medicube TXA Capsule Cream</strong> থাকলেই ডেলিভারি ফ্রি।</li>
-            <li>পাইকারি (koreasourcebd.com) ডেলিভারি সারা দেশে ফ্ল্যাট <strong>৳১৫০</strong>।</li>
-            <li>Memo-তে HOLD লেখা অর্ডার পিকআপে যায় না, HOLD না ওঠা পর্যন্ত।</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ============ EXPENSE & REPORT ============ -->
-      <section class="panel" id="panel-report" aria-label="খরচ ও রিপোর্ট">
-        <button type="button" class="focus-back fkeep">← রিপোর্টের সব কিছু দেখুন</button>
-        <h2 class="sec">খরচ ও মাসিক রিপোর্ট</h2>
-
-        <div class="fblock" id="fb-expense">
+<div class="fblock" id="fb-expense">
         <div class="card">
           <h3 class="sub" style="margin-top:0">আজকের খরচ</h3>
           <div id="expense-list">
@@ -837,7 +799,7 @@
         </div>
 
         </div>
-        <div class="grid2 fblock" id="fb-monthly">
+<div class="grid2 fblock" id="fb-monthly">
           <div class="card">
             <h3 class="sub" style="margin-top:0">নভেম্বর ২০২৬ — মাসিক অবস্থা (১–২৪ নভে. এন্ট্রি করা)</h3>
             <div class="row-item"><div class="main"><div class="name">মোট বিক্রি (১–২৪ নভে.)</div><div class="meta">২০৭টি অর্ডার · প্রতিদিন গড়ে ৳১৯,২৬৪</div></div><div class="amt" id="rep-total">৳৪,৬২,৩২৭</div></div>
@@ -860,8 +822,7 @@
             <div class="row-item"><div class="main"><div class="name">সতর্কতা</div><div class="meta">Anua Probiotics 10ml — মেয়াদ শেষ ২৮ অক্টো. ২০২৬, যাচাই বাকি</div></div><div class="amt"><span class="badge out">যাচাই করুন</span></div></div>
           </div>
         </div>
-
-        <div class="fblock" id="fb-customers">
+<div class="fblock" id="fb-customers">
         <div class="card" id="customer-card">
           <h3 class="sub" style="margin-top:0">কাস্টমার তালিকা — নভেম্বর ২০২৬</h3>
           <p class="muted" id="customer-summary" style="margin:-4px 0 12px">লোড হচ্ছে…</p>
@@ -876,7 +837,7 @@
         </div>
 
         </div>
-        <div class="fblock" id="fb-loyalty">
+<div class="fblock" id="fb-loyalty">
         <div class="card" id="loyalty-card">
           <h3 class="sub" style="margin-top:0">লয়্যালটি স্ট্যাম্প কার্ড</h3>
           <ul class="rules">
@@ -888,7 +849,7 @@
         </div>
 
         </div>
-        <div class="fblock" id="fb-trust">
+<div class="fblock" id="fb-trust">
         <div class="card">
           <h3 class="sub" style="margin-top:0">বিশ্বাসের তথ্য (কাস্টমারদের জন্য)</h3>
           <ul class="rules">
@@ -898,7 +859,23 @@
           </ul>
         </div>
         </div>
-      </section>
+</section>
+
+      <!-- ============ SALES ============ -->
+      
+
+      <!-- ============ STOCK ============ -->
+      
+
+
+      <!-- ============ TRANSFER ============ -->
+      
+
+      <!-- ============ DELIVERY ============ -->
+      
+
+      <!-- ============ EXPENSE & REPORT ============ -->
+      
 
       <footer>
         <p>নভেম্বর ২০২৬-এর ১–২৪ তারিখের সব বিক্রি (২০৭টি অর্ডার) শিট থেকে এন্ট্রি করা হয়েছে। স্টকের প্রতিটি পণ্যের পাশে শিটের মেয়াদ শেষের তারিখ দেওয়া আছে, আর ১৭১টি পণ্যের তারিখসহ পুরো মেয়াদের তালিকা “স্টক” অংশে আছে। এই পেজটি শেয়ার করলে সবাই একই হিসাব দেখতে পাবে। অপারেটরের যোগ করা বিক্রি/খরচ/স্টক শুধু এই সেশনে থাকে — স্থায়ী হিসাবের জন্য শিটই মূল রেকর্ড, প্রতিদিনের এন্ট্রি শিটে ওঠে।</p>
@@ -2354,7 +2331,6 @@
           b.addEventListener('click', function(){
             var site = b.getAttribute('data-site');
             if (site){ window.open(site, '_blank'); return; }
-            goTab(b.getAttribute('data-go'));
             var f = b.getAttribute('data-focus');
             if (f){ setTimeout(function(){ focusBlock(f); }, 90); }
             else {
@@ -2365,7 +2341,7 @@
           });
         });
         document.querySelectorAll('.focus-back').forEach(function(b){ b.addEventListener('click', function(){ clearFocus(); window.scrollTo({ top:0 }); }); });
-        el('pos-details').addEventListener('click', function(){ goTab('report'); });
+        el('pos-details').addEventListener('click', function(){ focusBlock('fb-monthly'); });
         el('pos-bell').addEventListener('click', function(){
           var a = document.querySelector('.alert');
           if (a) a.scrollIntoView({behavior:'smooth', block:'center'});
