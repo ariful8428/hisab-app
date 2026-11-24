@@ -1877,14 +1877,13 @@
         var ol = el('pos-owner-line'); if (ol && currentUser && APP_USERS[currentUser]) ol.textContent = APP_USERS[currentUser].name;
         var isKonok = currentUser === 'konok';
         if (!isKonok) return;
-        var ts = el('today-sec'); if (ts) ts.style.display = 'none';
-        var ps = el('pos-stats'); if (ps) ps.style.display = 'none';
-        var ab = el('alerts-block'); if (ab) ab.style.display = 'none';
+        /* Konok: Lovebirds sob + KSS sudhu stock — KSS sale/money kichu na */
+        var kc = el('kpi-card-kss'); if (kc) kc.style.display = 'none';
         var wk = el('weekly-card'); if (wk) wk.style.display = 'none';
         var sc = el('shop-status-card'); if (sc) sc.style.display = 'none';
         var pd = el('pos-details'); if (pd) pd.style.display = 'none';
-        var bell = el('pos-bell'); if (bell) bell.style.display = 'none';
-        document.querySelectorAll('.pos-q[data-focus="fb-sale-form"], .pos-q[data-focus="fb-sales-list"], .pos-q[data-focus="fb-delivery"], .pos-q[data-focus="fb-customers"], .pos-q[data-focus="fb-expense"], .pos-q[data-focus="fb-monthly"], .pos-q[data-focus="fb-loyalty"], .pos-q[data-site]').forEach(function(b){ b.style.display = 'none'; });
+        document.querySelectorAll('.pos-q[data-focus="fb-expense"], .pos-q[data-focus="fb-monthly"], .pos-q[data-focus="fb-loyalty"], .pos-q[data-site]').forEach(function(b){ b.style.display = 'none'; });
+        var sfs = el('sf-shop'); if (sfs) { sfs.value = 'lb'; sfs.disabled = true; }
       }
       function restoreSession(){
         var ok = false;
@@ -1939,7 +1938,7 @@
         var q = ((el('sales-search') && el('sales-search').value) || '').toLowerCase();
         var df = el('sales-date') ? el('sales-date').value : 'all';
         var shown = monthSales.filter(function(s){
-          if (currentShop !== 'all' && s.s !== currentShop) return false;
+          if (currentUser === 'konok' ? s.s !== 'lb' : (currentShop !== 'all' && s.s !== currentShop)) return false;
           if (df !== 'all' && s.d !== df) return false;
           if (q && (s.c + ' ' + s.items).toLowerCase().indexOf(q) === -1) return false;
           return true;
@@ -2000,7 +1999,7 @@
       function renderDeliveries(){
         el('delivery-heading').textContent = 'আজকের পাঠাও পিকআপ — ' + fmtDate(TODAY_ISO);
         var list = el('delivery-list'); list.innerHTML = '';
-        var todays = deliveries.filter(function(dv){ return dv.d === TODAY_ISO && (currentShop === 'all' || dv.shop === currentShop); });
+        var todays = deliveries.filter(function(dv){ return dv.d === TODAY_ISO && (currentUser === 'konok' ? dv.shop === 'lb' : (currentShop === 'all' || dv.shop === currentShop)); });
         if (!todays.length){ list.innerHTML = '<p class="muted">আজ এখনো কোনো পিকআপ বুক হয়নি।</p>'; }
         todays.forEach(function(dv, i){
           var d = document.createElement('div'); d.className = 'row-item';
@@ -2087,7 +2086,7 @@
         if (cur) sel.value = cur;
       }
       function fillProductSelects(){
-        fillOneSelect('sf-product', null, el('sf-psearch') ? el('sf-psearch').value : '');
+        fillOneSelect('sf-product', currentUser === 'konok' ? 'lb' : null, el('sf-psearch') ? el('sf-psearch').value : '');
         fillOneSelect('tf-product', null, el('tf-psearch') ? el('tf-psearch').value : '');
       }
       function rebuildTransferProducts(){
@@ -2301,7 +2300,7 @@
           var q = (el('cust-search').value || '').toLowerCase();
           var map = {};
           monthSales.forEach(function(s){
-            if (currentShop !== 'all' && s.s !== currentShop) return;
+            if (currentUser === 'konok' ? s.s !== 'lb' : (currentShop !== 'all' && s.s !== currentShop)) return;
             var key = s.c + '|' + (s.city || '');
             if (!map[key]) map[key] = { name:s.c, city:s.city || '', n:0, t:0 };
             map[key].n += 1; map[key].t += s.t;
@@ -2327,13 +2326,14 @@
         var TODAY_ISO = (function(){ var t = new Date(); function p(n){ return (n<10?'0':'')+n; } return t.getFullYear() + '-' + p(t.getMonth()+1) + '-' + p(t.getDate()); })();
         function todayShort(){ var p = TODAY_ISO.split('-'); return bn(parseInt(p[2],10)) + ' ' + MONTHS_FULL[parseInt(p[1],10)-1]; }
         function refreshTotals(){
-        var mTotal = monthSales.filter(shopFilter).reduce(function(a,s){ return a + s.t; }, 0);
-        var mCount = monthSales.filter(shopFilter).length;
-        var tTotal = monthSales.filter(function(s){ return s.d === TODAY_ISO && shopFilter(s); })
+        var sf = (currentUser === 'konok') ? function(s){ return s.s === 'lb'; } : shopFilter;
+        var mTotal = monthSales.filter(sf).reduce(function(a,s){ return a + s.t; }, 0);
+        var mCount = monthSales.filter(sf).length;
+        var tTotal = monthSales.filter(function(s){ return s.d === TODAY_ISO && sf(s); })
                                .reduce(function(a,s){ return a + s.t; }, 0);
-        var tCount = monthSales.filter(function(s){ return s.d === TODAY_ISO && shopFilter(s); }).length;
+        var tCount = monthSales.filter(function(s){ return s.d === TODAY_ISO && sf(s); }).length;
         var eTotal = expenses.reduce(function(a,x){ return a + x.amt; }, 0);
-        var codOpen = deliveries.filter(function(d){ return d.d === TODAY_ISO && d.status !== 'done'; })
+        var codOpen = deliveries.filter(function(d){ return d.d === TODAY_ISO && d.status !== 'done' && (currentUser !== 'konok' || d.shop === 'lb'); })
                                 .reduce(function(a,d){ return a + d.cod; }, 0);
         el('kpi-month').textContent = money(mTotal);
         el('kpi-month-note').textContent = bn(mCount) + 'টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া';
@@ -2420,7 +2420,7 @@
           document.querySelectorAll('.fblock.fkeep').forEach(function(b){ b.classList.remove('fkeep'); });
         }
         function focusBlock(id){
-          if (currentUser === 'konok' && (id === 'fb-sale-form' || id === 'fb-sales-list' || id === 'fb-delivery' || id === 'fb-customers' || id === 'fb-expense' || id === 'fb-monthly' || id === 'fb-loyalty')) return;
+          if (currentUser === 'konok' && (id === 'fb-expense' || id === 'fb-monthly' || id === 'fb-loyalty')) return;
           clearFocus();
           var b = el(id); if(!b) return;
           var panel = b.closest('section.panel'); if(!panel) return;
