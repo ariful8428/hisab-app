@@ -570,6 +570,16 @@
       <!-- ============ STOCK ============ -->
       <section class="panel" id="panel-stock" aria-label="স্টক">
         <h2 class="sec">স্টক — KSS + Lovebirds একসাথে</h2>
+        <div class="card" id="sheet-upload-card" style="margin-bottom:14px">
+          <h3 class="sub" style="margin-top:0">শিট আপলোড করুন — একবারে অনেক পণ্য</h3>
+          <p class="muted" style="margin:-4px 0 10px">Google Sheets-এ Opening Stock শিটটা খুলে <b>File → Download → Microsoft Excel (.xlsx)</b> বা <b>Comma-separated values (.csv)</b> করে এখানে আপলোড করুন। শিটে থাকা সব পণ্য একবারে আসবে — নতুন পণ্য যোগ হবে, পুরনো পণ্যের দাম / স্টক / মেয়াদ আপডেট হবে।</p>
+          <button type="button" class="btn" id="sheet-pick">শিট ফাইল বেছে নিন (.xlsx / .csv)</button>
+          <input type="file" id="sheet-file" accept=".xlsx,.xls,.csv" style="display:none" />
+          <p class="muted" id="sheet-file-name" style="margin:8px 0 0"></p>
+          <p class="form-msg" id="sheet-msg" style="margin:10px 0 0"></p>
+          <button type="button" class="btn ghost small" id="sheet-reset" style="display:none;margin-top:10px">আপলোড করা ডেটা মুছে আগের ডেটায় ফিরুন</button>
+          <p class="muted" style="margin:8px 0 0;font-size:13px">এটা শুধু এই ফোনের অ্যাপে কাজ করবে — Google শিটে কিছু বদলাবে না, আর অন্য কেউ দেখবে না। সবার অ্যাপে তুলতে হলে শিটের হিসাব আমাকে জানাবেন।</p>
+        </div>
         <div class="kpis" style="margin-top:0">
           <div class="kpi"><p class="label">মোট পণ্য (এই তালিকায়)</p><p class="value" id="st-count">–</p><p class="note">Master Stock অনুযায়ী দুই দোকান মিলিয়ে</p></div>
           <div class="kpi"><p class="label">মোট পিস</p><p class="value" id="st-pcs">–</p><p class="note">দুই দোকানের Current Stock যোগ</p></div>
@@ -586,16 +596,6 @@
             <option value="exp90">মেয়াদ ৯০ দিনের মধ্যে শেষ</option>
             <option value="expnone">মেয়াদের তারিখ শিটে নেই</option>
           </select>
-        </div>
-        <div class="card" id="sheet-upload-card" style="margin-bottom:14px">
-          <h3 class="sub" style="margin-top:0">শিট আপলোড করুন — একবারে অনেক পণ্য</h3>
-          <p class="muted" style="margin:-4px 0 10px">Google Sheets-এ Opening Stock শিটটা খুলে <b>File → Download → Microsoft Excel (.xlsx)</b> বা <b>Comma-separated values (.csv)</b> করে এখানে আপলোড করুন। শিটে থাকা সব পণ্য একবারে আসবে — নতুন পণ্য যোগ হবে, পুরনো পণ্যের দাম / স্টক / মেয়াদ আপডেট হবে।</p>
-          <button type="button" class="btn" id="sheet-pick">শিট ফাইল বেছে নিন (.xlsx / .csv)</button>
-          <input type="file" id="sheet-file" accept=".xlsx,.xls,.csv" style="display:none" />
-          <p class="muted" id="sheet-file-name" style="margin:8px 0 0"></p>
-          <p class="form-msg" id="sheet-msg" style="margin:10px 0 0"></p>
-          <button type="button" class="btn ghost small" id="sheet-reset" style="display:none;margin-top:10px">আপলোড করা ডেটা মুছে আগের ডেটায় ফিরুন</button>
-          <p class="muted" style="margin:8px 0 0;font-size:13px">এটা শুধু এই ফোনের অ্যাপে কাজ করবে — Google শিটে কিছু বদলাবে না, আর অন্য কেউ দেখবে না। সবার অ্যাপে তুলতে হলে শিটের হিসাব আমাকে জানাবেন।</p>
         </div>
         <table class="stock" aria-label="স্টক তালিকা">
           <thead><tr><th>পণ্য</th><th>দোকান</th><th class="num">বিক্রয় দাম</th><th class="num">স্টক (পিস)</th><th>মেয়াদ শেষ (Expiry)</th><th>অবস্থা</th></tr></thead>
