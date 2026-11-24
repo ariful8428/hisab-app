@@ -465,7 +465,7 @@
 
           <div class="card">
             <h3 class="sub" style="margin-top:0">দোকানভেদে অবস্থা</h3>
-            <div class="row-item"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,১৬,৯৯৭</span><small id="sum-kss-today">১১২টি অর্ডার · আজ ৳৭,৩০০</small></div></div>
+            <div class="row-item"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,২৪,২৬৭</span><small id="sum-kss-today">১১৬টি অর্ডার · আজ ৳৭,২৭০</small></div></div>
             <div class="row-item"><div class="main"><div class="name">Lovebirds Korean Cosmetics</div><div class="meta">খুচরা · আলাদা স্টক শিট</div></div><div class="amt">মাসে ৳১,৩৮,০৬০<small>৯১টি অর্ডার · শেষ বিক্রি ২৪ নভে.</small></div></div>
             <div class="row-item"><div class="main"><div class="name">পাইকারি — koreasourcebd.com</div><div class="meta">লগইন ছাড়া দাম দেখা যায় না · ন্যূনতম অর্ডার ৳৮,০০০ বা একই পণ্য ৩+ পিস</div></div><div class="amt">১৫৬টি পণ্য<small>২৭টি স্টক আউট</small></div></div>
           </div>
@@ -729,10 +729,14 @@
           <div class="card">
             <h3 class="sub" style="margin-top:0">নভেম্বর ২০২৬ — মাসিক অবস্থা (১–২৪ নভে. এন্ট্রি করা)</h3>
             <div class="row-item"><div class="main"><div class="name">মোট বিক্রি (১–২৪ নভে.)</div><div class="meta">২০৭টি অর্ডার · প্রতিদিন গড়ে ৳১৯,২৬৪</div></div><div class="amt" id="rep-total">৳৪,৬২,৩২৭</div></div>
-            <div class="row-item"><div class="main"><div class="name">KSS বিক্রি</div><div class="meta">১১২টি অর্ডার · সবচেয়ে বড় একক অর্ডার: সেনা — ৳২৭,৮৫০ (১৪ নভে.)</div></div><div class="amt">৳৩,১৬,৯৯৭</div></div>
-            <div class="row-item"><div class="main"><div class="name">Lovebirds বিক্রি</div><div class="meta">৯০টি অর্ডার · সবচেয়ে বেশি একদিনে: ১৯ নভে. ৳৪৬,৩৫০</div></div><div class="amt">৳১,৩৬,২১০</div></div>
+            <div class="row-item"><div class="main"><div class="name">KSS বিক্রি</div><div class="meta">১১৬টি অর্ডার · সবচেয়ে বড় একক অর্ডার: সেনা — ৳২৭,৮৫০ (১৪ নভে.)</div></div><div class="amt">৳৩,২৪,২৬৭</div></div>
+            <div class="row-item"><div class="main"><div class="name">Lovebirds বিক্রি</div><div class="meta">৯১টি অর্ডার · সবচেয়ে বেশি একদিনে: ১৯ নভে. ৳৪৬,৩৫০</div></div><div class="amt">৳১,৩৮,০৬০</div></div>
             <div class="row-item"><div class="main"><div class="name">খরচের রেকর্ড</div><div class="meta">Business Hisab শিটে নভেম্বরের খরচের এন্ট্রি পাওয়া যায়নি — তাই লাভের হিসাব এখানে দেখানো হয়নি; কেনা দামসহ লাভ মাসিক প্রফিট শিটে হিসাব হয়</div></div><div class="amt">রেকর্ড নেই</div></div>
             <div class="row-item"><div class="main"><div class="name">বিক্রি − এই সেশনে যোগ করা খরচ</div><div class="meta">নিচের ফর্মে খরচ যোগ করলে এখান থেকে কমবে</div></div><div class="amt" id="net-today">৳৪,৬২,৩২৭<small>খরচ যোগ হলে কমবে</small></div></div>
+            <div style="margin-top:12px">
+              <button type="button" class="btn" id="share-report-btn">মাসিক রিপোর্ট শেয়ার করুন</button>
+              <p class="form-msg" id="share-report-msg" role="status"></p>
+            </div>
           </div>
 
           <div class="card">
@@ -2049,6 +2053,58 @@
                           .reduce(function(a,s){ return a + s.t; }, 0).toLocaleString('en-IN'));
         renderSales();
       }
+
+      /* ---------- monthly report share ---------- */
+      function monthReportText(){
+        function dstr(iso){ var p = iso.split('-'); return bn(parseInt(p[2],10)) + ' ' + MONTHS_BN[parseInt(p[1],10)-1]; }
+        var total = monthSales.reduce(function(a,s){ return a + s.t; }, 0);
+        var kss = monthSales.filter(function(s){ return s.s === 'kss'; });
+        var lb = monthSales.filter(function(s){ return s.s === 'lb'; });
+        var kssT = kss.reduce(function(a,s){ return a + s.t; }, 0);
+        var lbT = lb.reduce(function(a,s){ return a + s.t; }, 0);
+        var days = parseInt(TODAY_ISO.split('-')[2], 10) || 1;
+        var today = monthSales.filter(function(s){ return s.d === TODAY_ISO; });
+        var todayT = today.reduce(function(a,s){ return a + s.t; }, 0);
+        var best = monthSales.reduce(function(b,s){ return (!b || s.t > b.t) ? s : b; }, null);
+        var stockOut = products.filter(function(p){ return p.stock <= 0 && p.open > 0; }).length;
+        var pcs = products.reduce(function(a,p){ return a + p.stock; }, 0);
+        var lines = [];
+        lines.push('নভেম্বর ২০২৬ — মাসিক হিসাব');
+        lines.push('Korean Skin Care Shop (KSS হিসাব)');
+        lines.push('');
+        lines.push('মোট বিক্রি: ' + money(total) + ' (' + bn(monthSales.length) + ' অর্ডার)');
+        lines.push('• KSS: ' + money(kssT) + ' (' + bn(kss.length) + ' অর্ডার)');
+        lines.push('• Lovebirds: ' + money(lbT) + ' (' + bn(lb.length) + ' অর্ডার)');
+        lines.push('প্রতিদিন গড়ে: ' + money(Math.round(total / days)));
+        lines.push('আজ (' + dstr(TODAY_ISO) + '): ' + money(todayT) + ' (' + bn(today.length) + ' অর্ডার)');
+        if (best) lines.push('সবচেয়ে বড় একক অর্ডার: ' + best.c + ' — ' + money(best.t) + ' (' + dstr(best.d) + ')');
+        lines.push('স্টক: ' + bn(products.length) + ' পণ্য · ' + bn(pcs) + ' পিস · স্টক-আউট ' + bn(stockOut));
+        return lines.join('\n');
+      }
+      function downloadReport(text, msg){
+        var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'november-2026-hisab.txt';
+        document.body.appendChild(a); a.click();
+        setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+        msg.textContent = 'ফাইল ডাউনলোড হয়েছে ✓ — ওটা শেয়ার করুন';
+      }
+      if (el('share-report-btn')) el('share-report-btn').addEventListener('click', function(){
+        var msg = el('share-report-msg'); msg.classList.remove('err');
+        var text = monthReportText();
+        if (navigator.share){
+          navigator.share({ title: 'নভেম্বর ২০২৬ — মাসিক হিসাব', text: text }).then(function(){
+            msg.textContent = 'শেয়ার করা হয়েছে ✓';
+          }).catch(function(){ /* user cancelled the share sheet */ });
+        } else if (navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(function(){
+            msg.textContent = 'কপি হয়েছে ✓ — WhatsApp-এ পেস্ট করুন';
+          }, function(){ downloadReport(text, msg); });
+        } else {
+          downloadReport(text, msg);
+        }
+      });
 
       /* ---------- tabs ---------- */
       document.querySelectorAll('.tab-btn').forEach(function(b){
