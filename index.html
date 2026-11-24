@@ -31,15 +31,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root{
-        --bg:#f2f5f3;
+        --bg:#fdf3f6;
         --surface:#ffffff;
-        --surface2:#e8efec;
-        --ink:#14231d;
-        --ink2:#47635a;
-        --line:#d5e0da;
-        --brand:#0c6b4f;
-        --brand-dark:#084c38;
-        --brand-soft:#dff0e8;
+        --surface2:#fbe7ee;
+        --ink:#2b1a20;
+        --ink2:#7a5a66;
+        --line:#f0d4dd;
+        --brand:#c2255c;
+        --brand-dark:#9d174d;
+        --brand-soft:#fde8ef;
         --accent:#c2410c;
         --accent-soft:#fdeadd;
         --warn:#b45309;
@@ -48,20 +48,20 @@
         --danger-soft:#fbe3e1;
         --ok:#0c6b4f;
         --ok-soft:#dff0e8;
-        --shadow:0 1px 3px rgba(10,40,30,.10),0 4px 14px rgba(10,40,30,.06);
+        --shadow:0 1px 3px rgba(90,20,45,.10),0 4px 14px rgba(90,20,45,.06);
         --radius:14px;
       }
       @media (prefers-color-scheme: dark){
         :root{
-          --bg:#0d1512;
-          --surface:#16211c;
-          --surface2:#1d2c25;
-          --ink:#e8f1ec;
-          --ink2:#9db8ac;
-          --line:#2b3f36;
-          --brand:#3ec79b;
-          --brand-dark:#3ec79b;
-          --brand-soft:#173a2d;
+          --bg:#171013;
+          --surface:#22161c;
+          --surface2:#2e1f27;
+          --ink:#f7e8ee;
+          --ink2:#c4a3b1;
+          --line:#3d2a33;
+          --brand:#f472a7;
+          --brand-dark:#f472a7;
+          --brand-soft:#3a1f2b;
           --accent:#f0925c;
           --accent-soft:#3a2417;
           --warn:#e8b34b;
@@ -87,10 +87,10 @@
 
       /* ---------- top bar ---------- */
       .topbar{
-        background:var(--brand-dark);color:#eafaf2;
+        background:var(--brand-dark);color:#ffeef4;
         padding:16px 0 14px;
       }
-      @media (prefers-color-scheme: dark){ .topbar{background:#0a2e22} }
+      @media (prefers-color-scheme: dark){ .topbar{background:#2a1620} }
       .topbar h1{font-size:21px;margin:0 0 2px;font-weight:700;line-height:1.3}
       .topbar .sub{font-size:13.5px;color:#bfe3d2;margin:0}
       .snapshot{
@@ -107,14 +107,19 @@
       .shop-btn:focus-visible,.tab-btn:focus-visible{outline:3px solid #ffd166;outline-offset:2px}
 
       /* ---------- KPI ---------- */
-      .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 4px}
+      .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0 4px}
       @media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
       .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:13px 14px;box-shadow:var(--shadow)}
       .kpi .label{font-size:13px;color:var(--ink2);font-weight:600;margin:0}
-      .kpi .value{font-size:24px;font-weight:700;margin:2px 0 0;line-height:1.25}
+      .kpi .value{font-size:26px;font-weight:700;margin:2px 0 0;line-height:1.25;color:var(--brand)}
       .kpi .note{font-size:12.5px;color:var(--ink2);margin:1px 0 0}
       .kpi.hot .value{color:var(--brand)}
       .kpi.warnk .value{color:var(--warn)}
+.kpi.hero{grid-column:1/-1;background:linear-gradient(135deg,#f06595,#c2255c);border:none;color:#fff;padding:20px 18px 18px;box-shadow:0 6px 20px rgba(194,37,92,.35)}
+.kpi.hero .label{color:#ffd6e3}
+.kpi.hero .value{font-size:34px;color:#fff;line-height:1.15}
+.kpi.hero .note{color:#ffe3ec}
+.kpi.today{grid-column:1/-1;background:var(--brand-soft);border-color:var(--brand-soft)}
 
       /* ---------- sections / cards ---------- */
       section.panel{display:none;padding-top:16px}
@@ -407,7 +412,7 @@
         </div>
 
         <div class="kpis">
-          <div class="kpi hot">
+          <div class="kpi hero">
             <p class="label">নভেম্বর মোট বিক্রি (১–২৪ নভে.)</p>
             <p class="value" id="kpi-month">৳৪,৬২,৩২৭</p>
             <p class="note" id="kpi-month-note">২০৭টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া</p>
@@ -422,7 +427,7 @@
             <p class="value" id="kpi-lb">৳১,৩৮,০৬০</p>
             <p class="note">৯১টি অর্ডার</p>
           </div>
-          <div class="kpi">
+          <div class="kpi today">
             <p class="label" id="kpi-today-label">আজ — ২৩ নভেম্বর</p>
             <p class="value" id="kpi-today">৳৭,৩০০</p>
             <p class="note" id="kpi-today-note">৪টি অর্ডার (KSS) · পিকআপ ব্যাচে COD বাকি ৳৯,৭৭০</p>
