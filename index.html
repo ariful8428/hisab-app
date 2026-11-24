@@ -335,8 +335,7 @@
   <body>
     <div id="login-screen">
       <div class="login-card">
-        <img class="login-logo" src="logo.png" alt="Korean Skin Care Shop logo" />
-        
+        <div class="login-logos"><img class="login-logo" src="logo.png" alt="Korean Skin Care Shop logo" /><img class="login-logo lb" src="lovebirds-logo.jpg" alt="Lovebirds logo" /></div>
         <p class="login-sub">Korean Skin Care Shop এবং Lovebirds এর হিসাব অ্যাপ</p>
         <p class="login-hint">কে ঢুকছেন, বাছুন — তারপর কোড দিন</p>
         <div class="login-users">
@@ -354,8 +353,8 @@
       body.logged-in #login-screen{display:none}
       body:not(.logged-in)>:not(#login-screen){display:none!important}
       .login-card{width:100%;max-width:420px;text-align:center}
+      .login-logos{display:flex;justify-content:center;align-items:center;gap:16px}
       .login-logo{width:84px;height:84px;border-radius:50%}
-      .login-card h1{font-size:24px;margin:12px 0 2px}
       .login-sub{color:var(--muted);margin:0 0 18px}
       .login-hint{font-weight:700;margin:0 0 10px}
       .login-users{display:grid;gap:10px;margin-bottom:14px}
