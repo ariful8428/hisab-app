@@ -333,16 +333,50 @@
     </style>
   </head>
   <body>
+    <div id="login-screen">
+      <div class="login-card">
+        <img class="login-logo" src="logo.png" alt="Korean Skin Care Shop logo" />
+        <h1>KSS হিসাব</h1>
+        <p class="login-sub">Korean Skin Care Shop — হিসাব অ্যাপ</p>
+        <p class="login-hint">কে ঢুকছেন, বাছুন — তারপর কোড দিন</p>
+        <div class="login-users">
+          <button type="button" class="login-user" data-user="owner"><span class="login-name">Ariful Islam</span><span class="login-role">মালিক · সব দোকান</span></button>
+          <button type="button" class="login-user" data-user="konok"><span class="login-name">Konok Chapa</span><span class="login-role">Lovebirds</span></button>
+        </div>
+        <input id="login-code" type="password" inputmode="text" autocomplete="off" placeholder="কোড লিখুন" />
+        <p class="login-err" id="login-err"></p>
+        <button type="button" class="btn" id="login-go">ঢুকুন</button>
+      </div>
+    </div>
+    <style>
+      #login-screen{position:fixed;inset:0;background:#fff;z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding:48px 18px 18px;overflow:auto}
+      body.logged-in #login-screen{display:none}
+      body:not(.logged-in)>:not(#login-screen){display:none!important}
+      .login-card{width:100%;max-width:420px;text-align:center}
+      .login-logo{width:84px;height:84px;border-radius:50%}
+      .login-card h1{font-size:24px;margin:12px 0 2px}
+      .login-sub{color:var(--muted);margin:0 0 18px}
+      .login-hint{font-weight:700;margin:0 0 10px}
+      .login-users{display:grid;gap:10px;margin-bottom:14px}
+      .login-user{display:flex;flex-direction:column;gap:2px;align-items:flex-start;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;font:inherit;color:var(--ink)}
+      .login-user.sel{border-color:var(--brand);box-shadow:0 0 0 2px rgba(194,37,92,.15)}
+      .login-name{font-weight:700;font-size:17px}
+      .login-role{color:var(--muted);font-size:14px}
+      #login-code{width:100%;box-sizing:border-box;margin-bottom:8px;padding:12px 14px;font-size:17px;border:1.5px solid var(--line);border-radius:11px;background:var(--surface);color:var(--ink);text-align:center;letter-spacing:2px}
+      .login-err{color:var(--danger);font-weight:600;min-height:22px;margin:0 0 8px}
+    </style>
+    <script>try{var __u=localStorage.getItem('kssAppUser');if(__u==='owner'||__u==='konok'){document.body.classList.add('logged-in');var __ls=document.getElementById('login-screen');if(__ls)__ls.style.display='none';}}catch(e){}</script>
     <div class="pos-head">
           <div class="pos-head-top">
             <img class="pos-logo" src="logo.png" alt="Korean Skin Care Shop logo" />
             <div class="pos-shop">
               <h1>Korean Skin Care Shop</h1>
-              <p>Shop Owner</p>
+              <p id="pos-owner-line">Shop Owner</p>
             </div>
             <div class="pos-head-btns">
               <button type="button" class="pos-ic" id="pos-bell" aria-label="সতর্কতা দেখুন"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
               <button type="button" class="pos-ic" id="pos-share" aria-label="অ্যাপ শেয়ার করুন"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+              <button type="button" class="pos-ic" id="pos-logout" aria-label="লগআউট"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg></button>
             </div>
           </div>
         </div>
@@ -374,7 +408,7 @@
         <div class="pos-stats">
           <div class="pos-stat"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><div><p class="pos-stat-label" id="kpi-today-label">আজ — ২৪ নভেম্বর</p><p class="pos-stat-value" id="kpi-today">৳৯,১২০</p><p class="pos-stat-note" id="kpi-today-note">৫টি অর্ডার</p></div></div>
           <div class="pos-stat"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 11h-13z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg></span><div><p class="pos-stat-label">মাসের মোট বিক্রি</p><p class="pos-stat-value" id="kpi-month">৳৪,৬২,৩২৭</p><p class="pos-stat-note" id="kpi-month-note">২০৭টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া</p></div></div>
-          <div class="pos-stat"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/></svg></span><div><p class="pos-stat-label">KSS — নভেম্বর</p><p class="pos-stat-value" id="kpi-kss">৳৩,২৬,১১৭</p><p class="pos-stat-note">১১৭টি অর্ডার</p></div></div>
+          <div class="pos-stat" id="kpi-card-kss"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/></svg></span><div><p class="pos-stat-label">KSS — নভেম্বর</p><p class="pos-stat-value" id="kpi-kss">৳৩,২৬,১১৭</p><p class="pos-stat-note">১১৭টি অর্ডার</p></div></div>
           <div class="pos-stat"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 4.5 2.5C12 6 13.5 5 15.5 5 19 5 21 8.5 20.5 12c-1 4.3-8.5 9-8.5 9z"/></svg></span><div><p class="pos-stat-label">Lovebirds — নভেম্বর</p><p class="pos-stat-value" id="kpi-lb">৳১,৩৬,২১০</p><p class="pos-stat-note">৯০টি অর্ডার</p></div></div>
         </div>
 
@@ -395,7 +429,7 @@
     <button type="button" class="pos-q" data-go="transfer" data-focus="fb-transfer"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M4 7h13l-3-3M20 17H7l3 3"/></svg></span><span>ট্রান্সফার</span></button>
         </div>
 
-        <h3 class="sub">সতর্কতা</h3>
+        <div id="alerts-block"><h3 class="sub">সতর্কতা</h3>
         <div class="alert danger">
           <span class="dot"></span>
           <p><strong>স্টক আউট:</strong> COSRX Salicylic Acid Cleanser 150ml — KSS স্টক ০ (২৩ নভেম্বর)। পাইকারি সাইটে মোট <strong>২৭টি পণ্য</strong> স্টক আউট (মোট ১৫৬টির মধ্যে)।</p>
@@ -416,9 +450,10 @@
           <span class="dot"></span>
           <p><strong>ফ্রি ডেলিভারি অফার চলছে:</strong> ৳৩,০০০+ অর্ডারে ডেলিভারি সম্পূর্ণ ফ্রি · ৳৫,০০০+ অর্ডারে ফ্রি শিট মাস্ক উপহার · Medicube TXA Capsule Cream থাকলেই ডেলিভারি ফ্রি।</p>
         </div>
+        </div>
 
         <div class="grid2">
-          <div class="card">
+          <div class="card" id="weekly-card">
             <h3 class="sub" style="margin-top:0">সপ্তাহ অনুযায়ী বিক্রি — নভেম্বর (KSS + Lovebirds)</h3>
             <div class="bars" role="img" aria-label="বার চার্ট: ১ থেকে ৭ নভেম্বর ১,২৪,৮৩০ টাকা, ৮ থেকে ১৪ নভেম্বর ১,৪৩,৮৬৯ টাকা, ১৫ থেকে ২১ নভেম্বর ১,৭০,২৩৮ টাকা, ২২ থেকে ২৪ নভেম্বর ২৩,৩৯০ টাকা">
               <div class="bar-col"><span class="bar-val">৳১,২৪,৮৩০</span><div class="bar dim" style="height:66%"></div><span class="bar-lab">১–৭ নভে. · ৬১ অর্ডার</span></div>
@@ -431,9 +466,9 @@
 
           <div class="card">
             <h3 class="sub" style="margin-top:0">দোকানভেদে অবস্থা</h3>
-            <div class="row-item"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,২৬,১১৭</span><small id="sum-kss-today">১১৭টি অর্ডার · আজ ৳৯,১২০</small></div></div>
+            <div class="row-item" id="shoprow-kss"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,২৬,১১৭</span><small id="sum-kss-today">১১৭টি অর্ডার · আজ ৳৯,১২০</small></div></div>
             <div class="row-item"><div class="main"><div class="name">Lovebirds Korean Cosmetics</div><div class="meta">খুচরা · আলাদা স্টক শিট</div></div><div class="amt">মাসে ৳১,৩৬,২১০<small>৯০টি অর্ডার · শেষ বিক্রি ২০ নভে.</small></div></div>
-            <div class="row-item"><div class="main"><div class="name">পাইকারি — koreasourcebd.com</div><div class="meta">লগইন ছাড়া দাম দেখা যায় না · ন্যূনতম অর্ডার ৳৮,০০০ বা একই পণ্য ৩+ পিস</div></div><div class="amt">১৫৬টি পণ্য<small>২৭টি স্টক আউট</small></div></div>
+            <div class="row-item" id="shoprow-ws"><div class="main"><div class="name">পাইকারি — koreasourcebd.com</div><div class="meta">লগইন ছাড়া দাম দেখা যায় না · ন্যূনতম অর্ডার ৳৮,০০০ বা একই পণ্য ৩+ পিস</div></div><div class="amt">১৫৬টি পণ্য<small>২৭টি স্টক আউট</small></div></div>
           </div>
         </div>
         
@@ -1827,6 +1862,71 @@
       var expenses = [];
       var currentShop = 'all';
 
+      /* ---------- LOGIN — Ariful (মালিক) + Konok (Lovebirds) ----------
+         Code-lock only: this is a static page, so the codes live in this file.
+         A logged-in user stays logged in on that device (localStorage) until logout.
+         DO NOT remove this block during data refreshes. */
+      var APP_USERS = {
+        owner: { name: 'Ariful Islam', label: 'মালিক · সব দোকান', code: 'ariful84', shop: 'all' },
+        konok: { name: 'Konok Chapa', label: 'Lovebirds', code: 'konok54', shop: 'lb' }
+      };
+      var currentUser = null; // 'owner' | 'konok'
+      function applyRole(){
+        var isKonok = currentUser === 'konok';
+        if (!isKonok) return;
+        currentShop = 'lb';
+        var tb = document.querySelector('.topbar'); if (tb) tb.style.display = 'none';
+        var kc = el('kpi-card-kss'); if (kc) kc.style.display = 'none';
+        var ab = el('alerts-block'); if (ab) ab.style.display = 'none';
+        var wk = el('weekly-card'); if (wk) wk.style.display = 'none';
+        var sr = el('shoprow-kss'); if (sr) sr.style.display = 'none';
+        var sw = el('shoprow-ws'); if (sw) sw.style.display = 'none';
+        var pd = el('pos-details'); if (pd) pd.style.display = 'none';
+        var bell = el('pos-bell'); if (bell) bell.style.display = 'none';
+        var ol = el('pos-owner-line'); if (ol) ol.textContent = 'Konok Chapa · Lovebirds';
+        document.querySelectorAll('.pos-q[data-focus="fb-expense"], .pos-q[data-focus="fb-monthly"], .pos-q[data-focus="fb-loyalty"], .pos-q[data-site]').forEach(function(b){ b.style.display = 'none'; });
+      }
+      function restoreSession(){
+        var ok = false;
+        try { var u = localStorage.getItem('kssAppUser'); if (u && APP_USERS[u]) { currentUser = u; ok = true; } } catch(e){}
+        window.__hisabLoggedIn = ok;
+        document.body.classList.toggle('logged-in', ok);
+        var ls = el('login-screen'); if (ls) ls.style.display = ok ? 'none' : '';
+        if (ok) applyRole();
+        return ok;
+      }
+      (function(){
+        var sel = null;
+        var scr = el('login-screen');
+        if (!scr) return;
+        document.querySelectorAll('.login-user').forEach(function(b){
+          b.addEventListener('click', function(){
+            sel = b.getAttribute('data-user');
+            document.querySelectorAll('.login-user').forEach(function(x){ x.classList.toggle('sel', x === b); });
+            el('login-code').focus();
+            el('login-err').textContent = '';
+          });
+        });
+        function tryLogin(){
+          var code = (el('login-code').value || '').trim();
+          if (!sel) { el('login-err').textContent = 'আগে একজন বাছুন।'; return; }
+          if (code === APP_USERS[sel].code) {
+            try { localStorage.setItem('kssAppUser', sel); } catch(e){}
+            location.reload();
+          } else {
+            el('login-err').textContent = 'ভুল কোড — আবার চেষ্টা করুন।';
+            el('login-code').value = '';
+            el('login-code').focus();
+          }
+        }
+        el('login-go').addEventListener('click', tryLogin);
+        el('login-code').addEventListener('keydown', function(e){ if (e.key === 'Enter') tryLogin(); });
+        var lo = el('pos-logout');
+        if (lo) lo.addEventListener('click', function(){ try { localStorage.removeItem('kssAppUser'); } catch(e){} location.reload(); });
+        restoreSession();
+      })();
+
+
       function statusOf(p){
         if (p.stock <= 0) return (p.open > 0) ? { key:'out', label:'স্টক আউট', cls:'out' } : { key:'none', label:'স্টক নেই', cls:'paid' };
         if (p.stock <= 3) return { key:'low', label:'কম স্টক', cls:'low' };
@@ -1900,7 +2000,7 @@
       function renderDeliveries(){
         el('delivery-heading').textContent = 'আজকের পাঠাও পিকআপ — ' + fmtDate(TODAY_ISO);
         var list = el('delivery-list'); list.innerHTML = '';
-        var todays = deliveries.filter(function(dv){ return dv.d === TODAY_ISO; });
+        var todays = deliveries.filter(function(dv){ return dv.d === TODAY_ISO && (currentShop === 'all' || dv.shop === currentShop); });
         if (!todays.length){ list.innerHTML = '<p class="muted">আজ এখনো কোনো পিকআপ বুক হয়নি।</p>'; }
         todays.forEach(function(dv, i){
           var d = document.createElement('div'); d.className = 'row-item';
@@ -2320,6 +2420,7 @@
           document.querySelectorAll('.fblock.fkeep').forEach(function(b){ b.classList.remove('fkeep'); });
         }
         function focusBlock(id){
+          if (currentUser === 'konok' && (id === 'fb-expense' || id === 'fb-monthly' || id === 'fb-loyalty')) return;
           clearFocus();
           var b = el(id); if(!b) return;
           var panel = b.closest('section.panel'); if(!panel) return;
@@ -2718,6 +2819,7 @@
       })();
 
       /* ---------- init ---------- */
+      if (window.__hisabLoggedIn) {
       renderStock();
       renderTransfers();
       rebuildTransferProducts();
@@ -2727,6 +2829,7 @@
       renderExpenses();
       renderReorder(); renderExpSoon(); renderCustomers();
       refreshTotals();
+      }
     </script>
   </body>
 </html>
