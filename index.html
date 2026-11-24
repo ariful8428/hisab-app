@@ -145,6 +145,15 @@
 .pos-q .pos-ic-box{width:56px;height:56px;border-radius:50%}
 .pos-q span{font-size:13.5px;font-weight:700;text-align:center;line-height:1.25}
 @media(min-width:760px){.pos-stats{grid-template-columns:repeat(4,1fr)}.pos-quick{grid-template-columns:repeat(6,1fr)}}
+.pos-stat>div{min-width:0}
+.pos-stat-value{overflow-wrap:break-word}
+.pos-shop h1{overflow-wrap:break-word}
+@media(max-width:400px){
+  .pos-stat{padding:10px;gap:8px}
+  .pos-stat .pos-ic-box{width:40px;height:40px;border-radius:12px}
+  .pos-stat .pos-ic-box svg{width:20px;height:20px}
+  .pos-stat-value{font-size:18px}
+}
 .kpi.hero{grid-column:1/-1;background:linear-gradient(135deg,#f06595,#c2255c);border:none;color:#fff;padding:20px 18px 18px;box-shadow:0 6px 20px rgba(194,37,92,.35)}
 .kpi.hero .label{color:#ffd6e3}
 .kpi.hero .value{font-size:34px;color:#fff;line-height:1.15}
