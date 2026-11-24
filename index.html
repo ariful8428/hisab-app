@@ -95,7 +95,7 @@
       .kpi.hot .value{color:var(--brand)}
       .kpi.warnk .value{color:var(--warn)}
 /* ---- POS-style dashboard (purple header, analytics, quick menu) ---- */
-.pos-head{background:linear-gradient(135deg,#6a1b9a,#8e24aa 55%,#ab47bc);border-radius:0 0 26px 26px;padding:20px 18px 24px;color:#fff;margin:-16px -14px 18px;box-shadow:0 8px 22px rgba(106,27,154,.30)}
+.pos-head{background:linear-gradient(135deg,#6a1b9a,#8e24aa 55%,#ab47bc);border-radius:0 0 26px 26px;padding:20px 18px 24px;color:#fff;margin:0;box-shadow:0 8px 22px rgba(106,27,154,.30)}
 .pos-head-top{display:flex;align-items:center;gap:14px}
 .pos-logo{width:56px;height:56px;border-radius:50%;border:3px solid rgba(255,255,255,.85);object-fit:cover;flex:0 0 auto;background:#ffd600}
 .pos-shop{flex:1;min-width:0}
@@ -333,6 +333,20 @@
     </style>
   </head>
   <body>
+    <div class="pos-head">
+          <div class="pos-head-top">
+            <img class="pos-logo" src="logo.png" alt="Korean Skin Care Shop logo" />
+            <div class="pos-shop">
+              <h1>Korean Skin Care Shop</h1>
+              <p>Shop Owner</p>
+            </div>
+            <div class="pos-head-btns">
+              <button type="button" class="pos-ic" id="pos-bell" aria-label="সতর্কতা দেখুন"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+              <button type="button" class="pos-ic" id="pos-share" aria-label="অ্যাপ শেয়ার করুন"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+            </div>
+          </div>
+        </div>
+
 
     <div class="topbar">
       <div class="wrap">
@@ -357,19 +371,7 @@
         <button type="button" class="focus-back fkeep">← ড্যাশবোর্ডে ফিরুন</button>
 
         <!-- ===== ফোনে অ্যাপ হিসেবে বসান ===== -->
-        <div class="pos-head">
-          <div class="pos-head-top">
-            <img class="pos-logo" src="logo.png" alt="Korean Skin Care Shop logo" />
-            <div class="pos-shop">
-              <h1>Korean Skin Care Shop</h1>
-              <p>Shop Owner</p>
-            </div>
-            <div class="pos-head-btns">
-              <button type="button" class="pos-ic" id="pos-bell" aria-label="সতর্কতা দেখুন"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
-              <button type="button" class="pos-ic" id="pos-share" aria-label="অ্যাপ শেয়ার করুন"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
-            </div>
-          </div>
-        </div>
+        
 
         <div class="pos-sec"><h2>আজকের হিসাব</h2><button type="button" class="pos-details" id="pos-details">বিস্তারিত ›</button></div>
         <div class="pos-stats">
@@ -2343,6 +2345,7 @@
         document.querySelectorAll('.focus-back').forEach(function(b){ b.addEventListener('click', function(){ clearFocus(); window.scrollTo({ top:0 }); }); });
         el('pos-details').addEventListener('click', function(){ focusBlock('fb-monthly'); });
         el('pos-bell').addEventListener('click', function(){
+          clearFocus();
           var a = document.querySelector('.alert');
           if (a) a.scrollIntoView({behavior:'smooth', block:'center'});
         });
