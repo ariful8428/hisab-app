@@ -605,28 +605,28 @@
           <h3 class="sub" style="margin-top:0">নতুন ট্রান্সফার</h3>
           <form class="op" id="transfer-form">
             <label class="f">তারিখ
-              <input type="date" id="tf-date" />
+              <input type="date" id="tr-date" />
             </label>
             <label class="f">থেকে (দোকান)
-              <select id="tf-from">
+              <select id="tr-from">
                 <option value="kss">KSS (খুচরা)</option>
                 <option value="lb">Lovebirds</option>
               </select>
             </label>
             <label class="f full">পণ্য
-              <select id="tf-product"></select>
+              <select id="tr-product"></select>
             </label>
             <label class="f">পরিমাণ (পিস)
-              <input type="number" id="tf-qty" value="1" min="1" step="1" inputmode="numeric" />
+              <input type="number" id="tr-qty" value="1" min="1" step="1" inputmode="numeric" />
             </label>
             <label class="f">যাবে (দোকান)
-              <input type="text" id="tf-to-label" readonly value="Lovebirds" />
+              <input type="text" id="tr-to-label" readonly value="Lovebirds" />
             </label>
             <label class="f full">নোট (ঐচ্ছিক)
-              <input type="text" id="tf-note" placeholder="যেমন: Low expiry batch" autocomplete="off" />
+              <input type="text" id="tr-note" placeholder="যেমন: Low expiry batch" autocomplete="off" />
             </label>
             <div class="full">
-              <p class="form-msg" id="tf-msg" role="status"></p>
+              <p class="form-msg" id="tr-msg" role="status"></p>
               <button type="submit" class="btn">ট্রান্সফার করুন — স্টক অটো বদলাবে</button>
             </div>
           </form>
@@ -635,8 +635,8 @@
         <div class="card">
           <h3 class="sub" style="margin-top:0">ট্রান্সফারের হিসাব <span class="muted" id="transfer-count"></span></h3>
           <div class="stock-tools">
-            <input type="search" id="tf-search" placeholder="পণ্যের নাম খুঁজুন… যেমন: Rice Toner" aria-label="ট্রান্সফার খুঁজুন" />
-            <select id="tf-filter" aria-label="দিক অনুযায়ী ফিল্টার">
+            <input type="search" id="tr-search" placeholder="পণ্যের নাম খুঁজুন… যেমন: Rice Toner" aria-label="ট্রান্সফার খুঁজুন" />
+            <select id="tr-filter" aria-label="দিক অনুযায়ী ফিল্টার">
               <option value="all">সব ট্রান্সফার</option>
               <option value="kss-lb">KSS → Lovebirds</option>
               <option value="lb-kss">Lovebirds → KSS</option>
@@ -1856,7 +1856,7 @@
       }
 
       function fillProductSelects(){
-        ['sf-product','tf-product'].forEach(function(id){
+        ['sf-product','tf-product','tr-product'].forEach(function(id){
           var sel = el(id); if (!sel) return;
           var cur = sel.value;
           sel.innerHTML = '';
@@ -1873,8 +1873,8 @@
 
       /* ---------- transfers: sheet Transfer Log (date, product, qty, from -> to) ---------- */
       function renderTransfers(){
-        var q = ((el('tf-search') && el('tf-search').value) || '').toLowerCase();
-        var f = el('tf-filter') ? el('tf-filter').value : 'all';
+        var q = ((el('tr-search') && el('tr-search').value) || '').toLowerCase();
+        var f = el('tr-filter') ? el('tr-filter').value : 'all';
         var list = el('transfer-list'); if (!list) return; list.innerHTML = '';
         var rows = transfers.filter(function(t){
           if (q && t.name.toLowerCase().indexOf(q) === -1) return false;
@@ -1895,31 +1895,31 @@
         el('transfer-count').textContent = '· মোট ' + bn(transfers.length) + 'টি';
       }
       function syncTransferTo(){
-        var from = el('tf-from').value;
-        el('tf-to-label').value = SHOPNAME[from === 'kss' ? 'lb' : 'kss'];
+        var from = el('tr-from').value;
+        el('tr-to-label').value = SHOPNAME[from === 'kss' ? 'lb' : 'kss'];
       }
       (function(){
         var _t = new Date();
         var iso = _t.getFullYear() + '-' + String(_t.getMonth()+1).padStart(2,'0') + '-' + String(_t.getDate()).padStart(2,'0');
-        if (el('tf-date')) el('tf-date').value = iso;
-        if (el('tf-from')) el('tf-from').addEventListener('change', syncTransferTo);
-        if (el('tf-product')) el('tf-product').addEventListener('change', function(){
-          var pid = +el('tf-product').value;
+        if (el('tr-date')) el('tr-date').value = iso;
+        if (el('tr-from')) el('tr-from').addEventListener('change', syncTransferTo);
+        if (el('tr-product')) el('tr-product').addEventListener('change', function(){
+          var pid = +el('tr-product').value;
           var p = products.filter(function(x){ return x.id === pid; })[0];
-          if (p){ el('tf-from').value = p.shop; syncTransferTo(); }
+          if (p){ el('tr-from').value = p.shop; syncTransferTo(); }
         });
-        if (el('tf-search')) el('tf-search').addEventListener('input', renderTransfers);
-        if (el('tf-filter')) el('tf-filter').addEventListener('change', renderTransfers);
+        if (el('tr-search')) el('tr-search').addEventListener('input', renderTransfers);
+        if (el('tr-filter')) el('tr-filter').addEventListener('change', renderTransfers);
         var form = el('transfer-form');
         if (form) form.addEventListener('submit', function(ev){
           ev.preventDefault();
-          var msg = el('tf-msg');
-          var pid = +el('tf-product').value;
+          var msg = el('tr-msg');
+          var pid = +el('tr-product').value;
           var src = products.filter(function(x){ return x.id === pid; })[0];
-          var from = el('tf-from').value;
-          var date = el('tf-date').value || iso;
-          var qty = parseInt(el('tf-qty').value, 10) || 0;
-          var note = el('tf-note').value.trim();
+          var from = el('tr-from').value;
+          var date = el('tr-date').value || iso;
+          var qty = parseInt(el('tr-qty').value, 10) || 0;
+          var note = el('tr-note').value.trim();
           if (!src){ msg.textContent = 'পণ্য বেছে নিন।'; return; }
           if (src.shop !== from){
             var alt = products.filter(function(x){ return x.name === src.name && x.shop === from; })[0];
@@ -1938,7 +1938,7 @@
           transfers.unshift({ d: date, name: src.name, qty: qty, from: from, to: to, note: note });
           renderTransfers(); renderStock(); refreshTotals();
           msg.textContent = 'ট্রান্সফার হয়েছে ✓ ' + src.name + ' — ' + bn(qty) + ' পিস ' + SHOPNAME[from] + ' → ' + SHOPNAME[to] + '।';
-          el('tf-qty').value = '1'; el('tf-note').value = '';
+          el('tr-qty').value = '1'; el('tr-note').value = '';
         });
         syncTransferTo();
       })();
