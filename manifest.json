@@ -29,11 +29,11 @@
   ],
   "id": "./",
   "lang": "bn",
-  "name": "হিসাব অ্যাপ — Korean Skin Care Shop",
+  "name": "Korean Skin Care Shop — হিসাব অ্যাপ",
   "orientation": "portrait",
   "prefer_related_applications": false,
   "scope": "./",
-  "short_name": "হিসাব অ্যাপ",
+  "short_name": "KSS হিসাব",
   "start_url": "./",
   "theme_color": "#084c38"
 }
