@@ -340,8 +340,9 @@
         <p class="login-sub">Korean Skin Care Shop — হিসাব অ্যাপ</p>
         <p class="login-hint">কে ঢুকছেন, বাছুন — তারপর কোড দিন</p>
         <div class="login-users">
-          <button type="button" class="login-user" data-user="owner"><span class="login-name">Ariful Islam</span><span class="login-role">মালিক · সব দোকান</span></button>
-          <button type="button" class="login-user" data-user="konok"><span class="login-name">Konok Chapa</span><span class="login-role">Lovebirds</span></button>
+          <button type="button" class="login-user" data-user="owner"><span class="login-name">Ariful Islam</span></button>
+          <button type="button" class="login-user" data-user="rashid"><span class="login-name">Rashidul Islam</span></button>
+          <button type="button" class="login-user" data-user="konok"><span class="login-name">Konok Chapa</span></button>
         </div>
         <input id="login-code" type="password" inputmode="text" autocomplete="off" placeholder="কোড লিখুন" />
         <p class="login-err" id="login-err"></p>
@@ -365,7 +366,7 @@
       #login-code{width:100%;box-sizing:border-box;margin-bottom:8px;padding:12px 14px;font-size:17px;border:1.5px solid var(--line);border-radius:11px;background:var(--surface);color:var(--ink);text-align:center;letter-spacing:2px}
       .login-err{color:var(--danger);font-weight:600;min-height:22px;margin:0 0 8px}
     </style>
-    <script>try{var __u=localStorage.getItem('kssAppUser');if(__u==='owner'||__u==='konok'){document.body.classList.add('logged-in');var __ls=document.getElementById('login-screen');if(__ls)__ls.style.display='none';}}catch(e){}</script>
+    <script>try{var __u=localStorage.getItem('kssAppUser');if(__u==='owner'||__u==='rashid'||__u==='konok'){document.body.classList.add('logged-in');var __ls=document.getElementById('login-screen');if(__ls)__ls.style.display='none';}}catch(e){}</script>
     <div class="pos-head">
           <div class="pos-head-top">
             <img class="pos-logo" src="logo.png" alt="Korean Skin Care Shop logo" />
@@ -404,8 +405,8 @@
         <!-- ===== ফোনে অ্যাপ হিসেবে বসান ===== -->
         
 
-        <div class="pos-sec"><h2>আজকের হিসাব</h2><button type="button" class="pos-details" id="pos-details">বিস্তারিত ›</button></div>
-        <div class="pos-stats">
+        <div class="pos-sec" id="today-sec"><h2>আজকের হিসাব</h2><button type="button" class="pos-details" id="pos-details">বিস্তারিত ›</button></div>
+        <div class="pos-stats" id="pos-stats">
           <div class="pos-stat"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><div><p class="pos-stat-label" id="kpi-today-label">আজ — ২৪ নভেম্বর</p><p class="pos-stat-value" id="kpi-today">৳৯,১২০</p><p class="pos-stat-note" id="kpi-today-note">৫টি অর্ডার</p></div></div>
           <div class="pos-stat"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 11h-13z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg></span><div><p class="pos-stat-label">মাসের মোট বিক্রি</p><p class="pos-stat-value" id="kpi-month">৳৪,৬২,৩২৭</p><p class="pos-stat-note" id="kpi-month-note">২০৭টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া</p></div></div>
           <div class="pos-stat" id="kpi-card-kss"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/></svg></span><div><p class="pos-stat-label">KSS — নভেম্বর</p><p class="pos-stat-value" id="kpi-kss">৳৩,২৬,১১৭</p><p class="pos-stat-note">১১৭টি অর্ডার</p></div></div>
@@ -464,7 +465,7 @@
             <p class="muted" style="margin-top:10px">সবচেয়ে বেশি বিক্রির দিন: <strong>১৯ নভেম্বর — ৳৭০,৯৮০ (৩৪টি অর্ডার)</strong>, যেদিন Lovebirds-এ ৳৪৬,৩৫০ বিক্রি হয়েছিল। প্রতিদিনের আলাদা হিসাব “বিক্রি” অংশে আছে।</p>
           </div>
 
-          <div class="card">
+          <div class="card" id="shop-status-card">
             <h3 class="sub" style="margin-top:0">দোকানভেদে অবস্থা</h3>
             <div class="row-item" id="shoprow-kss"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,২৬,১১৭</span><small id="sum-kss-today">১১৭টি অর্ডার · আজ ৳৯,১২০</small></div></div>
             <div class="row-item"><div class="main"><div class="name">Lovebirds Korean Cosmetics</div><div class="meta">খুচরা · আলাদা স্টক শিট</div></div><div class="amt">মাসে ৳১,৩৬,২১০<small>৯০টি অর্ডার · শেষ বিক্রি ২০ নভে.</small></div></div>
@@ -1862,29 +1863,28 @@
       var expenses = [];
       var currentShop = 'all';
 
-      /* ---------- LOGIN — Ariful (মালিক) + Konok (Lovebirds) ----------
+      /* ---------- LOGIN — Ariful + Rashidul + Konok ----------
          Code-lock only: this is a static page, so the codes live in this file.
          A logged-in user stays logged in on that device (localStorage) until logout.
          DO NOT remove this block during data refreshes. */
       var APP_USERS = {
-        owner: { name: 'Ariful Islam', label: 'মালিক · সব দোকান', code: 'ariful84', shop: 'all' },
-        konok: { name: 'Konok Chapa', label: 'Lovebirds', code: 'konok54', shop: 'lb' }
+        owner: { name: 'Ariful Islam', code: 'ariful84', shop: 'all' },
+        rashid: { name: 'Rashidul Islam', code: 'rashidbdkr', shop: 'all' },
+        konok: { name: 'Konok Chapa', code: 'konok54', shop: 'lb' }
       };
       var currentUser = null; // 'owner' | 'konok'
       function applyRole(){
+        var ol = el('pos-owner-line'); if (ol && currentUser && APP_USERS[currentUser]) ol.textContent = APP_USERS[currentUser].name;
         var isKonok = currentUser === 'konok';
         if (!isKonok) return;
-        currentShop = 'lb';
-        var tb = document.querySelector('.topbar'); if (tb) tb.style.display = 'none';
-        var kc = el('kpi-card-kss'); if (kc) kc.style.display = 'none';
+        var ts = el('today-sec'); if (ts) ts.style.display = 'none';
+        var ps = el('pos-stats'); if (ps) ps.style.display = 'none';
         var ab = el('alerts-block'); if (ab) ab.style.display = 'none';
         var wk = el('weekly-card'); if (wk) wk.style.display = 'none';
-        var sr = el('shoprow-kss'); if (sr) sr.style.display = 'none';
-        var sw = el('shoprow-ws'); if (sw) sw.style.display = 'none';
+        var sc = el('shop-status-card'); if (sc) sc.style.display = 'none';
         var pd = el('pos-details'); if (pd) pd.style.display = 'none';
         var bell = el('pos-bell'); if (bell) bell.style.display = 'none';
-        var ol = el('pos-owner-line'); if (ol) ol.textContent = 'Konok Chapa · Lovebirds';
-        document.querySelectorAll('.pos-q[data-focus="fb-expense"], .pos-q[data-focus="fb-monthly"], .pos-q[data-focus="fb-loyalty"], .pos-q[data-site]').forEach(function(b){ b.style.display = 'none'; });
+        document.querySelectorAll('.pos-q[data-focus="fb-sale-form"], .pos-q[data-focus="fb-sales-list"], .pos-q[data-focus="fb-delivery"], .pos-q[data-focus="fb-customers"], .pos-q[data-focus="fb-expense"], .pos-q[data-focus="fb-monthly"], .pos-q[data-focus="fb-loyalty"], .pos-q[data-site]').forEach(function(b){ b.style.display = 'none'; });
       }
       function restoreSession(){
         var ok = false;
@@ -2420,7 +2420,7 @@
           document.querySelectorAll('.fblock.fkeep').forEach(function(b){ b.classList.remove('fkeep'); });
         }
         function focusBlock(id){
-          if (currentUser === 'konok' && (id === 'fb-expense' || id === 'fb-monthly' || id === 'fb-loyalty')) return;
+          if (currentUser === 'konok' && (id === 'fb-sale-form' || id === 'fb-sales-list' || id === 'fb-delivery' || id === 'fb-customers' || id === 'fb-expense' || id === 'fb-monthly' || id === 'fb-loyalty')) return;
           clearFocus();
           var b = el(id); if(!b) return;
           var panel = b.closest('section.panel'); if(!panel) return;
