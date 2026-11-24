@@ -1877,6 +1877,8 @@
         var isKonok = currentUser === 'konok';
         if (!isKonok) return;
         /* Konok: Lovebirds sob + KSS sudhu stock — KSS sale/money kichu na */
+        var pl = document.querySelector('.pos-logo'); if (pl) { pl.src = 'lovebirds-logo.jpg'; pl.alt = 'Lovebirds logo'; }
+        var ph1 = document.querySelector('.pos-shop h1'); if (ph1) ph1.textContent = 'Lovebirds Korean Cosmetics';
         var kc = el('kpi-card-kss'); if (kc) kc.style.display = 'none';
         var wk = el('weekly-card'); if (wk) wk.style.display = 'none';
         var sc = el('shop-status-card'); if (sc) sc.style.display = 'none';
