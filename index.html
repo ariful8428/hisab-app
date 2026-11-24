@@ -2,7 +2,7 @@
 <html lang="bn">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#9d174d" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -31,12 +31,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root{
-        --bg:#fdf3f6;
+        --bg:#ffffff;
         --surface:#ffffff;
-        --surface2:#fbe7ee;
-        --ink:#2b1a20;
-        --ink2:#7a5a66;
-        --line:#f0d4dd;
+        --surface2:#f4f4f6;
+        --ink:#1f1f24;
+        --ink2:#6b6b76;
+        --line:#e9e9ee;
         --brand:#c2255c;
         --brand-dark:#9d174d;
         --brand-soft:#fde8ef;
@@ -75,6 +75,7 @@
       }
       *{box-sizing:border-box}
       html{-webkit-text-size-adjust:100%}
+      html,body{overflow-x:clip}
       body{
         margin:0;background:var(--bg);color:var(--ink);
         font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
