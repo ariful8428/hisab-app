@@ -115,6 +115,35 @@
       .kpi .note{font-size:12.5px;color:var(--ink2);margin:1px 0 0}
       .kpi.hot .value{color:var(--brand)}
       .kpi.warnk .value{color:var(--warn)}
+/* ---- POS-style dashboard (purple header, analytics, quick menu) ---- */
+.pos-head{background:linear-gradient(135deg,#6a1b9a,#8e24aa 55%,#ab47bc);border-radius:0 0 26px 26px;padding:20px 18px 24px;color:#fff;margin:-16px -14px 18px;box-shadow:0 8px 22px rgba(106,27,154,.30)}
+.pos-head-top{display:flex;align-items:center;gap:14px}
+.pos-logo{width:56px;height:56px;border-radius:50%;border:3px solid rgba(255,255,255,.85);object-fit:cover;flex:0 0 auto;background:#ffd600}
+.pos-shop{flex:1;min-width:0}
+.pos-shop h1{font-size:24px;line-height:1.15;margin:0;font-weight:800;color:#fff}
+.pos-shop p{margin:3px 0 0;color:#f3e5f5;font-size:15px}
+.pos-head-btns{display:flex;gap:10px;flex:0 0 auto}
+.pos-ic{width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.22);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.pos-ic svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pos-sec{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:20px 0 10px}
+.pos-sec h2{font-size:20px;margin:0}
+.pos-details{background:none;border:none;color:var(--brand);font:inherit;font-size:15px;font-weight:700;cursor:pointer;padding:4px 0}
+.pos-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pos-stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--shadow)}
+.pos-ic-box{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.pos-ic-box svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pos-ic-box.blue{background:#e3f0ff;color:#2563eb}
+.pos-ic-box.orange{background:#ffedd5;color:#ea580c}
+.pos-ic-box.green{background:#dcfce7;color:#16a34a}
+.pos-ic-box.red{background:#fee2e2;color:#dc2626}
+.pos-stat-label{font-size:13px;color:var(--ink2);font-weight:600;margin:0}
+.pos-stat-value{font-size:22px;font-weight:800;margin:1px 0 0;line-height:1.2}
+.pos-stat-note{font-size:12.5px;color:var(--ink2);margin:1px 0 0}
+.pos-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pos-q{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 6px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--shadow);font:inherit;color:var(--ink)}
+.pos-q .pos-ic-box{width:56px;height:56px;border-radius:50%}
+.pos-q span{font-size:13.5px;font-weight:700;text-align:center;line-height:1.25}
+@media(min-width:760px){.pos-stats{grid-template-columns:repeat(4,1fr)}.pos-quick{grid-template-columns:repeat(6,1fr)}}
 .kpi.hero{grid-column:1/-1;background:linear-gradient(135deg,#f06595,#c2255c);border:none;color:#fff;padding:20px 18px 18px;box-shadow:0 6px 20px rgba(194,37,92,.35)}
 .kpi.hero .label{color:#ffd6e3}
 .kpi.hero .value{font-size:34px;color:#fff;line-height:1.15}
@@ -355,7 +384,87 @@
       <section class="panel active" id="panel-dash" aria-label="ড্যাশবোর্ড">
 
         <!-- ===== ফোনে অ্যাপ হিসেবে বসান ===== -->
-        <div class="install-card" id="install-card">
+        <div class="pos-head">
+          <div class="pos-head-top">
+            <img class="pos-logo" src="logo.png" alt="Korean Skin Care Shop logo" />
+            <div class="pos-shop">
+              <h1>Korean Skin Care Shop</h1>
+              <p>Shop Owner</p>
+            </div>
+            <div class="pos-head-btns">
+              <button type="button" class="pos-ic" id="pos-bell" aria-label="সতর্কতা দেখুন"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+              <button type="button" class="pos-ic" id="pos-share" aria-label="অ্যাপ শেয়ার করুন"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pos-sec"><h2>আজকের হিসাব</h2><button type="button" class="pos-details" id="pos-details">বিস্তারিত ›</button></div>
+        <div class="pos-stats">
+          <div class="pos-stat"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><div><p class="pos-stat-label" id="kpi-today-label">আজ — ২৪ নভেম্বর</p><p class="pos-stat-value" id="kpi-today">৳৯,১২০</p><p class="pos-stat-note" id="kpi-today-note">৫টি অর্ডার</p></div></div>
+          <div class="pos-stat"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 11h-13z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg></span><div><p class="pos-stat-label">মাসের মোট বিক্রি</p><p class="pos-stat-value" id="kpi-month">৳৪,৬২,৩২৭</p><p class="pos-stat-note" id="kpi-month-note">২০৭টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া</p></div></div>
+          <div class="pos-stat"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/></svg></span><div><p class="pos-stat-label">KSS — নভেম্বর</p><p class="pos-stat-value" id="kpi-kss">৳৩,২৪,২৬৭</p><p class="pos-stat-note">১১৬টি অর্ডার</p></div></div>
+          <div class="pos-stat"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 4.5 2.5C12 6 13.5 5 15.5 5 19 5 21 8.5 20.5 12c-1 4.3-8.5 9-8.5 9z"/></svg></span><div><p class="pos-stat-label">Lovebirds — নভেম্বর</p><p class="pos-stat-value" id="kpi-lb">৳১,৩৮,০৬০</p><p class="pos-stat-note">৯১টি অর্ডার</p></div></div>
+        </div>
+
+        <div class="pos-sec"><h2>দ্রুত মেনু</h2></div>
+        <div class="pos-quick">
+          <button type="button" class="pos-q" data-go="sales" data-scroll="sale-form"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M3 3h2l2.5 12h10L21 7H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></span><span>বিক্রি</span></button>
+          <button type="button" class="pos-q" data-go="sales"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg></span><span>বিক্রির তালিকা</span></button>
+          <button type="button" class="pos-q" data-go="stock" data-scroll="np-form"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg></span><span>নতুন পণ্য</span></button>
+          <button type="button" class="pos-q" data-go="stock"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span><span>স্টক</span></button>
+          <button type="button" class="pos-q" data-go="stock" data-scroll="reorder-card"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4a3 3 0 0 1 6 0M9 12l2 2 4-4"/></svg></span><span>কিনতে হবে</span></button>
+          <button type="button" class="pos-q" data-go="delivery"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg></span><span>ডেলিভারি</span></button>
+          <button type="button" class="pos-q" data-go="report" data-scroll="customer-card"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5 6.5-5s5.7 1.5 6.5 5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M17.5 15.5c2 .6 3.5 2 4 4.5"/></svg></span><span>কাস্টমার</span></button>
+          <button type="button" class="pos-q" data-go="report" data-scroll="expense-form"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/></svg></span><span>খরচ</span></button>
+          <button type="button" class="pos-q" data-go="report"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M5 20V10M11 20V4M17 20v-8M3 20h18"/></svg></span><span>রিপোর্ট</span></button>
+          <button type="button" class="pos-q" data-site="https://koreasourcebd.com"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M4 9l1-5h14l1 5M4 9v11h18V9M4 9h18M9 20v-6h6v6"/></svg></span><span>পাইকারি</span></button>
+          <button type="button" class="pos-q" data-go="report" data-scroll="loyalty-card"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8z"/></svg></span><span>লয়্যালটি</span></button>
+          <button type="button" class="pos-q" data-go="stock" data-scroll="expiry-list"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span>মেয়াদ</span></button>
+        </div>
+
+        <h3 class="sub">সতর্কতা</h3>
+        <div class="alert danger">
+          <span class="dot"></span>
+          <p><strong>স্টক আউট:</strong> COSRX Salicylic Acid Cleanser 150ml — KSS স্টক ০ (২৩ নভেম্বর)। পাইকারি সাইটে মোট <strong>২৭টি পণ্য</strong> স্টক আউট (মোট ১৫৬টির মধ্যে)।</p>
+        </div>
+        <div class="alert warn">
+          <span class="dot"></span>
+          <p><strong>মেয়াদ শেষ:</strong> Anua Probiotics 10ml-এর মেয়াদ শেষ হয়েছে ২৮ অক্টোবর ২০২৬ — বিক্রির আগে যাচাই করা দরকার।</p>
+        </div>
+        <div class="alert warn">
+          <span class="dot"></span>
+          <p><strong>মেয়াদ সবচেয়ে কাছে:</strong> Time Revolution Night Repair set (Lovebirds) — মেয়াদ শেষ <strong>২৮ নভেম্বর ২০২৬</strong>; এরপর ৩ ডিসেম্বর দুটি পণ্য। শিট অনুযায়ী ৩০ দিনের মধ্যে ৩টি ও ৯০ দিনের মধ্যে ২৬টি পণ্যের মেয়াদ শেষ হবে — তারিখসহ পুরো তালিকা “স্টক” অংশে।</p>
+        </div>
+        <div class="alert warn">
+          <span class="dot"></span>
+          <p><strong>কম স্টক (৩ পিস বা কম):</strong> CARE:NEL Anti-Melasma Cica Serum-সহ কয়েকটি পণ্য — স্টক অংশে “কম স্টক” ফিল্টারে পুরো তালিকা দেখুন।</p>
+        </div>
+        <div class="alert ok">
+          <span class="dot"></span>
+          <p><strong>ফ্রি ডেলিভারি অফার চলছে:</strong> ৳৩,০০০+ অর্ডারে ডেলিভারি সম্পূর্ণ ফ্রি · ৳৫,০০০+ অর্ডারে ফ্রি শিট মাস্ক উপহার · Medicube TXA Capsule Cream থাকলেই ডেলিভারি ফ্রি।</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3 class="sub" style="margin-top:0">সপ্তাহ অনুযায়ী বিক্রি — নভেম্বর (KSS + Lovebirds)</h3>
+            <div class="bars" role="img" aria-label="বার চার্ট: ১ থেকে ৭ নভেম্বর ১,২৪,৮৩০ টাকা, ৮ থেকে ১৪ নভেম্বর ১,৪৩,৮৬৯ টাকা, ১৫ থেকে ২১ নভেম্বর ১,৭০,২৩৮ টাকা, ২২ থেকে ২৪ নভেম্বর ২৩,৩৯০ টাকা">
+              <div class="bar-col"><span class="bar-val">৳১,২৪,৮৩০</span><div class="bar dim" style="height:66%"></div><span class="bar-lab">১–৭ নভে. · ৬১ অর্ডার</span></div>
+              <div class="bar-col"><span class="bar-val">৳১,৪৩,৮৬৯</span><div class="bar dim" style="height:77%"></div><span class="bar-lab">৮–১৪ নভে. · ৬৩ অর্ডার</span></div>
+              <div class="bar-col"><span class="bar-val">৳১,৭০,২৩৮</span><div class="bar" style="height:92%"></div><span class="bar-lab">১৫–২১ নভে. · ৭০ অর্ডার</span></div>
+              <div class="bar-col"><span class="bar-val">৳২৩,৩৯০</span><div class="bar" style="height:13%"></div><span class="bar-lab">২২–২৪ নভে. · ১৩ অর্ডার</span></div>
+            </div>
+            <p class="muted" style="margin-top:10px">সবচেয়ে বেশি বিক্রির দিন: <strong>১৯ নভেম্বর — ৳৭০,৯৮০ (৩৪টি অর্ডার)</strong>, যেদিন Lovebirds-এ ৳৪৬,৩৫০ বিক্রি হয়েছিল। প্রতিদিনের আলাদা হিসাব “বিক্রি” অংশে আছে।</p>
+          </div>
+
+          <div class="card">
+            <h3 class="sub" style="margin-top:0">দোকানভেদে অবস্থা</h3>
+            <div class="row-item"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,২৪,২৬৭</span><small id="sum-kss-today">১১৬টি অর্ডার · আজ ৳৭,২৭০</small></div></div>
+            <div class="row-item"><div class="main"><div class="name">Lovebirds Korean Cosmetics</div><div class="meta">খুচরা · আলাদা স্টক শিট</div></div><div class="amt">মাসে ৳১,৩৮,০৬০<small>৯১টি অর্ডার · শেষ বিক্রি ২৪ নভে.</small></div></div>
+            <div class="row-item"><div class="main"><div class="name">পাইকারি — koreasourcebd.com</div><div class="meta">লগইন ছাড়া দাম দেখা যায় না · ন্যূনতম অর্ডার ৳৮,০০০ বা একই পণ্য ৩+ পিস</div></div><div class="amt">১৫৬টি পণ্য<small>২৭টি স্টক আউট</small></div></div>
+          </div>
+        </div>
+        
+      <div class="install-card" id="install-card">
           <div class="install-head">
             <span class="install-ic" aria-hidden="true">
               <svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>
@@ -411,72 +520,7 @@
           </div>
         </div>
 
-        <div class="kpis">
-          <div class="kpi hero">
-            <p class="label">নভেম্বর মোট বিক্রি (১–২৪ নভে.)</p>
-            <p class="value" id="kpi-month">৳৪,৬২,৩২৭</p>
-            <p class="note" id="kpi-month-note">২০৭টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া</p>
-          </div>
-          <div class="kpi">
-            <p class="label">KSS — নভেম্বর</p>
-            <p class="value" id="kpi-kss">৳৩,২৪,২৬৭</p>
-            <p class="note">১১৬টি অর্ডার</p>
-          </div>
-          <div class="kpi">
-            <p class="label">Lovebirds — নভেম্বর</p>
-            <p class="value" id="kpi-lb">৳১,৩৮,০৬০</p>
-            <p class="note">৯১টি অর্ডার</p>
-          </div>
-          <div class="kpi today">
-            <p class="label" id="kpi-today-label">আজ — ২৩ নভেম্বর</p>
-            <p class="value" id="kpi-today">৳৭,৩০০</p>
-            <p class="note" id="kpi-today-note">৪টি অর্ডার (KSS) · পিকআপ ব্যাচে COD বাকি ৳৯,৭৭০</p>
-          </div>
-        </div>
-
-        <h3 class="sub">সতর্কতা</h3>
-        <div class="alert danger">
-          <span class="dot"></span>
-          <p><strong>স্টক আউট:</strong> COSRX Salicylic Acid Cleanser 150ml — KSS স্টক ০ (২৩ নভেম্বর)। পাইকারি সাইটে মোট <strong>২৭টি পণ্য</strong> স্টক আউট (মোট ১৫৬টির মধ্যে)।</p>
-        </div>
-        <div class="alert warn">
-          <span class="dot"></span>
-          <p><strong>মেয়াদ শেষ:</strong> Anua Probiotics 10ml-এর মেয়াদ শেষ হয়েছে ২৮ অক্টোবর ২০২৬ — বিক্রির আগে যাচাই করা দরকার।</p>
-        </div>
-        <div class="alert warn">
-          <span class="dot"></span>
-          <p><strong>মেয়াদ সবচেয়ে কাছে:</strong> Time Revolution Night Repair set (Lovebirds) — মেয়াদ শেষ <strong>২৮ নভেম্বর ২০২৬</strong>; এরপর ৩ ডিসেম্বর দুটি পণ্য। শিট অনুযায়ী ৩০ দিনের মধ্যে ৩টি ও ৯০ দিনের মধ্যে ২৬টি পণ্যের মেয়াদ শেষ হবে — তারিখসহ পুরো তালিকা “স্টক” অংশে।</p>
-        </div>
-        <div class="alert warn">
-          <span class="dot"></span>
-          <p><strong>কম স্টক (৩ পিস বা কম):</strong> CARE:NEL Anti-Melasma Cica Serum-সহ কয়েকটি পণ্য — স্টক অংশে “কম স্টক” ফিল্টারে পুরো তালিকা দেখুন।</p>
-        </div>
-        <div class="alert ok">
-          <span class="dot"></span>
-          <p><strong>ফ্রি ডেলিভারি অফার চলছে:</strong> ৳৩,০০০+ অর্ডারে ডেলিভারি সম্পূর্ণ ফ্রি · ৳৫,০০০+ অর্ডারে ফ্রি শিট মাস্ক উপহার · Medicube TXA Capsule Cream থাকলেই ডেলিভারি ফ্রি।</p>
-        </div>
-
-        <div class="grid2">
-          <div class="card">
-            <h3 class="sub" style="margin-top:0">সপ্তাহ অনুযায়ী বিক্রি — নভেম্বর (KSS + Lovebirds)</h3>
-            <div class="bars" role="img" aria-label="বার চার্ট: ১ থেকে ৭ নভেম্বর ১,২৪,৮৩০ টাকা, ৮ থেকে ১৪ নভেম্বর ১,৪৩,৮৬৯ টাকা, ১৫ থেকে ২১ নভেম্বর ১,৭০,২৩৮ টাকা, ২২ থেকে ২৪ নভেম্বর ২৩,৩৯০ টাকা">
-              <div class="bar-col"><span class="bar-val">৳১,২৪,৮৩০</span><div class="bar dim" style="height:66%"></div><span class="bar-lab">১–৭ নভে. · ৬১ অর্ডার</span></div>
-              <div class="bar-col"><span class="bar-val">৳১,৪৩,৮৬৯</span><div class="bar dim" style="height:77%"></div><span class="bar-lab">৮–১৪ নভে. · ৬৩ অর্ডার</span></div>
-              <div class="bar-col"><span class="bar-val">৳১,৭০,২৩৮</span><div class="bar" style="height:92%"></div><span class="bar-lab">১৫–২১ নভে. · ৭০ অর্ডার</span></div>
-              <div class="bar-col"><span class="bar-val">৳২৩,৩৯০</span><div class="bar" style="height:13%"></div><span class="bar-lab">২২–২৪ নভে. · ১৩ অর্ডার</span></div>
-            </div>
-            <p class="muted" style="margin-top:10px">সবচেয়ে বেশি বিক্রির দিন: <strong>১৯ নভেম্বর — ৳৭০,৯৮০ (৩৪টি অর্ডার)</strong>, যেদিন Lovebirds-এ ৳৪৬,৩৫০ বিক্রি হয়েছিল। প্রতিদিনের আলাদা হিসাব “বিক্রি” অংশে আছে।</p>
-          </div>
-
-          <div class="card">
-            <h3 class="sub" style="margin-top:0">দোকানভেদে অবস্থা</h3>
-            <div class="row-item"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,২৪,২৬৭</span><small id="sum-kss-today">১১৬টি অর্ডার · আজ ৳৭,২৭০</small></div></div>
-            <div class="row-item"><div class="main"><div class="name">Lovebirds Korean Cosmetics</div><div class="meta">খুচরা · আলাদা স্টক শিট</div></div><div class="amt">মাসে ৳১,৩৮,০৬০<small>৯১টি অর্ডার · শেষ বিক্রি ২৪ নভে.</small></div></div>
-            <div class="row-item"><div class="main"><div class="name">পাইকারি — koreasourcebd.com</div><div class="meta">লগইন ছাড়া দাম দেখা যায় না · ন্যূনতম অর্ডার ৳৮,০০০ বা একই পণ্য ৩+ পিস</div></div><div class="amt">১৫৬টি পণ্য<small>২৭টি স্টক আউট</small></div></div>
-          </div>
-        </div>
-        
-      </section>
+        </section>
 
       <!-- ============ SALES ============ -->
       <section class="panel" id="panel-sales" aria-label="বিক্রি">
@@ -562,6 +606,16 @@
         <p class="muted" id="stock-empty" style="display:none;margin-top:10px">এই ফিল্টারে কোনো পণ্য পাওয়া যায়নি।</p>
         <p class="muted" style="margin-top:8px">মেয়াদের তারিখ স্টক শিটের Expiry কলাম থেকে নেওয়া। যেসব পণ্যের তারিখ শিটে লেখা নেই, সেখানে “শিটে তারিখ নেই” দেখাবে।</p>
 
+        <h3 class="sub" id="reorder-card">কিনতে হবে — কম স্টক ও স্টক আউট</h3>
+        <p class="muted" id="reorder-summary" style="margin:-4px 0 12px">লোড হচ্ছে…</p>
+        <div class="card">
+          <table class="stock" aria-label="কিনতে হবে এমন পণ্যের তালিকা">
+            <thead><tr><th>পণ্য</th><th>দোকান</th><th class="num">স্টক (পিস)</th><th class="num">বিক্রয় দাম</th><th>অবস্থা</th></tr></thead>
+            <tbody id="reorder-body"></tbody>
+          </table>
+          <p class="muted" id="reorder-empty" style="display:none;margin-top:10px">সব পণ্যের স্টক ঠিক আছে — এখন কিছু কিনতে হবে না।</p>
+        </div>
+
         <h3 class="sub">মেয়াদের পুরো তালিকা — শিট অনুযায়ী (আগে শেষ হবে এমন পণ্য আগে)</h3>
         <p class="muted" id="exp-summary" style="margin:-4px 0 12px">লোড হচ্ছে…</p>
         <div class="stock-tools">
@@ -597,6 +651,35 @@
           </form>
           <p class="muted" style="margin-top:10px">নিয়ম: পণ্যের আগের row থাকলে পরিমাণ সেই row-তেই যোগ হয় — নতুন row নয়।</p>
         </div>
+        <h3 class="sub">অপারেটর — নতুন পণ্য যোগ করুন</h3>
+        <div class="card">
+          <form class="op" id="np-form">
+            <label class="f full">পণ্যের নাম
+              <input type="text" id="np-name" placeholder="যেমন: Medicube Collagen Jelly Cream 110ml" required />
+            </label>
+            <label class="f">দোকান
+              <select id="np-shop"><option value="kss">KSS (খুচরা)</option><option value="lb">Lovebirds</option></select>
+            </label>
+            <label class="f">বিক্রয় দাম (৳)
+              <input type="number" id="np-price" min="0" step="1" inputmode="numeric" required />
+            </label>
+            <label class="f">কেনা দাম (৳) — ঐচ্ছিক
+              <input type="number" id="np-buy" min="0" step="1" inputmode="numeric" />
+            </label>
+            <label class="f">স্টক (পিস)
+              <input type="number" id="np-qty" value="1" min="0" step="1" inputmode="numeric" />
+            </label>
+            <label class="f">মেয়াদ শেষ (ঐচ্ছিক)
+              <input type="date" id="np-expiry" />
+            </label>
+            <div>
+              <p class="form-msg" id="np-msg" role="status"></p>
+              <button type="submit" class="btn">নতুন পণ্য যোগ করুন</button>
+            </div>
+            <p class="muted full">এই পণ্য শুধু এই অ্যাপে যোগ হবে — শিটে যাবে না। শিটে তুলতে আমাকে পণ্যের নাম, দাম আর সংখ্যা পাঠাবেন।</p>
+          </form>
+        </div>
+
       </section>
 
 
@@ -746,7 +829,20 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="customer-card">
+          <h3 class="sub" style="margin-top:0">কাস্টমার তালিকা — নভেম্বর ২০২৬</h3>
+          <p class="muted" id="customer-summary" style="margin:-4px 0 12px">লোড হচ্ছে…</p>
+          <div class="stock-tools">
+            <input type="search" id="cust-search" placeholder="কাস্টমার খুঁজুন (নাম লিখুন)" aria-label="কাস্টমার খুঁজুন" />
+          </div>
+          <table class="stock" aria-label="কাস্টমার তালিকা">
+            <thead><tr><th>কাস্টমার</th><th>এলাকা</th><th class="num">অর্ডার</th><th class="num">মোট (৳)</th></tr></thead>
+            <tbody id="customer-body"></tbody>
+          </table>
+          <p class="muted" style="margin-top:10px">একই নামের আলাদা কাস্টমার একসাথে ধরা হয়েছে (ফোন নম্বর অ্যাপে রাখা হয় না)।</p>
+        </div>
+
+        <div class="card" id="loyalty-card">
           <h3 class="sub" style="margin-top:0">লয়্যালটি স্ট্যাম্প কার্ড</h3>
           <ul class="rules">
             <li>প্রতি অর্ডারে <strong>১টি স্ট্যাম্প</strong> (ফোন নম্বর = কার্ড)। বাতিল/ফেরত অর্ডারে স্ট্যাম্প নয়।</li>
@@ -2028,7 +2124,54 @@
         return total;
       }
 
-      /* ---------- totals / dashboard ---------- */
+      /* ---------- reorder list (kinte hobe: stock 3 ba kom / stock out) ---------- */
+        function renderReorder(){
+          var body = el('reorder-body'); if (!body) return;
+          var rows = products.filter(function(p){
+            if (currentShop !== 'all' && p.shop !== currentShop) return false;
+            return p.open > 0 && p.stock <= 3;
+          }).sort(function(a,b){ return a.stock - b.stock || (a.name < b.name ? -1 : 1); });
+          body.innerHTML = '';
+          rows.forEach(function(p){
+            var st = statusOf(p);
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td><strong></strong></td><td></td><td class="num" data-l="স্টক"></td><td class="num" data-l="দাম"></td><td><span class="badge ' + st.cls + '">' + st.label + '</span></td>';
+            tr.children[0].querySelector('strong').textContent = p.name;
+            tr.children[1].textContent = SHOPNAME[p.shop];
+            tr.children[2].textContent = bn(p.stock) + ' পিস';
+            tr.children[3].textContent = money(p.price);
+            body.appendChild(tr);
+          });
+          el('reorder-empty').style.display = rows.length ? 'none' : 'block';
+          el('reorder-summary').textContent = rows.length ? bn(rows.length) + 'টি পণ্য কিনতে হবে — স্টক ৩ পিস বা কম / স্টক আউট।' : 'সব পণ্যের স্টক ঠিক আছে।';
+        }
+        /* ---------- customers list (name + city, from month sales) ---------- */
+        function renderCustomers(){
+          var body = el('customer-body'); if (!body) return;
+          var q = (el('cust-search').value || '').toLowerCase();
+          var map = {};
+          monthSales.forEach(function(s){
+            if (currentShop !== 'all' && s.s !== currentShop) return;
+            var key = s.c + '|' + (s.city || '');
+            if (!map[key]) map[key] = { name:s.c, city:s.city || '', n:0, t:0 };
+            map[key].n += 1; map[key].t += s.t;
+          });
+          var rows = Object.keys(map).map(function(k){ return map[k]; })
+            .filter(function(r){ return !q || r.name.toLowerCase().indexOf(q) !== -1; })
+            .sort(function(a,b){ return b.t - a.t; });
+          body.innerHTML = '';
+          rows.forEach(function(r){
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td><strong></strong></td><td></td><td class="num" data-l="অর্ডার"></td><td class="num" data-l="মোট"></td>';
+            tr.children[0].querySelector('strong').textContent = r.name;
+            tr.children[1].textContent = r.city;
+            tr.children[2].textContent = bn(r.n) + 'টি';
+            tr.children[3].textContent = money(r.t);
+            body.appendChild(tr);
+          });
+          el('customer-summary').textContent = bn(rows.length) + ' জন কাস্টমার · মোট ' + money(rows.reduce(function(a,r){ return a + r.t; }, 0)) + ' (নভেম্বর ২০২৬)';
+        }
+        /* ---------- totals / dashboard ---------- */
       function shopFilter(s){ return currentShop === 'all' ? true : s.s === currentShop; }
       /* ---------- today: live date from device clock (internet-synced) ---------- */
         var TODAY_ISO = (function(){ var t = new Date(); function p(n){ return (n<10?'0':'')+n; } return t.getFullYear() + '-' + p(t.getMonth()+1) + '-' + p(t.getDate()); })();
@@ -2120,19 +2263,43 @@
         });
       });
 
-      /* ---------- shop switcher ---------- */
+      /* ---------- quick menu (dashboard) ---------- */
+        function goTab(tab){
+          var b = document.querySelector('.tab-btn[data-tab="' + tab + '"]');
+          if (b) b.click();
+        }
+        document.querySelectorAll('.pos-q').forEach(function(b){
+          b.addEventListener('click', function(){
+            var site = b.getAttribute('data-site');
+            if (site){ window.open(site, '_blank'); return; }
+            goTab(b.getAttribute('data-go'));
+            var t = b.getAttribute('data-scroll');
+            if (t){ setTimeout(function(){ var t2 = el(t); if (t2) t2.scrollIntoView({behavior:'smooth', block:'start'}); }, 90); }
+          });
+        });
+        el('pos-details').addEventListener('click', function(){ goTab('report'); });
+        el('pos-bell').addEventListener('click', function(){
+          var a = document.querySelector('.alert');
+          if (a) a.scrollIntoView({behavior:'smooth', block:'center'});
+        });
+        el('pos-share').addEventListener('click', function(){
+          var url = 'https://ariful8428.github.io/hisab-app/';
+          if (navigator.share){ navigator.share({title:'KSS হিসাব', url:url}).catch(function(){}); }
+          else if (navigator.clipboard){ navigator.clipboard.writeText(url); }
+        });
+        /* ---------- shop switcher ---------- */
       document.querySelectorAll('.shop-btn').forEach(function(b){
         b.addEventListener('click', function(){
           document.querySelectorAll('.shop-btn').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
           b.setAttribute('aria-pressed','true');
           currentShop = b.getAttribute('data-shop');
-          renderStock(); renderExpiry(); refreshTotals();
+          renderStock(); renderExpiry(); renderReorder(); renderCustomers(); refreshTotals();
         });
       });
 
       el('st-search').addEventListener('input', renderStock);
       el('sales-search').addEventListener('input', renderSales);
-      el('sales-date').addEventListener('change', renderSales);
+      el('sales-date').addEventListener('change', renderSales);       el('cust-search').addEventListener('input', renderCustomers);
       el('st-filter').addEventListener('change', renderStock);
       el('exp-search').addEventListener('input', renderExpiry);
       el('exp-filter').addEventListener('change', renderExpiry);
@@ -2174,7 +2341,26 @@
         renderStock();
       });
 
-      /* ---------- operator: add expense ---------- */
+      /* ---------- operator: add new product (session only, sheet-e jabe na) ---------- */
+        el('np-form').addEventListener('submit', function(ev){
+          ev.preventDefault();
+          var msg = el('np-msg'); msg.classList.remove('err');
+          var name = el('np-name').value.trim();
+          var price = parseInt(el('np-price').value, 10);
+          var qty = parseInt(el('np-qty').value, 10);
+          if (isNaN(qty)) qty = 0;
+          if (!name || isNaN(price)){ msg.textContent = 'পণ্যের নাম আর বিক্রয় দাম দিন।'; msg.classList.add('err'); return; }
+          var nid = products.reduce(function(a,p){ return Math.max(a, p.id); }, 0) + 1;
+          var shop = el('np-shop').value;
+          var ed = el('np-expiry').value;
+          var ex = ed ? fmtDate(ed) + ' ' + bn(parseInt(ed.split('-')[0], 10)) : 'শিটে তারিখ নেই';
+          var p = { id:nid, name:name, shop:shop, price:price, stock:qty, open:qty, ex:ex, ed:ed || '' };
+          products.push(p);
+          renderStock(); renderReorder(); fillProductSelects(); rebuildTransferProducts();
+          msg.textContent = 'যোগ হয়েছে ✓ ' + name + ' (' + SHOPNAME[shop] + ', ' + money(price) + ', ' + bn(qty) + ' পিস) — শুধু এই অ্যাপে। শিটে তুলতে আমাকে জানাবেন।';
+          el('np-form').reset(); el('np-qty').value = '1';
+        });
+        /* ---------- operator: add expense ---------- */
       el('expense-form').addEventListener('submit', function(ev){
         ev.preventDefault();
         var msg = el('expense-msg'); msg.classList.remove('err');
@@ -2347,6 +2533,7 @@
       renderDaily();
       renderDeliveries();
       renderExpenses();
+      renderReorder(); renderCustomers();
       refreshTotals();
     </script>
   </body>
