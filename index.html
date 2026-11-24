@@ -420,7 +420,7 @@
             <p class="note">৯০টি অর্ডার</p>
           </div>
           <div class="kpi">
-            <p class="label">আজ — ২৩ নভেম্বর</p>
+            <p class="label" id="kpi-today-label">আজ — ২৩ নভেম্বর</p>
             <p class="value" id="kpi-today">৳৭,৩০০</p>
             <p class="note" id="kpi-today-note">৪টি অর্ডার (KSS) · পিকআপ ব্যাচে COD বাকি ৳৯,৭৭০</p>
           </div>
@@ -462,7 +462,7 @@
 
           <div class="card">
             <h3 class="sub" style="margin-top:0">দোকানভেদে অবস্থা</h3>
-            <div class="row-item"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,১৬,৯৯৭</span><small>১১২টি অর্ডার · আজ ৳৭,৩০০</small></div></div>
+            <div class="row-item"><div class="main"><div class="name">Korean Skin Care Shop (KSS)</div><div class="meta">খুচরা · ওয়েবসাইট + মেসেঞ্জার অর্ডার</div></div><div class="amt">মাসে ৳<span id="sum-kss">৩,১৬,৯৯৭</span><small id="sum-kss-today">১১২টি অর্ডার · আজ ৳৭,৩০০</small></div></div>
             <div class="row-item"><div class="main"><div class="name">Lovebirds Korean Cosmetics</div><div class="meta">খুচরা · আলাদা স্টক শিট</div></div><div class="amt">মাসে ৳১,৩৬,২১০<small>৯০টি অর্ডার · শেষ বিক্রি ২০ নভে.</small></div></div>
             <div class="row-item"><div class="main"><div class="name">পাইকারি — koreasourcebd.com</div><div class="meta">লগইন ছাড়া দাম দেখা যায় না · ন্যূনতম অর্ডার ৳৮,০০০ বা একই পণ্য ৩+ পিস</div></div><div class="amt">১৫৬টি পণ্য<small>২৭টি স্টক আউট</small></div></div>
           </div>
@@ -595,7 +595,7 @@
 
       <!-- ============ DELIVERY ============ -->
       <section class="panel" id="panel-delivery" aria-label="ডেলিভারি">
-        <h2 class="sec">আজকের পাঠাও পিকআপ — ২৩ নভেম্বর ২০২৬</h2>
+        <h2 class="sec" id="delivery-heading">আজকের পাঠাও পিকআপ — ২৩ নভেম্বর ২০২৬</h2>
         <div class="card">
           <div id="delivery-list"></div>
           <div class="row-item" style="border-top:2px solid var(--line);margin-top:4px">
@@ -775,11 +775,11 @@
       var dailyData = [{"d":"2026-11-01","kss":32370,"lb":4050,"n":14},{"d":"2026-11-02","kss":14100,"lb":0,"n":4},{"d":"2026-11-03","kss":19150,"lb":2700,"n":9},{"d":"2026-11-04","kss":6040,"lb":2600,"n":7},{"d":"2026-11-05","kss":4400,"lb":9050,"n":12},{"d":"2026-11-06","kss":7550,"lb":3030,"n":7},{"d":"2026-11-07","kss":16990,"lb":2800,"n":8},{"d":"2026-11-08","kss":28679,"lb":11530,"n":18},{"d":"2026-11-09","kss":5900,"lb":1250,"n":6},{"d":"2026-11-10","kss":18400,"lb":6550,"n":10},{"d":"2026-11-11","kss":12140,"lb":8050,"n":12},{"d":"2026-11-12","kss":0,"lb":2400,"n":1},{"d":"2026-11-13","kss":8920,"lb":0,"n":5},{"d":"2026-11-14","kss":37850,"lb":2200,"n":11},{"d":"2026-11-15","kss":1900,"lb":10600,"n":5},{"d":"2026-11-16","kss":27419,"lb":3700,"n":6},{"d":"2026-11-17","kss":5000,"lb":11750,"n":11},{"d":"2026-11-18","kss":10990,"lb":5100,"n":6},{"d":"2026-11-19","kss":24630,"lb":46350,"n":34},{"d":"2026-11-20","kss":0,"lb":2500,"n":3},{"d":"2026-11-21","kss":20299,"lb":0,"n":5},{"d":"2026-11-22","kss":6970,"lb":0,"n":4},{"d":"2026-11-23","kss":7300,"lb":0,"n":4}];
 
       var deliveries = [
-        { name:'হোসনা',   area:'—',            cod:2630, status:'booked', note:'CARE:NEL সেট' },
-        { name:'সালমা',   area:'—',            cod:2000, status:'booked', note:'Rice Toner + Cream' },
-        { name:'লোপা',    area:'যশোর',         cod:3530, status:'booked', note:'Gimiya Cream · ফ্রি ডেলিভারি (৳৩,০০০+)' },
-        { name:'সেজান',   area:'—',            cod:1180, status:'booked', note:'Salicylic Cleanser' },
-        { name:'রাশিদা আক্তার', area:'ঢাকা',   cod:430,  status:'booked', note:'Pimple Patch' }
+        { d:'2026-11-23', name:'হোসনা',   area:'—',            cod:2630, status:'booked', note:'CARE:NEL সেট' },
+        { d:'2026-11-23', name:'সালমা',   area:'—',            cod:2000, status:'booked', note:'Rice Toner + Cream' },
+        { d:'2026-11-23', name:'লোপা',    area:'যশোর',         cod:3530, status:'booked', note:'Gimiya Cream · ফ্রি ডেলিভারি (৳৩,০০০+)' },
+        { d:'2026-11-23', name:'সেজান',   area:'—',            cod:1180, status:'booked', note:'Salicylic Cleanser' },
+        { d:'2026-11-23', name:'রাশিদা আক্তার', area:'ঢাকা',   cod:430,  status:'booked', note:'Pimple Patch' }
       ];
 
       var expenses = [];
@@ -856,8 +856,11 @@
 
       /* ---------- render: deliveries ---------- */
       function renderDeliveries(){
+        el('delivery-heading').textContent = 'আজকের পাঠাও পিকআপ — ' + fmtDate(TODAY_ISO);
         var list = el('delivery-list'); list.innerHTML = '';
-        deliveries.forEach(function(dv, i){
+        var todays = deliveries.filter(function(dv){ return dv.d === TODAY_ISO; });
+        if (!todays.length){ list.innerHTML = '<p class="muted">আজ এখনো কোনো পিকআপ বুক হয়নি।</p>'; }
+        todays.forEach(function(dv, i){
           var d = document.createElement('div'); d.className = 'row-item';
           var badge = dv.status === 'done'
             ? '<span class="badge done">ডেলিভারি হয়েছে</span>'
@@ -880,7 +883,7 @@
           amt.appendChild(btn);
           list.appendChild(d);
         });
-        var total = deliveries.reduce(function(a,dv){ return a + dv.cod; }, 0);
+        var total = todays.reduce(function(a,dv){ return a + dv.cod; }, 0);
         el('delivery-total').textContent = money(total);
       }
 
@@ -1012,18 +1015,25 @@
 
       /* ---------- totals / dashboard ---------- */
       function shopFilter(s){ return currentShop === 'all' ? true : s.s === currentShop; }
-      function refreshTotals(){
+      /* ---------- today: live date from device clock (internet-synced) ---------- */
+        var TODAY_ISO = (function(){ var t = new Date(); function p(n){ return (n<10?'0':'')+n; } return t.getFullYear() + '-' + p(t.getMonth()+1) + '-' + p(t.getDate()); })();
+        function todayShort(){ var p = TODAY_ISO.split('-'); return bn(parseInt(p[2],10)) + ' ' + MONTHS_FULL[parseInt(p[1],10)-1]; }
+        function refreshTotals(){
         var mTotal = monthSales.filter(shopFilter).reduce(function(a,s){ return a + s.t; }, 0);
         var mCount = monthSales.filter(shopFilter).length;
-        var tTotal = monthSales.filter(function(s){ return s.d === '2026-11-23' && shopFilter(s); })
+        var tTotal = monthSales.filter(function(s){ return s.d === TODAY_ISO && shopFilter(s); })
                                .reduce(function(a,s){ return a + s.t; }, 0);
-        var tCount = monthSales.filter(function(s){ return s.d === '2026-11-23' && shopFilter(s); }).length;
+        var tCount = monthSales.filter(function(s){ return s.d === TODAY_ISO && shopFilter(s); }).length;
         var eTotal = expenses.reduce(function(a,x){ return a + x.amt; }, 0);
-        var codOpen = deliveries.filter(function(d){ return d.status !== 'done'; })
+        var codOpen = deliveries.filter(function(d){ return d.d === TODAY_ISO && d.status !== 'done'; })
                                 .reduce(function(a,d){ return a + d.cod; }, 0);
         el('kpi-month').textContent = money(mTotal);
         el('kpi-month-note').textContent = bn(mCount) + 'টি অর্ডার · পণ্যের দাম — ডেলিভারি চার্জ ছাড়া';
         el('kpi-today').textContent = money(tTotal);
+        el('kpi-today-label').textContent = 'আজ — ' + todayShort();
+        var kssCount = monthSales.filter(function(s){ return s.s === 'kss'; }).length;
+        var kssToday = monthSales.filter(function(s){ return s.d === TODAY_ISO && s.s === 'kss'; }).reduce(function(a,s){ return a + s.t; }, 0);
+        el('sum-kss-today').textContent = bn(kssCount) + 'টি অর্ডার · আজ ' + money(kssToday);
         el('kpi-today-note').textContent = bn(tCount) + 'টি অর্ডার' + (currentShop !== 'lb' ? ' · পিকআপ ব্যাচে COD বাকি ' + money(codOpen) : '');
         if (el('rep-total')) el('rep-total').textContent = money(monthSales.reduce(function(a,s){ return a + s.t; }, 0));
         el('net-today').innerHTML = money(monthSales.reduce(function(a,s){ return a + s.t; }, 0) - eTotal) + '<small>খরচ যোগ হলে কমবে</small>';
@@ -1077,7 +1087,7 @@
         if (p.stock < qty){ msg.textContent = 'স্টকে মাত্র ' + bn(p.stock) + ' পিস আছে — এর বেশি বিক্রি যাবে না।'; msg.classList.add('err'); return; }
         p.stock -= qty;
         var free = dc === 0;
-        monthSales.unshift({ d:'2026-11-23', c:name, s:shop, city:'', items: p.name + ' × ' + bn(qty), t: price, free: free });
+        monthSales.unshift({ d: TODAY_ISO, c:name, s:shop, city:'', items: p.name + ' × ' + bn(qty), t: price, free: free });
         deliveries.push({ name:name, area:'—', cod: price + dc, status:'booked', note: p.name + ' × ' + bn(qty) + (free ? ' · ফ্রি ডেলিভারি' : '') });
         msg.textContent = 'যোগ হয়েছে ✓ ' + p.name + ' — স্টক এখন ' + bn(p.stock) + ' পিস। ডেলিভারি তালিকাতেও উঠেছে।';
         el('sf-price').value = ''; el('sf-name').value = '';
