@@ -587,6 +587,16 @@
             <option value="expnone">মেয়াদের তারিখ শিটে নেই</option>
           </select>
         </div>
+        <div class="card" id="sheet-upload-card" style="margin-bottom:14px">
+          <h3 class="sub" style="margin-top:0">শিট আপলোড করুন — একবারে অনেক পণ্য</h3>
+          <p class="muted" style="margin:-4px 0 10px">Google Sheets-এ Opening Stock শিটটা খুলে <b>File → Download → Microsoft Excel (.xlsx)</b> বা <b>Comma-separated values (.csv)</b> করে এখানে আপলোড করুন। শিটে থাকা সব পণ্য একবারে আসবে — নতুন পণ্য যোগ হবে, পুরনো পণ্যের দাম / স্টক / মেয়াদ আপডেট হবে।</p>
+          <button type="button" class="btn" id="sheet-pick">শিট ফাইল বেছে নিন (.xlsx / .csv)</button>
+          <input type="file" id="sheet-file" accept=".xlsx,.xls,.csv" style="display:none" />
+          <p class="muted" id="sheet-file-name" style="margin:8px 0 0"></p>
+          <p class="form-msg" id="sheet-msg" style="margin:10px 0 0"></p>
+          <button type="button" class="btn ghost small" id="sheet-reset" style="display:none;margin-top:10px">আপলোড করা ডেটা মুছে আগের ডেটায় ফিরুন</button>
+          <p class="muted" style="margin:8px 0 0;font-size:13px">এটা শুধু এই ফোনের অ্যাপে কাজ করবে — Google শিটে কিছু বদলাবে না, আর অন্য কেউ দেখবে না। সবার অ্যাপে তুলতে হলে শিটের হিসাব আমাকে জানাবেন।</p>
+        </div>
         <table class="stock" aria-label="স্টক তালিকা">
           <thead><tr><th>পণ্য</th><th>দোকান</th><th class="num">বিক্রয় দাম</th><th class="num">স্টক (পিস)</th><th>মেয়াদ শেষ (Expiry)</th><th>অবস্থা</th></tr></thead>
           <tbody id="stock-body"></tbody>
@@ -1655,6 +1665,11 @@
         { id:782, name:'Vibrant Glamour Retinol Cream 30g', shop:'lb', price:0, stock:1, open:0, ex:'১০ সেপ্টে. ২০২৭', ed:'2027-09-10' },
         { id:783, name:'DR+BANGGIWON Lab Hair Loss Shampoo 1000ml', shop:'lb', price:0, stock:1, open:0, ex:'১৭ সেপ্টে. ২০২৮', ed:'2028-09-17' },
       ];;
+      /* sheet upload theke save kora product (device only) thakle seta use koro */
+      try {
+        var __saved = localStorage.getItem('kssAppProductsV1');
+        if (__saved){ var __arr = JSON.parse(__saved); if (Array.isArray(__arr) && __arr.length > 50) products = __arr; }
+      } catch(e){}
       var transfers = [
         { d:'2026-11-24', name:'Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml', qty:1, from:'lb', to:'kss', note:'Transfer from Lovebirds' },
         { d:'2026-11-22', name:'Vibrant Glamour Retinol Cream 30g', qty:1, from:'kss', to:'lb', note:'Transfer to Lovebirds' },
@@ -2348,6 +2363,129 @@
           msg.textContent = 'যোগ হয়েছে ✓ ' + name + ' (' + SHOPNAME[shop] + ', ' + money(price) + ', ' + bn(qty) + ' পিস) — শুধু এই অ্যাপে। শিটে তুলতে আমাকে জানাবেন।';
           el('np-form').reset(); el('np-qty').value = '1';
         });
+        /* ---------- operator: sheet upload — bulk stock import (device only) ---------- */
+        var SHEET_KEY = 'kssAppProductsV1';
+        function sheetNum(v){
+          if (v === null || v === undefined || v === '') return 0;
+          if (typeof v === 'number') return isNaN(v) ? 0 : v;
+          var s = String(v).replace(/[০১২৩৪৫৬৭৮৯]/g, function(d){ return '০১২৩৪৫৬৭৮৯'.indexOf(d); }).replace(/[৳,\s]/g, '');
+          var n = parseFloat(s.replace(/[^0-9.\-]/g, ''));
+          return isNaN(n) ? 0 : n;
+        }
+        function sheetExpiry(cell){
+          if (!cell) return '';
+          var m = String(cell).match(/(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})/g);
+          if (!m) return '';
+          var best = '';
+          m.forEach(function(d){
+            var p = d.split(/[-/.]/);
+            var yy = parseInt(p[2], 10); if (yy < 100) yy += 2000;
+            var mm = parseInt(p[1], 10), dd = parseInt(p[0], 10);
+            if (mm < 1 || mm > 12 || dd < 1 || dd > 31) return;
+            var iso = yy + '-' + ('0' + mm).slice(-2) + '-' + ('0' + dd).slice(-2);
+            if (!best || iso < best) best = iso;
+          });
+          return best;
+        }
+        function parseSheetCSV(text){
+          var rows = [], row = [], cur = '', q = false;
+          for (var i = 0; i < text.length; i++){
+            var c = text[i];
+            if (q){
+              if (c === '"'){ if (text[i+1] === '"'){ cur += '"'; i++; } else q = false; }
+              else cur += c;
+            } else if (c === '"'){ q = true; }
+            else if (c === ','){ row.push(cur); cur = ''; }
+            else if (c === '\n' || c === '\r'){ if (c === '\r' && text[i+1] === '\n') i++; row.push(cur); rows.push(row); row = []; cur = ''; }
+            else cur += c;
+          }
+          if (cur !== '' || row.length){ row.push(cur); rows.push(row); }
+          return rows;
+        }
+        function loadSheetJS(cb){
+          if (window.XLSX) return cb();
+          var s = document.createElement('script');
+          s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+          s.onload = function(){ cb(); };
+          s.onerror = function(){ cb(new Error('net')); };
+          document.head.appendChild(s);
+        }
+        function importSheetRows(rows, fname){
+          var msg = el('sheet-msg'); msg.classList.remove('err');
+          var hi = -1, cols = null;
+          for (var r = 0; r < Math.min(rows.length, 15); r++){
+            var norm = (rows[r] || []).map(function(c){ return String(c == null ? '' : c).trim().toLowerCase(); });
+            if (norm.indexOf('product name') !== -1){ hi = r; cols = norm; break; }
+          }
+          if (hi === -1){ msg.textContent = 'এই ফাইলে Opening Stock শিট পেলাম না — Product Name কলাম থাকা শিট আপলোড করুন।'; msg.classList.add('err'); return; }
+          var isLB = cols.join(' ').indexOf('clearance') !== -1;
+          var shop = isLB ? 'lb' : 'kss';
+          var ci = function(){ for (var a = 0; a < arguments.length; a++){ var ix = cols.indexOf(arguments[a]); if (ix !== -1) return ix; } return -1; };
+          var cName = ci('product name');
+          var cPrice = isLB ? ci('clearance sale price', 'clearance price', 'sale price') : ci('sale price');
+          var cStock = ci('current stock', 'current');
+          var cOpen = ci('opening stock', 'opening');
+          var cExp = ci('expair data', 'expiry', 'expiry date');
+          if (cName === -1 || cStock === -1){ msg.textContent = 'শিটের কলাম চিনতে পারলাম না — Opening Stock শিটের Excel/CSV দিন।'; msg.classList.add('err'); return; }
+          var added = 0, updated = 0;
+          var maxId = products.reduce(function(a,p){ return Math.max(a, p.id); }, 0);
+          for (var i = hi + 1; i < rows.length; i++){
+            var row = rows[i] || [];
+            var name = String(row[cName] == null ? '' : row[cName]).trim();
+            if (!name) continue;
+            var price = cPrice === -1 ? 0 : Math.round(sheetNum(row[cPrice]));
+            var stock = Math.round(sheetNum(row[cStock]));
+            var open = cOpen === -1 ? stock : Math.round(sheetNum(row[cOpen]));
+            var ed = cExp === -1 ? '' : sheetExpiry(row[cExp]);
+            var ex = ed ? fmtDate(ed) + ' ' + bn(parseInt(ed.split('-')[0], 10)) : 'শিটে তারিখ নেই';
+            var key = name.toLowerCase(), found = null;
+            for (var j = 0; j < products.length; j++){ if (products[j].shop === shop && products[j].name.toLowerCase() === key){ found = products[j]; break; } }
+            if (found){ found.price = price; found.stock = stock; found.open = open; found.ex = ex; found.ed = ed; updated++; }
+            else { maxId++; products.push({ id:maxId, name:name, shop:shop, price:price, stock:stock, open:open, ex:ex, ed:ed }); added++; }
+          }
+          try { localStorage.setItem(SHEET_KEY, JSON.stringify(products)); } catch(e){}
+          renderStock(); renderReorder(); renderExpiry(); fillProductSelects(); rebuildTransferProducts();
+          el('sheet-reset').style.display = '';
+          msg.textContent = 'হয়ে গেছে ✓ ' + fname + ' — ' + SHOPNAME[shop] + ' শিট: ' + bn(added) + 'টি নতুন পণ্য যোগ হয়েছে, ' + bn(updated) + 'টি পণ্য আপডেট হয়েছে। মোট পণ্য এখন ' + bn(products.length) + 'টি।';
+          el('sheet-file').value = '';
+        }
+        el('sheet-pick').addEventListener('click', function(){ el('sheet-file').click(); });
+        el('sheet-file').addEventListener('change', function(){
+          var f = el('sheet-file').files[0]; if (!f) return;
+          var msg = el('sheet-msg'); msg.classList.remove('err');
+          el('sheet-file-name').textContent = f.name;
+          var nm = f.name.toLowerCase();
+          if (nm.slice(-4) === '.csv'){
+            var rd = new FileReader();
+            rd.onload = function(){ try { importSheetRows(parseSheetCSV(String(rd.result || '')), f.name); } catch(e){ msg.textContent = 'ফাইলটা পড়া গেল না — CSV ফাইল দিন।'; msg.classList.add('err'); } };
+            rd.onerror = function(){ msg.textContent = 'ফাইলটা পড়া গেল না — আবার চেষ্টা করুন।'; msg.classList.add('err'); };
+            rd.readAsText(f);
+          } else if (nm.slice(-5) === '.xlsx' || nm.slice(-4) === '.xls'){
+            msg.textContent = 'পড়ছি… একটু অপেক্ষা করুন।';
+            loadSheetJS(function(err){
+              if (err || !window.XLSX){ msg.textContent = 'Excel পড়ার লাইব্রেরি লোড হলো না (নেট লাগবে) — CSV হিসেবে ডাউনলোড করে আপলোড করুন।'; msg.classList.add('err'); return; }
+              var rd2 = new FileReader();
+              rd2.onload = function(){
+                try {
+                  var wb = XLSX.read(rd2.result, {type:'array'});
+                  var ws = null;
+                  wb.SheetNames.forEach(function(sn){ if (!ws && /opening stock/i.test(sn)) ws = wb.Sheets[sn]; });
+                  if (!ws) ws = wb.Sheets[wb.SheetNames[0]];
+                  importSheetRows(XLSX.utils.sheet_to_json(ws, {header:1, defval:'', raw:false}), f.name);
+                } catch(e){ msg.textContent = 'Excel ফাইলটা পড়া গেল না — Opening Stock শিটের ফাইল দিন।'; msg.classList.add('err'); }
+              };
+              rd2.onerror = function(){ msg.textContent = 'ফাইলটা পড়া গেল না — আবার চেষ্টা করুন।'; msg.classList.add('err'); };
+              rd2.readAsArrayBuffer(f);
+            });
+          } else {
+            msg.textContent = 'শুধু Excel (.xlsx) বা CSV ফাইল আপলোড করা যাবে।'; msg.classList.add('err');
+          }
+        });
+        el('sheet-reset').addEventListener('click', function(){
+          try { localStorage.removeItem(SHEET_KEY); } catch(e){}
+          location.reload();
+        });
+        try { if (localStorage.getItem(SHEET_KEY)) el('sheet-reset').style.display = ''; } catch(e){}
         /* ---------- operator: add expense ---------- */
       el('expense-form').addEventListener('submit', function(ev){
         ev.preventDefault();
