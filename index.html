@@ -2606,6 +2606,10 @@
       });
 
       /* ---------- quick menu (dashboard) ---------- */
+        var hisabPushed = false;
+        function consumeHisabEntry(){
+          if (hisabPushed){ hisabPushed = false; try{ history.back(); }catch(e){} }
+        }
         function clearFocus(){
           document.querySelectorAll('.panel.focus-only').forEach(function(p){ p.classList.remove('focus-only'); });
           document.querySelectorAll('.fblock.fkeep').forEach(function(b){ b.classList.remove('fkeep'); });
@@ -2618,7 +2622,11 @@
           panel.classList.add('focus-only');
           b.classList.add('fkeep');
           window.scrollTo({top:0});
+          try{ if(!history.state || history.state.hisabView !== id){ history.pushState({hisabView:id}, ''); hisabPushed = true; } }catch(e){}
         }
+        window.addEventListener('popstate', function(){
+          if (document.querySelector('.panel.focus-only') || hisabPushed){ clearFocus(); window.scrollTo({top:0}); hisabPushed = false; }
+        });
         function goTab(tab){
           var b = document.querySelector('.tab-btn[data-tab="' + tab + '"]');
           if (b) b.click();
@@ -2636,10 +2644,11 @@
             }
           });
         });
-        document.querySelectorAll('.focus-back').forEach(function(b){ b.addEventListener('click', function(){ clearFocus(); window.scrollTo({ top:0 }); }); });
+        document.querySelectorAll('.focus-back').forEach(function(b){ b.addEventListener('click', function(){ clearFocus(); window.scrollTo({ top:0 }); consumeHisabEntry(); }); });
         el('pos-details').addEventListener('click', function(){ focusBlock('fb-monthly'); });
         el('pos-bell').addEventListener('click', function(){
           clearFocus();
+          consumeHisabEntry();
           var a = document.querySelector('.alert');
           if (a) a.scrollIntoView({behavior:'smooth', block:'center'});
         });
