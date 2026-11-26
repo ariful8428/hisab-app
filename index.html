@@ -948,7 +948,7 @@
         return bn(parseInt(p[2],10)) + ' ' + MONTHS_BN[parseInt(p[1],10)-1];
       }
 
-      /* ---------- data (snapshot: 25 Nov 2026, from the shop sheets) ---------- */
+      /* ---------- data (snapshot: 26 Nov 2026, from the shop sheets) ---------- */
       var SHOPNAME = { kss:'KSS', lb:'Lovebirds', ws:'পাইকারি' };
       /* ex = মেয়াদ শেষের তারিখ (স্টক শিটের Expiry কলাম থেকে), ed = ISO তারিখ (বাকি দিন হিসাবের জন্য), en = বাড়তি নোট */
       var products = [
@@ -960,7 +960,7 @@
         { id:6, name:'Manyo Pure & Deep Cleansing Foam 100ml', shop:'kss', price:1450, stock:6, open:6, ex:'15 ডিসে. 2028', ed:'2028-12-15', en:'আরেক ব্যাচ: 21 জুলা. 2029' },
         { id:7, name:'Atomy Saengmodan Hair Tonic 200ml', shop:'kss', price:1900, stock:2, open:2, ex:'30 মার্চ 2029', ed:'2029-03-30' },
         { id:8, name:'Medicube Zero Pore One Day Cream 50ml', shop:'kss', price:2099, stock:2, open:2, ex:'20 জানু. 2029', ed:'2029-01-20' },
-        { id:9, name:'Holika Holika Good Cera Super Ceramide Cream 60ml', shop:'kss', price:1550, stock:6, open:7, ex:'5 এপ্রি. 2029', ed:'2029-04-05' },
+        { id:9, name:'Holika Holika Good Cera Super Ceramide Cream 60ml', shop:'kss', price:1550, stock:5, open:7, ex:'5 এপ্রি. 2029', ed:'2029-04-05' },
         { id:10, name:'Holika Holika Black Snail Repair Cleansing Foam 100ml', shop:'kss', price:800, stock:2, open:2, ex:'17 এপ্রি. 2027', ed:'2027-04-17' },
         { id:11, name:'Tonymoly Intense Care Gold 24k Snail Cream 45ml', shop:'kss', price:3000, stock:4, open:4, ex:'7 জানু. 2020', ed:'2020-01-07', en:'আরেক ব্যাচ: 1 ডিসে. 2028' },
         { id:12, name:'Tonymoly Bio EX Cell Peptide Fill Up Cream Ampoule Set', shop:'kss', price:4100, stock:3, open:3, ex:'29 জানু. 2028', ed:'2028-01-29', en:'আরেক ব্যাচ: 9 ডিসে. 2028' },
@@ -981,7 +981,7 @@
         { id:27, name:'Derma House Stretch Care Cream 180ml', shop:'kss', price:1500, stock:1, open:2, ex:'8 জুলা. 2027', ed:'2027-07-08', en:'আরেক ব্যাচ: 1 জানু. 2028' },
         { id:28, name:'Dr. Althea 345 Relief Cream New Version', shop:'kss', price:1850, stock:32, open:42, ex:'5 এপ্রি. 2029', ed:'2029-04-05', en:'আরেক ব্যাচ: 8 সেপ্টে. 2029' },
         { id:29, name:'Beauty of Joseon Red Bean Water Gel 100ml', shop:'kss', price:1600, stock:6, open:6, ex:'21 এপ্রি. 2028', ed:'2028-04-21' },
-        { id:30, name:'Medicube TXA Niacinamide Capsule Cream', shop:'kss', price:2490, stock:57, open:61, ex:'5 নভে. 2020', ed:'2020-11-05' },
+        { id:30, name:'Medicube TXA Niacinamide Capsule Cream', shop:'kss', price:2490, stock:56, open:61, ex:'5 নভে. 2020', ed:'2020-11-05' },
         { id:31, name:'Medicube Deep Vita C Capsule Cream 55g', shop:'kss', price:2300, stock:16, open:19, ex:'31 মে 2028', ed:'2028-05-31' },
         { id:32, name:'Iunik Centella Calming Gel Cream 60ml', shop:'kss', price:1199, stock:12, open:12, ex:'14 ফেব. 2028', ed:'2028-02-14', en:'আরেক ব্যাচ: 23 জানু. 2029' },
         { id:33, name:'Dr. Althea PDRN Reju 5000 Cream 20g', shop:'kss', price:1900, stock:5, open:5, ex:'31 মার্চ 2029', ed:'2029-03-31' },
@@ -1048,7 +1048,7 @@
         { id:94, name:'Kerasys Colour Lab Amino Acid and Protein Natural Black 20g x 3', shop:'kss', price:900, stock:2, open:2, ex:'18 ডিসে. 2027', ed:'2027-12-18' },
         { id:95, name:'Nature Republic Reen Heukmobi Chaek Oriental Grey Hair Dye Cream Dark Brown 120g', shop:'kss', price:1600, stock:1, open:1, ex:'18 মার্চ 2029', ed:'2029-03-18' },
         { id:96, name:'Aroma Rich Baby Oil 465ml', shop:'kss', price:1800, stock:1, open:2, ex:'27 অক্টো. 2028', ed:'2028-10-27' },
-        { id:97, name:'Beauty of Joseon Relief Sun  Rice + Niacinamide 50ml', shop:'kss', price:1450, stock:14, open:15, ex:'20 এপ্রি. 2029', ed:'2029-04-20', en:'আরেক ব্যাচ: 14 আগ. 2029' },
+        { id:97, name:'Beauty of Joseon Relief Sun  Rice + Niacinamide 50ml', shop:'kss', price:1450, stock:13, open:15, ex:'20 এপ্রি. 2029', ed:'2029-04-20', en:'আরেক ব্যাচ: 14 আগ. 2029' },
         { id:98, name:'Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml', shop:'kss', price:1450, stock:0, open:3, ex:'11 মার্চ 2029', ed:'2029-03-11' },
         { id:99, name:'Tiam B3 Niacin Sunscreen 50ml', shop:'kss', price:1300, stock:11, open:11, ex:'27 ফেব. 2029', ed:'2029-02-27' },
         { id:100, name:'Cosrx Aloe Soothing Sun Cream 50ml', shop:'kss', price:1100, stock:9, open:9, ex:null, ed:null },
@@ -1140,7 +1140,7 @@
         { id:186, name:'Beauty of joseon Glow Deep Serum Rice + Alpha Arbutin 30ml', shop:'kss', price:1550, stock:3, open:4, ex:'23 জুলা. 2028', ed:'2028-07-23' },
         { id:187, name:'K-Secret Seoul 1988 Serum Retinal Liposome 2% + Black Ginseng 30ml', shop:'kss', price:1500, stock:48, open:48, ex:'17 সেপ্টে. 2028', ed:'2028-09-17' },
         { id:188, name:'Beauty of joseon Glow Serum Propolis + Niacinamide 30ml', shop:'kss', price:1550, stock:4, open:4, ex:'16 জুলা. 2028', ed:'2028-07-16' },
-        { id:189, name:'Anua 100+ PDRN Hyaluronic Acid Capsule 100 Serum', shop:'kss', price:1990, stock:9, open:10, ex:'9 আগ. 2028', ed:'2028-08-09' },
+        { id:189, name:'Anua 100+ PDRN Hyaluronic Acid Capsule 100 Serum', shop:'kss', price:1990, stock:8, open:10, ex:'9 আগ. 2028', ed:'2028-08-09' },
         { id:190, name:'Goodal Vita C Dark Spot Care Serum Set 50+50ml', shop:'kss', price:4000, stock:1, open:1, ex:'22 জানু. 2028', ed:'2028-01-22' },
         { id:191, name:'Tonymoly Gimiya Whitening Serum 30ml', shop:'kss', price:2000, stock:4, open:5, ex:'5 সেপ্টে. 2028', ed:'2028-09-05' },
         { id:192, name:'Holika Holika 24k Gold Repair Ampoule 100ml', shop:'kss', price:5400, stock:1, open:1, ex:'24 মে 2027', ed:'2027-05-24' },
@@ -1203,7 +1203,7 @@
         { id:249, name:'Manyo Pure Cleansing Oil 200ml', shop:'kss', price:2100, stock:4, open:4, ex:'8 ডিসে. 2027', ed:'2027-12-08' },
         { id:250, name:'Numbuzin Glutathione Vitamin Concentrated Toner 200ml', shop:'kss', price:1800, stock:5, open:5, ex:'22 ফেব. 2029', ed:'2029-02-22' },
         { id:251, name:'Missha Vita C Plus Ascorbic Acid Brightening Toner 200ml', shop:'kss', price:2100, stock:1, open:1, ex:'7 মে 2029', ed:'2029-05-07' },
-        { id:252, name:'Medicube Collagen Night Wrapping Mask 75ml', shop:'kss', price:1990, stock:6, open:13, ex:'1 জুন 2029', ed:'2029-06-01' },
+        { id:252, name:'Medicube Collagen Night Wrapping Mask 75ml', shop:'kss', price:1990, stock:5, open:13, ex:'1 জুন 2029', ed:'2029-06-01' },
         { id:253, name:'Dr. Althea 345 Relief Cream Mist 100ml', shop:'kss', price:2250, stock:3, open:3, ex:'4 ফেব. 2029', ed:'2029-02-04' },
         { id:254, name:'Cosrx AHA/BHA Clarifying Treatment Toner 150ml', shop:'kss', price:1300, stock:3, open:7, ex:null, ed:null },
         { id:255, name:'Beauty of joseon Red Bean Refreshing Pore Mask 140ml', shop:'kss', price:1850, stock:6, open:6, ex:'16 জুন 2028', ed:'2028-06-16' },
@@ -1280,7 +1280,7 @@
         { id:326, name:'Illiyoon Ceramide Ato Concentrate Cream 30ml', shop:'kss', price:650, stock:8, open:11, ex:'26 আগ. 2028', ed:'2028-08-26' },
         { id:327, name:'Senka Perfect Whip Beauty Foam', shop:'kss', price:1350, stock:1, open:1, ex:null, ed:null },
         { id:328, name:'SKIN1004 Madagascar Travel Kit', shop:'kss', price:2300, stock:1, open:1, ex:'19 আগ. 2027', ed:'2027-08-19' },
-        { id:329, name:'Laneige Lip Sleeping Mask 3g', shop:'kss', price:390, stock:57, open:59, ex:'16 জুন 2028', ed:'2028-06-16', en:'আরেক ব্যাচ: 6 নভে. 2028' },
+        { id:329, name:'Laneige Lip Sleeping Mask 3g', shop:'kss', price:390, stock:56, open:59, ex:'16 জুন 2028', ed:'2028-06-16', en:'আরেক ব্যাচ: 6 নভে. 2028' },
         { id:330, name:'Atomy Toothpaste Propolis 50g', shop:'kss', price:250, stock:4, open:4, ex:'28 জুন 2029', ed:'2029-06-28' },
         { id:331, name:'The Face Shop Real Nature Blueberry Velvet Face Mask 20g', shop:'kss', price:150, stock:1, open:1, ex:'16 জানু. 2028', ed:'2028-01-16' },
         { id:332, name:'Biodance Bio-Collagen Real Deep Mask 34g', shop:'kss', price:550, stock:15, open:16, ex:'20 মে 2028', ed:'2028-05-20' },
@@ -1343,7 +1343,7 @@
         { id:389, name:'TONYMOLY 2X First Essence 200ml', shop:'kss', price:1900, stock:2, open:2, ex:'26 জুন 2028', ed:'2028-06-26' },
         { id:390, name:'Medicube TXA Niacinamide 15 Serum 30ml', shop:'kss', price:1799, stock:2, open:3, ex:null, ed:null },
         { id:391, name:'Anua Rice 70+ Glow Milky Toner 40ml', shop:'kss', price:700, stock:5, open:5, ex:null, ed:null },
-        { id:392, name:'Cosrx Salicylic Acid Daily Gentle Cleanser 50ml', shop:'kss', price:600, stock:5, open:5, ex:null, ed:null },
+        { id:392, name:'Cosrx Salicylic Acid Daily Gentle Cleanser 50ml', shop:'kss', price:600, stock:4, open:5, ex:null, ed:null },
         { id:393, name:'APLB Glutathione Niacinamide Facial Cream 55ml', shop:'kss', price:1000, stock:5, open:5, ex:null, ed:null },
         { id:394, name:'Anua Heartleaf Pore Control Cleansing Oil Mini 20ml', shop:'kss', price:550, stock:3, open:3, ex:null, ed:null },
         { id:395, name:'Aveeno Baby Soothing Relief Emollient Cream 150ml', shop:'kss', price:1400, stock:2, open:2, ex:null, ed:null },
@@ -1865,7 +1865,7 @@
       }
 
       /* Full November 2026 sales from the DSR sheets (1-23 Nov): 202 orders. t = product total, delivery excluded. */
-      var monthSales = [
+      var monthSales = [{"d":"2026-11-26","c":"Farhana Akter","s":"kss","city":"","items":"Medicube TXA Niacinamide Capsule Cream","t":2300},{"d":"2026-11-26","c":"Tanjina Akter Mim","s":"kss","city":"Dhaka","items":"Cosrx Salicylic Acid Daily Gentle Cleanser 50ml + Laneige Lip Sleeping Mask 3g","t":950},{"d":"2026-11-26","c":"Shagufta Rabbani","s":"kss","city":"Dhaka","items":"Holika Holika Good Cera Super Ceramide Cream 60ml + Anua 100+ PDRN Hyaluronic Acid Capsule 100 Serum","t":3850},{"d":"2026-11-26","c":"Mony","s":"kss","city":"Lalmonirhat","items":"Beauty of Joseon Relief Sun  Rice + Niacinamide 50ml","t":1450},{"d":"2026-11-26","c":"Nargis Sultana","s":"kss","city":"","items":"Medicube Collagen Night Wrapping Mask 75ml","t":1990},
       {"d": "2026-11-25", "c": "Asma", "s": "kss", "city": "Dhaka", "items": "SKIN1004 Centella Hyalu-Cica Water-Fit Sun Serum 50ml", "t": 1350},
       {"d": "2026-11-25", "c": "Tripty Mamun", "s": "kss", "city": "Dhaka", "items": "Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml + I'm From Rice Toner 150ml", "t": 3000},
   {"d": "2026-11-25", "c": "Mariya Hossain", "s": "kss", "city": "Dhaka", "items": "Dr. Althea 345 Relief Cream New Version + Skin1004 Madagascar Centella Ampoule Foam 125ml", "t": 3270},
@@ -2032,7 +2032,7 @@
   {"d": "2026-11-01", "c": "Natasha Rahaman", "s": "lb", "city": "Dhaka", "items": "Rice Ceramide Moisture Cream", "t": 1250},
   {"d": "2026-11-01", "c": "Ummay Sumaiya", "s": "lb", "city": "Sylhet", "items": "Tenzero Day Mask Pack Wine Day / Makgeolli Day + Damage Care Shampoo + Soopyeon Hyaluron 3pcs Gift Set + Premium Snail Repair Cream + Aloe Tone Up Mineral Sunscreen", "t": 2250}
 ];;
-      var dailyData = [{"d":"2026-11-01","kss":32370,"lb":4050,"n":14},{"d":"2026-11-02","kss":14100,"lb":0,"n":4},{"d":"2026-11-03","kss":19150,"lb":2700,"n":9},{"d":"2026-11-04","kss":6040,"lb":2600,"n":7},{"d":"2026-11-05","kss":4400,"lb":9050,"n":12},{"d":"2026-11-06","kss":7550,"lb":3030,"n":7},{"d":"2026-11-07","kss":16990,"lb":2800,"n":8},{"d":"2026-11-08","kss":28679,"lb":11530,"n":18},{"d":"2026-11-09","kss":5900,"lb":1250,"n":6},{"d":"2026-11-10","kss":18400,"lb":6550,"n":10},{"d":"2026-11-11","kss":12140,"lb":8050,"n":12},{"d":"2026-11-12","kss":0,"lb":2400,"n":1},{"d":"2026-11-13","kss":8920,"lb":0,"n":5},{"d":"2026-11-14","kss":37850,"lb":2200,"n":11},{"d":"2026-11-15","kss":1900,"lb":10600,"n":5},{"d":"2026-11-16","kss":27419,"lb":3700,"n":6},{"d":"2026-11-17","kss":5000,"lb":11750,"n":11},{"d":"2026-11-18","kss":10990,"lb":5100,"n":6},{"d":"2026-11-19","kss":24630,"lb":46350,"n":34},{"d":"2026-11-20","kss":0,"lb":6050,"n":4},{"d":"2026-11-21","kss":20299,"lb":0,"n":5},{"d":"2026-11-22","kss":6970,"lb":4900,"n":6},{"d":"2026-11-23","kss":7300,"lb":1500,"n":5},{"d":"2026-11-24","kss":7270,"lb":3050,"n":6},{"d":"2026-11-25","kss":7620,"lb":0,"n":3}];
+      var dailyData = [{"d":"2026-11-01","kss":32370,"lb":4050,"n":14},{"d":"2026-11-02","kss":14100,"lb":0,"n":4},{"d":"2026-11-03","kss":19150,"lb":2700,"n":9},{"d":"2026-11-04","kss":6040,"lb":2600,"n":7},{"d":"2026-11-05","kss":4400,"lb":9050,"n":12},{"d":"2026-11-06","kss":7550,"lb":3030,"n":7},{"d":"2026-11-07","kss":16990,"lb":2800,"n":8},{"d":"2026-11-08","kss":28679,"lb":11530,"n":18},{"d":"2026-11-09","kss":5900,"lb":1250,"n":6},{"d":"2026-11-10","kss":18400,"lb":6550,"n":10},{"d":"2026-11-11","kss":12140,"lb":8050,"n":12},{"d":"2026-11-12","kss":0,"lb":2400,"n":1},{"d":"2026-11-13","kss":8920,"lb":0,"n":5},{"d":"2026-11-14","kss":37850,"lb":2200,"n":11},{"d":"2026-11-15","kss":1900,"lb":10600,"n":5},{"d":"2026-11-16","kss":27419,"lb":3700,"n":6},{"d":"2026-11-17","kss":5000,"lb":11750,"n":11},{"d":"2026-11-18","kss":10990,"lb":5100,"n":6},{"d":"2026-11-19","kss":24630,"lb":46350,"n":34},{"d":"2026-11-20","kss":0,"lb":6050,"n":4},{"d":"2026-11-21","kss":20299,"lb":0,"n":5},{"d":"2026-11-22","kss":6970,"lb":4900,"n":6},{"d":"2026-11-23","kss":7300,"lb":1500,"n":5},{"d":"2026-11-24","kss":7270,"lb":3050,"n":6},{"d":"2026-11-25","kss":7620,"lb":0,"n":3},{"d":"2026-11-26","kss":10540,"lb":0,"n":5}];
 
       var deliveries = [
         { d:'2026-11-24', name:'Arrab Hasan', shop:'kss', area:'ঢাকা', cod:3080, status:'booked', note:'Deep Vita C Capsule Cream + Rice Toner 30ml' },
