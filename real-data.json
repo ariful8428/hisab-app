@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400 + Jesmin Cosrx 150ml return -1100",
+ "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400 + Jesmin Cosrx 150ml return -1100 + Saima Web #7944 1950",
  "kss": {
   "products": [
    {
@@ -3175,7 +3175,7 @@
     "name": "Anua Heartleaf Pore Control Cleansing Oil 200ml",
     "sale": 1750.0,
     "opening": 2.0,
-    "current": 2.0,
+    "current": 0.0,
     "expiry": ""
    },
    {
@@ -3692,10 +3692,10 @@
    }
   ],
   "count": 461,
-  "out": 42,
-  "low": 261,
-  "total_current": 2308,
-  "stock_value": 2698095
+  "out": 43,
+  "low": 260,
+  "total_current": 2306,
+  "stock_value": 2694595
  },
  "lovebirds": {
   "products": [
@@ -6299,19 +6299,19 @@
   "stock_value": 249000
  },
  "november": {
-  "kss_orders": 125,
-  "kss_sales": 341777,
+  "kss_orders": 126,
+  "kss_sales": 343727,
   "lb_orders": 45,
   "lb_sales": 147360,
-  "orders": 170,
-  "sales_total": 489137,
-  "note": "Product total (delivery charge chara). KSS November sell sheet-e 119 order / 341,327 — DSR theke 6 order beshi (lag/return row); app DSR number dekhabe."
+  "orders": 171,
+  "sales_total": 491087,
+  "note": "Product total (delivery charge chara). KSS November sell sheet-e 120 order / 343,277 — DSR theke 6 order beshi (lag/return row); app DSR number dekhabe."
  },
  "today": {
   "date": "2026-11-26",
-  "orders": 5,
-  "total": 10540,
-  "note": "Product total (delivery chara): Nargis Sultana 1990 + Mony 1450 + Shagufta Rabbani 3850 + Tanjina Akter Mim 950 + Farhana Akter 2300",
+  "orders": 6,
+  "total": 12490,
+  "note": "Product total (delivery chara): Nargis Sultana 1990 + Mony 1450 + Shagufta Rabbani 3850 + Tanjina Akter Mim 950 + Farhana Akter 2300 + Saima 1950",
   "delivery_batch": {
    "orders": 5,
    "cod": 10910,
@@ -6910,15 +6910,15 @@
    },
    {
     "date": "2026-11-26",
-    "kss": 8040,
+    "kss": 9990,
     "lb": 0,
-    "total": 8040,
-    "orders": 5
+    "total": 9990,
+    "orders": 6
    }
   ],
-  "total_income": 489137,
+  "total_income": 491087,
   "total_expense": 0,
-  "net": 489137
+  "net": 491087
  },
  "loyalty": {
   "rule": "1 order = 1 stamp (phone diye), 5 order-e VIP free delivery, 10 stamp-e gift box"
