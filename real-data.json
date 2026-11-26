@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders)",
+ "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400",
  "kss": {
   "products": [
    {
@@ -783,7 +783,7 @@
     "name": "Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml",
     "sale": 1450.0,
     "opening": 3.0,
-    "current": 0.0,
+    "current": 1.0,
     "expiry": "Exp: 11-3-29"
    },
    {
@@ -3692,10 +3692,10 @@
    }
   ],
   "count": 461,
-  "out": 44,
-  "low": 259,
-  "total_current": 2306,
-  "stock_value": 2695595
+  "out": 43,
+  "low": 260,
+  "total_current": 2307,
+  "stock_value": 2697045
  },
  "lovebirds": {
   "products": [
@@ -6300,12 +6300,12 @@
  },
  "november": {
   "kss_orders": 125,
-  "kss_sales": 344277,
+  "kss_sales": 342877,
   "lb_orders": 45,
   "lb_sales": 147360,
   "orders": 170,
-  "sales_total": 491637,
-  "note": "Product total (delivery charge chara). KSS November sell sheet-e 119 order / 343,827 — DSR theke 6 order beshi (lag/return row); app DSR number dekhabe."
+  "sales_total": 490237,
+  "note": "Product total (delivery charge chara). KSS November sell sheet-e 119 order / 342,427 — DSR theke 6 order beshi (lag/return row); app DSR number dekhabe."
  },
  "today": {
   "date": "2026-11-26",
@@ -6910,15 +6910,15 @@
    },
    {
     "date": "2026-11-26",
-    "kss": 10540,
+    "kss": 9140,
     "lb": 0,
-    "total": 10540,
+    "total": 9140,
     "orders": 5
    }
   ],
-  "total_income": 491637,
+  "total_income": 490237,
   "total_expense": 0,
-  "net": 491637
+  "net": 490237
  },
  "loyalty": {
   "rule": "1 order = 1 stamp (phone diye), 5 order-e VIP free delivery, 10 stamp-e gift box"
