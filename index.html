@@ -184,6 +184,21 @@
       .badge.booked{background:var(--brand-soft);color:var(--brand)}
       .badge.pending{background:var(--warn-soft);color:var(--warn)}
       .badge.done{background:var(--ok-soft);color:var(--ok)}
+      .ws-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+      .ws-chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+      .ws-chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+      .ws-row{padding:11px 0;border-bottom:1px solid var(--line)}
+      .ws-row:last-child{border-bottom:none}
+      .ws-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+      .ws-top .badge{flex-shrink:0;white-space:nowrap}
+      .ws-name{font-weight:600;font-size:15.5px;flex:1;min-width:0}
+      .ws-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:5px}
+      .ws-price{font-weight:700;font-size:16px}
+      .ws-edited{font-size:12px;font-weight:700;color:var(--warn)}
+      .ws-editbtn{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:9px;padding:5px 10px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
+      .ws-editbox{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+      .ws-editbox input{width:130px;min-height:40px;padding:6px 10px;border:1.5px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px}
+      .ws-mini{border:none;background:none;color:var(--brand);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;padding:5px 2px}
 
       /* expiry display — mobile-first: wraps cleanly, never overflows */
       .exp-date{font-weight:700;white-space:normal;overflow-wrap:break-word}
@@ -428,7 +443,7 @@
           <button type="button" class="pos-q" data-go="report" data-focus="fb-customers"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5 6.5-5s5.7 1.5 6.5 5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M17.5 15.5c2 .6 3.5 2 4 4.5"/></svg></span><span>কাস্টমার</span></button>
           <button type="button" class="pos-q" data-go="report" data-focus="fb-expense"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/></svg></span><span>খরচ</span></button>
           <button type="button" class="pos-q" data-go="report" data-focus="fb-monthly"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M5 20V10M11 20V4M17 20v-8M3 20h18"/></svg></span><span>রিপোর্ট</span></button>
-          <button type="button" class="pos-q" data-site="https://koreasourcebd.com"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M4 9l1-5h14l1 5M4 9v11h18V9M4 9h18M9 20v-6h6v6"/></svg></span><span>পাইকারি</span></button>
+          <button type="button" class="pos-q" data-go="stock" data-focus="fb-wholesale"><span class="pos-ic-box orange"><svg viewBox="0 0 24 24"><path d="M4 9l1-5h14l1 5M4 9v11h18V9M4 9h18M9 20v-6h6v6"/></svg></span><span>Wholesale</span></button>
           <button type="button" class="pos-q" data-go="report" data-focus="fb-loyalty"><span class="pos-ic-box green"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8z"/></svg></span><span>লয়্যালটি</span></button>
           <button type="button" class="pos-q" data-go="stock" data-focus="expsoon-block"><span class="pos-ic-box red"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span>কম মেয়াদ</span></button>
     <button type="button" class="pos-q" data-go="transfer" data-focus="fb-transfer"><span class="pos-ic-box blue"><svg viewBox="0 0 24 24"><path d="M4 7h13l-3-3M20 17H7l3 3"/></svg></span><span>ট্রান্সফার</span></button>
@@ -912,6 +927,29 @@
             <li>যোগাযোগ: +880 1575-588152 · koreanskincareshopbd@gmail.com · Gangni 7110</li>
           </ul>
         </div>
+<div class="fblock" id="fb-wholesale">
+        <h2 class="sec">Wholesale — koreasourcebd.com</h2>
+        <p class="muted" id="ws-summary" style="margin:-4px 0 12px">156টি পণ্য · 27টি স্টক আউট</p>
+        <div class="card">
+          <p style="margin:0 0 10px">
+            <a class="btn small" href="https://koreasourcebd.com" target="_blank" rel="noopener">koreasourcebd.com খুলুন</a>
+            <button type="button" class="btn ghost small" id="ws-reset-all" style="display:none">সব দাম আগের মতো করুন</button>
+          </p>
+          <p class="muted" style="margin-top:0">এখানে বদলানো দাম শুধু এই ফোনে দেখাবে — ওয়েবসাইটের দাম বদলাবে না।</p>
+          <div class="search-card">
+            <p class="search-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg> খুঁজুন</p>
+            <div class="stock-tools">
+              <input type="search" id="ws-search" placeholder="পণ্যের নাম খুঁজুন… যেমন: Snail, Rice Toner" aria-label="পাইকারি পণ্য খুঁজুন" />
+            </div>
+            <div class="ws-chips" role="group" aria-label="স্টক ফিল্টার">
+              <button type="button" class="ws-chip on" data-wsf="all">সব</button>
+              <button type="button" class="ws-chip" data-wsf="in">স্টক আছে</button>
+              <button type="button" class="ws-chip" data-wsf="out">স্টক আউট</button>
+            </div>
+          </div>
+          <div id="ws-list"></div>
+          <p class="muted" id="ws-empty" style="display:none;margin-top:10px">এই ফিল্টারে কোনো পণ্য পাওয়া যায়নি।</p>
+        </div>
         </div>
 </section>
 
@@ -1348,7 +1386,7 @@
         { id:394, name:'Anua Heartleaf Pore Control Cleansing Oil Mini 20ml', shop:'kss', price:550, stock:3, open:3, ex:null, ed:null },
         { id:395, name:'Aveeno Baby Soothing Relief Emollient Cream 150ml', shop:'kss', price:1400, stock:2, open:2, ex:null, ed:null },
         { id:396, name:'Dr. Althea 345 Relief Cream 15ml', shop:'kss', price:900, stock:10, open:10, ex:'2 মার্চ 2029', ed:'2029-03-02' },
-        { id:397, name:'Anua Heartleaf Pore Control Cleansing Oil 200ml', shop:'kss', price:1750, stock:-1, open:2, ex:null, ed:null },
+        { id:397, name:'Anua Heartleaf Pore Control Cleansing Oil 200ml', shop:'kss', price:1850, stock:2, open:2, ex:'২১ অক্টো. ২০২৭', ed:'2027-10-21' },
         { id:398, name:'Medicube PDRN Pink Tone Up Sun Cream (X2 Double Set)', shop:'kss', price:3200, stock:1, open:2, ex:null, ed:null },
         { id:399, name:'SKINFOOD Tometo Tone up sun cream', shop:'kss', price:0, stock:0, open:1, ex:null, ed:null },
         { id:400, name:'Round Lab 1025 Dokdo Toner Set', shop:'kss', price:4500, stock:1, open:2, ex:null, ed:null },
@@ -1530,7 +1568,7 @@
         { id:576, name:'Miniature Set', shop:'lb', price:150, stock:1, open:1, ex:'17 অক্টো. 2026', ed:'2026-10-17' },
         { id:577, name:'Hyobidam Fermented Skincare 3pc Set', shop:'lb', price:400, stock:3, open:4, ex:'6 মার্চ 2027', ed:'2027-03-06' },
         { id:578, name:'TE\'RVINA AD Regenerating Skincare Special Set 3pcs', shop:'lb', price:700, stock:1, open:1, ex:'3 জুলা. 2027', ed:'2027-07-03' },
-        { id:579, name:'Cleansing Oil 200ml', shop:'lb', price:1400, stock:5, open:5, ex:'21 অক্টো. 2027', ed:'2027-10-21' },
+        { id:579, name:'Cleansing Oil 200ml', shop:'lb', price:1400, stock:2, open:5, ex:'21 অক্টো. 2027', ed:'2027-10-21' },
         { id:580, name:'Gold Kiwi Brightening Serum Set', shop:'lb', price:2000, stock:1, open:1, ex:'11 মার্চ 2027', ed:'2027-03-11' },
         { id:581, name:'Mugwort Essence 150ml', shop:'lb', price:1500, stock:1, open:3, ex:'12 মে 2027', ed:'2027-05-12' },
         { id:582, name:'Vitamin E Glossy Skin 30ml', shop:'lb', price:0, stock:3, open:3, ex:null, ed:null },
@@ -1743,7 +1781,168 @@
         var __saved = localStorage.getItem('kssAppProductsV1');
         if (__saved){ var __arr = JSON.parse(__saved); if (Array.isArray(__arr) && __arr.length > 50) products = __arr; }
       } catch(e){}
+
+      var wholesaleProducts = [
+        {"id": 512, "name": "ANJO 24K Gold Prime Ampoule", "price": 1800, "out": 1},
+        {"id": 97, "name": "Anua 10+ Niacinamide 10 TXA 4 Serum", "price": 1620, "out": 1},
+        {"id": 486, "name": "Anua 100+ PDRN Hyaluronic Acid Capsule 100 Serum", "price": 1600, "out": 0},
+        {"id": 544, "name": "Anua Heartleaf + BHA Pore Deep Cleansing Foam 150ml", "price": 1130, "out": 0},
+        {"id": 67, "name": "Anua Heartleaf + Succinic Acid Moisture Cleansing Foam 150ml", "price": 1050, "out": 0},
+        {"id": 207, "name": "Anua Heartleaf Quercetinol Pore Control Cleansing Oil 200ml", "price": 1500, "out": 1},
+        {"id": 95, "name": "Anua Niacinamide 10% TXA 4% Dark Spot Correcting Serum", "price": 1400, "out": 1},
+        {"id": 243, "name": "Aplb Glutathione Niacinamide Body Lotion 300ml", "price": 1200, "out": 0},
+        {"id": 505, "name": "Arencia Vitamin C Booster shot 30ml", "price": 1050, "out": 0},
+        {"id": 524, "name": "Arencia Vitamin C Brightening Booster Cream 100ml", "price": 1550, "out": 0},
+        {"id": 233, "name": "Aromatica Rosemary Scalp Scrub 165g", "price": 1100, "out": 0},
+        {"id": 191, "name": "Axis y Vegan Collagen Eye Serum", "price": 1050, "out": 1},
+        {"id": 468, "name": "Axis-Y Dark Spot Correcting Glow Serum 50ml", "price": 820, "out": 0},
+        {"id": 149, "name": "Beaute Glutathione Brightening Tone Up Cream 45ml", "price": 470, "out": 0},
+        {"id": 101, "name": "Beauty of Joseon Glow Deep Serum Rice + Alpha Arbutin 30ml", "price": 1100, "out": 0},
+        {"id": 99, "name": "Beauty of Joseon Glow Serum Propolis + Niacinamide 30ml", "price": 1150, "out": 0},
+        {"id": 209, "name": "Beauty of Joseon Ground Rice and Honey Glow Mask", "price": 1630, "out": 0},
+        {"id": 211, "name": "Beauty of Joseon Red Bean Refreshing Pore Mask", "price": 1450, "out": 0},
+        {"id": 519, "name": "Beauty of Joseon Red Bean Water Gel 100ml", "price": 1200, "out": 0},
+        {"id": 177, "name": "Beauty of Joseon Relief Sun Aqua Fresh 50ml", "price": 1050, "out": 1},
+        {"id": 516, "name": "Beauty of Joseon Relief Sun Rice + Niacinamide 50ml", "price": 1050, "out": 0},
+        {"id": 179, "name": "Beauty of Joseon Relief Sun Rice + Probiotics", "price": 1050, "out": 1},
+        {"id": 197, "name": "Beauty of Joseon Revive Eye Serum Ginseng + Retinal 30ml", "price": 1060, "out": 0},
+        {"id": 474, "name": "Biodance Bio Collagen Real Deep Mask 34g", "price": 470, "out": 0},
+        {"id": 165, "name": "Carenel Anti-Melasma Cica Cream 40ml", "price": 780, "out": 0},
+        {"id": 109, "name": "CARENEL Anti-Melasma Cica Intensive Serum 30ml", "price": 1010, "out": 0},
+        {"id": 71, "name": "Carenel Cicavita B5 Salicylic Acid Gentle Cleanser 150ml", "price": 840, "out": 1},
+        {"id": 167, "name": "Carenel Darma Alpha Arbutin Glutathione Whitening Cream", "price": 910, "out": 0},
+        {"id": 111, "name": "Carenel Tranexamic Acid 5 Niacinamide 10 Dark Spot Glow Serum 30ml", "price": 1300, "out": 0},
+        {"id": 482, "name": "Celimax Oil Control Moisturizing Cream 80ml", "price": 1100, "out": 0},
+        {"id": 476, "name": "Celimax Retinal Shot Tightening Booster 15ml", "price": 1530, "out": 0},
+        {"id": 538, "name": "Celimax Retinal Shot Tightening Serum 30ml", "price": 1140, "out": 0},
+        {"id": 115, "name": "Cosrx Advanced Snail 92 All In One Cream 100ml", "price": 1200, "out": 0},
+        {"id": 75, "name": "Cosrx Advanced Snail 96 Mucin Power Essence", "price": 1100, "out": 0},
+        {"id": 504, "name": "Cosrx AHA/BHA Clarifying Treatment Toner 150ml", "price": 950, "out": 0},
+        {"id": 73, "name": "Cosrx AHA/BHA Clarifying Treatment Toner 50ml", "price": 440, "out": 1},
+        {"id": 507, "name": "Cosrx Aloe Soothing Sun Cream 50ml", "price": 780, "out": 0},
+        {"id": 117, "name": "Cosrx Hyaluronic Acid Intensive Cream", "price": 1370, "out": 0},
+        {"id": 55, "name": "Cosrx Low pH Good Morning Gel Cleanser 150ml", "price": 810, "out": 1},
+        {"id": 528, "name": "Cosrx Low pH Good Morning Gel Cleanser 50ml", "price": 420, "out": 0},
+        {"id": 53, "name": "Cosrx Salicylic Acid Daily Gentle Cleanser 150ml", "price": 810, "out": 1},
+        {"id": 83, "name": "Cosrx The 6 Peptide Skin Booster Serum 150ml", "price": 1700, "out": 0},
+        {"id": 494, "name": "Cosrx The Alpha Arbutin 2 Discoloration Care Serum 50ml", "price": 1600, "out": 0},
+        {"id": 514, "name": "Dabo 30 Days Greentea Avocado Nourishing Cream 100ml", "price": 750, "out": 0},
+        {"id": 77, "name": "Dabo All In One Black Snail 96 Essence 100ml", "price": 730, "out": 0},
+        {"id": 79, "name": "Dabo All In One Black Snail Essence Toner 155ml", "price": 750, "out": 0},
+        {"id": 61, "name": "Dabo All In One Black Snail Foam Cleanser 120ml", "price": 550, "out": 1},
+        {"id": 119, "name": "Dabo All In One Black Snail Repair Cream 100ml", "price": 730, "out": 0},
+        {"id": 121, "name": "Dabo All In One Black Snail Repair Cream 50ml", "price": 430, "out": 1},
+        {"id": 125, "name": "Dabo All In One Collagen Lifting Tone Up Cream 50ml", "price": 760, "out": 1},
+        {"id": 129, "name": "Dabo Aloe PDRN Frozen Soothing Cream 100ml", "price": 780, "out": 0},
+        {"id": 251, "name": "Dabo Makeup Dark Out Tone Up Primer 30ml", "price": 370, "out": 0},
+        {"id": 123, "name": "Dabo Pink Collagen PDRN Hydra Capsule Cream 55ml", "price": 710, "out": 0},
+        {"id": 57, "name": "Dabo Rice Ferment Foam 100ml", "price": 390, "out": 0},
+        {"id": 127, "name": "Dabo Speed Whitening EX Tone Up Cream 50ml", "price": 750, "out": 1},
+        {"id": 59, "name": "Dabo Tea Tree Foam Cleanser 150ml", "price": 550, "out": 0},
+        {"id": 171, "name": "Dabo White Sunblock Cream", "price": 420, "out": 1},
+        {"id": 131, "name": "Dr Althea 345 Relief Cream 50ml", "price": 1480, "out": 1},
+        {"id": 91, "name": "Dr Althea Vitamin C Boosting Serum 30ml", "price": 1370, "out": 0},
+        {"id": 515, "name": "Dr. Althea 147 Barrier Cream 50ml", "price": 1480, "out": 0},
+        {"id": 517, "name": "Dr. Althea Gentle Vitamin C Serum 30ml", "price": 1280, "out": 0},
+        {"id": 532, "name": "Dr. Althea Green Tea Fresh Sunscreen 45ml", "price": 1050, "out": 0},
+        {"id": 527, "name": "Dr. Althea PDRN Reju 5000 Cream 20g", "price": 1500, "out": 0},
+        {"id": 241, "name": "Dr. Banggiwon Super Lab Anti-Hair Loss Shampoo 1000ml", "price": 2700, "out": 1},
+        {"id": 231, "name": "Dr.Banggiwon Lab Hair Tonic 150ml", "price": 1000, "out": 0},
+        {"id": 235, "name": "Farm Stay Black Garlic and Nourishing Shampoo 530ml", "price": 1800, "out": 0},
+        {"id": 530, "name": "Foodaholic Sun Multi Sun Cream 250ml", "price": 1200, "out": 0},
+        {"id": 245, "name": "Green FInger Panthedin Derma Lotion 230ml", "price": 1190, "out": 0},
+        {"id": 498, "name": "Hanskin Super Velvet Fitting B.B Cream", "price": 1650, "out": 0},
+        {"id": 249, "name": "Holika Holika Aloe Light Soothing Gel 55ml", "price": 280, "out": 0},
+        {"id": 490, "name": "Holika Holika Good Cera Super Ceramide Cream 60ml", "price": 1220, "out": 0},
+        {"id": 189, "name": "Holika Holika Makeup Sun Cream SPF50+ PA+++ 60ml", "price": 1140, "out": 0},
+        {"id": 105, "name": "Holika Holika Prime Youth 24K Gold Repair Ampoule ex 100ml", "price": 5200, "out": 1},
+        {"id": 520, "name": "I'm From Ginseng Mask 120g", "price": 1300, "out": 0},
+        {"id": 133, "name": "I'm From Rice Cream 50ml", "price": 1550, "out": 0},
+        {"id": 93, "name": "I'm From Rice Serum 30ml", "price": 1400, "out": 0},
+        {"id": 81, "name": "I'm From Rice Toner 150ml", "price": 1400, "out": 0},
+        {"id": 502, "name": "I'm From Rice Toner 30ml", "price": 480, "out": 0},
+        {"id": 151, "name": "Illiyoon Ceramide Ato Concentrate Cream 30ml", "price": 370, "out": 0},
+        {"id": 69, "name": "Innisfree Green Tea Amino Hydrating Cleansing Foam 150ml", "price": 880, "out": 0},
+        {"id": 534, "name": "Innisfree Long Lasting Sunscreen EX 60ml", "price": 1120, "out": 0},
+        {"id": 213, "name": "Innisfree Super Volcanic Pore Clay Mask 100ml", "price": 1220, "out": 0},
+        {"id": 513, "name": "Isaknox Tervina Lumiere Illumine Treatment 100ml", "price": 5100, "out": 0},
+        {"id": 509, "name": "Isaknox UV Sun Pro Sun Fluid Set 70+100ml", "price": 2550, "out": 0},
+        {"id": 535, "name": "Isaknox UV Sun Pro Sun Stick 19g", "price": 1450, "out": 0},
+        {"id": 531, "name": "Isntree Hyaluronic Acid Natural Sun Cream 50ml", "price": 1020, "out": 0},
+        {"id": 470, "name": "Isntree Hyaluronic Acid Watery Sun Gel 50ml", "price": 1030, "out": 0},
+        {"id": 484, "name": "Iunik Centella Calming Daily Sunscreen 60ml", "price": 920, "out": 0},
+        {"id": 480, "name": "Iunik Centella Calming Gel Cream 60ml", "price": 880, "out": 0},
+        {"id": 153, "name": "k secret Seoul 1988 Cream Retinal Liposome 1% + Fermented Rice 50ml", "price": 1320, "out": 0},
+        {"id": 199, "name": "k secret Seoul 1988 Eye Cream Retinal Liposome 4% + Fermented Bean 30ml", "price": 1100, "out": 0},
+        {"id": 103, "name": "K secret Seoul 1988 Serum Retinal Liposome 2% + Black Ginseng 30ml", "price": 1120, "out": 0},
+        {"id": 155, "name": "Lable young Vitamin Milk Whitening Cream", "price": 950, "out": 1},
+        {"id": 253, "name": "Laneige Lip Sleeping Mask Berry 3g", "price": 250, "out": 0},
+        {"id": 496, "name": "Lipvive Sugar Balm Rosy Red 4.8g", "price": 230, "out": 0},
+        {"id": 201, "name": "Mary & may Tranexamic Acid + Glutathione Eye Cream Set (30g+12g+12g)", "price": 1220, "out": 0},
+        {"id": 161, "name": "Medicube Age R Glutathione Glow Capsule Cream", "price": 1500, "out": 0},
+        {"id": 163, "name": "Medicube Collagen Jelly Cream 50ml", "price": 1100, "out": 0},
+        {"id": 478, "name": "Medicube Collagen Night Wrapping Mask 75ml", "price": 1540, "out": 0},
+        {"id": 159, "name": "Medicube Deep Vita C Capsule Cream 50g", "price": 1880, "out": 0},
+        {"id": 488, "name": "Medicube Kojic Acid Turmeric Niacinamide Serum 30ml", "price": 1420, "out": 0},
+        {"id": 472, "name": "Medicube PDRN Pink Peptide Serum 30ml", "price": 1470, "out": 0},
+        {"id": 157, "name": "Medicube TXA Niacinamide Capsule Cream 50g", "price": 1650, "out": 0},
+        {"id": 187, "name": "MISSHA All Around Safe Block Essence Sun SPF45 PA+++ 50ml", "price": 530, "out": 0},
+        {"id": 183, "name": "Missha Essence Sun Milk Ex SPF50+ PA+++ 70ml", "price": 890, "out": 0},
+        {"id": 181, "name": "Missha Soft Finish Sun Milk Ex SPF50+ PA+++ 70ml", "price": 880, "out": 0},
+        {"id": 185, "name": "Missha Water Proof Sun Milk SPF50+ PA++++ 70ml", "price": 890, "out": 0},
+        {"id": 521, "name": "Mizon Snail Repair Eye Cream 25ml", "price": 1500, "out": 0},
+        {"id": 545, "name": "Nature Skin UV Tone Up Sun Cream 55ml", "price": 320, "out": 0},
+        {"id": 169, "name": "Neogen Black Energy Cream", "price": 1900, "out": 0},
+        {"id": 539, "name": "Numbuzin Glutathione Vitamin Concentrated Toner 200ml", "price": 1400, "out": 0},
+        {"id": 113, "name": "Numbuzin No 5+ Vitamin Concentrated Serum 30ml", "price": 1480, "out": 1},
+        {"id": 543, "name": "Purito Mighty Bamboo Panthenol Cream 100ml", "price": 1350, "out": 0},
+        {"id": 526, "name": "Purito Seoul Oat in Calming Gel Cream 100ml", "price": 1260, "out": 0},
+        {"id": 525, "name": "Purito Wonder Relief Centella Cream Unscented 50ml", "price": 1340, "out": 0},
+        {"id": 219, "name": "Raip R3 Argan Hair Oil 100ml BABY POWDER", "price": 600, "out": 0},
+        {"id": 217, "name": "Raip R3 Argan Hair Oil 100ml Cherry Blossom", "price": 600, "out": 1},
+        {"id": 221, "name": "Raip R3 Argan Hair Oil 100ml ELEGANCE", "price": 600, "out": 0},
+        {"id": 227, "name": "Raip R3 Argan Hair Oil 100ml Grapefruit", "price": 600, "out": 1},
+        {"id": 223, "name": "Raip R3 Argan Hair Oil 100ml Lovely", "price": 600, "out": 0},
+        {"id": 215, "name": "Raip R3 Argan Hair Oil 100ml Original", "price": 600, "out": 0},
+        {"id": 229, "name": "Raip R3 Argan Hair Oil 100ml Unscented", "price": 600, "out": 0},
+        {"id": 225, "name": "Raip R3 Argan Hair Oil 100ml Very Berry", "price": 600, "out": 0},
+        {"id": 237, "name": "Ryo Damage Care & Nourishing Shampoo (480ml)", "price": 1550, "out": 0},
+        {"id": 239, "name": "Ryo Hair Loss Expert Care Shampoo For Oily Scalp 400ml", "price": 1600, "out": 0},
+        {"id": 89, "name": "Skin 1004 Madagascar Centella Ampoule 30ml", "price": 610, "out": 1},
+        {"id": 173, "name": "Skin 1004 Madagascar Centella Hyalu-Cica Water-Fit Sun Serum 50ml", "price": 1020, "out": 0},
+        {"id": 205, "name": "Skin 1004 Madagascar Centella Light Cleansing Oil 200ml", "price": 1350, "out": 0},
+        {"id": 203, "name": "Skin 1004 Madagascar Centella Light Cleansing Oil 30ml", "price": 500, "out": 0},
+        {"id": 87, "name": "Skin 1004 Madagascar Centella Tone Brightening Capsule Ampoule 100ml", "price": 1410, "out": 0},
+        {"id": 85, "name": "Skin 1004 Madagascar Centella Tone Brightening Capsule Ampoule 30ml", "price": 590, "out": 0},
+        {"id": 500, "name": "SKIN1004 Centella Hyalu-Cica Water-Fit Sun Serum 15ml", "price": 500, "out": 0},
+        {"id": 529, "name": "SKIN1004 Centella Hyalu-Cica Water-Fit Sun Serum Set 50+50ml", "price": 1900, "out": 1},
+        {"id": 537, "name": "SKIN1004 Madagascar Centella Poremizing Fresh Ampoule 100ml", "price": 1420, "out": 0},
+        {"id": 542, "name": "SKIN1004 Madagascar Centella Tea-Trica Relief Ampoule 30ml", "price": 580, "out": 0},
+        {"id": 541, "name": "SKIN1004 Madagascar Centella Tone Brightening Ampoule 50ml", "price": 1000, "out": 0},
+        {"id": 492, "name": "The Face Shop Hand and Foot Total Treatment 120ml", "price": 850, "out": 0},
+        {"id": 540, "name": "The Face Shop Real Nature Pomegranate Face Mask", "price": 100, "out": 0},
+        {"id": 135, "name": "The Faceshop Rice Ceramide Moisturizer Cream 50ml", "price": 810, "out": 0},
+        {"id": 63, "name": "The Faceshop Rice Water Bright Cleansing Foam 150ml", "price": 745, "out": 0},
+        {"id": 107, "name": "The Ordinary Niacinamide 10% Zinc 1% Serum", "price": 820, "out": 0},
+        {"id": 522, "name": "The Saem Care Plus Manuka Honey Cream 100ml", "price": 1000, "out": 0},
+        {"id": 523, "name": "Tonymoly 2X First Essence", "price": 2100, "out": 0},
+        {"id": 193, "name": "Tonymoly Bio Ex Cell Peptide Eye Solution", "price": 1500, "out": 0},
+        {"id": 145, "name": "Tonymoly Bio Ex Cell Peptide Fill Up Cream Ampoule Set", "price": 3300, "out": 1},
+        {"id": 143, "name": "Tonymoly Collagen Peptide V Fit Gua Sha Cream Set", "price": 2850, "out": 0},
+        {"id": 147, "name": "Tonymoly Gimiya Whitening Cream Melanin Care and Brightening 50ml", "price": 2950, "out": 0},
+        {"id": 536, "name": "Tonymoly Gimiya Whitening Serum 30ml", "price": 1550, "out": 0},
+        {"id": 141, "name": "Tonymoly Houttuynia Cordata Cica Cooling Watery Cream", "price": 1300, "out": 1},
+        {"id": 65, "name": "Tonymoly Intense Care 24K Gold Snail Foam Cleanser 150ml", "price": 850, "out": 0},
+        {"id": 137, "name": "Tonymoly Intense Care Gold 24K Snail Cream 45g", "price": 2350, "out": 0},
+        {"id": 139, "name": "Tonymoly Retinol Red Radiance Cream 50ml", "price": 3500, "out": 0},
+        {"id": 195, "name": "Tonymoly Retinol Red Wrinkle Focus Eye Cream", "price": 1500, "out": 0},
+        {"id": 175, "name": "Tonymoly UV Master Tone Up Sun Cream", "price": 1050, "out": 0},
+        {"id": 533, "name": "W. Skin Lab Triple Care Sun Cream 60ml", "price": 540, "out": 0},
+        {"id": 247, "name": "Young plan Low Molecular Fish Collagen Brightening 60g (2g*30 packet)", "price": 1070, "out": 0}
+      ];
+
       var transfers = [
+        { d:'2026-11-27', name:'Anua Heartleaf Pore Control Cleansing Oil 200ml', qty:3, from:'lb', to:'kss', note:'Transfer from Lovebirds' },
         { d:'2026-11-25', name:'I\'m From Rice Toner 150ml', qty:1, from:'lb', to:'kss', note:'Transfer from Lovebirds' },
         { d:'2026-11-25', name:'Beauty of Joseon Relief Sun Aqua Fresh Rice + B5 50ml', qty:1, from:'lb', to:'kss', note:'Transfer from Lovebirds' },
         { d:'2026-11-24', name:'SKIN1004 Centella Tone Brightening Capsule Ampoule (100ml)', qty:1, from:'lb', to:'kss', note:'Transfer from Lovebirds' },
@@ -2074,7 +2273,7 @@
         var wk = el('weekly-card'); if (wk) wk.style.display = 'none';
         var sc = el('shop-status-card'); if (sc) sc.style.display = 'none';
         var pd = el('pos-details'); if (pd) pd.style.display = 'none';
-        document.querySelectorAll('.pos-q[data-focus="fb-expense"], .pos-q[data-focus="fb-monthly"], .pos-q[data-focus="fb-loyalty"], .pos-q[data-site]').forEach(function(b){ b.style.display = 'none'; });
+        document.querySelectorAll('.pos-q[data-focus="fb-expense"], .pos-q[data-focus="fb-monthly"], .pos-q[data-focus="fb-loyalty"], .pos-q[data-focus="fb-wholesale"], .pos-q[data-site]').forEach(function(b){ b.style.display = 'none'; });
         var sfs = el('sf-shop'); if (sfs) { sfs.value = 'lb'; sfs.disabled = true; }
       }
       function restoreSession(){
@@ -2318,6 +2517,86 @@
         el('transfer-empty').style.display = rows.length ? 'none' : 'block';
         el('transfer-count').textContent = '· মোট ' + bn(transfers.length) + 'টি';
       }
+
+      /* ---------- wholesale (koreasourcebd.com) ----------
+         Data: site-er 156-ti product (2026-11-11-er dam + 12 Nov-er 12-ta update).
+         out = site-e 'Out of stock' mark kora (mark snippet 11/13 Nov theke).
+         Dam bodlano shudhu ei phone-e thake (localStorage) — site-er dam bodlay na. */
+      var WS_PRICE_KEY = 'kssWholesalePricesV1';
+      var wsPriceEdits = {};
+      try { wsPriceEdits = JSON.parse(localStorage.getItem(WS_PRICE_KEY) || '{}') || {}; } catch(e){ wsPriceEdits = {}; }
+      var wsFilter = 'all';
+      var wsEditingId = null;
+      function wsSaveEdits(){ try { localStorage.setItem(WS_PRICE_KEY, JSON.stringify(wsPriceEdits)); } catch(e){} }
+      function wsPriceOf(p){ var v = wsPriceEdits[p.id]; return (v === undefined || v === null) ? p.price : v; }
+      function wsIsEdited(p){ return wsPriceEdits[p.id] !== undefined && wsPriceEdits[p.id] !== null; }
+      function renderWholesale(){
+        var list = el('ws-list'); if (!list) return;
+        var q = ((el('ws-search') && el('ws-search').value) || '').toLowerCase();
+        var total = wholesaleProducts.length;
+        var outN = wholesaleProducts.filter(function(p){ return p.out; }).length;
+        var sum = el('ws-summary'); if (sum) sum.textContent = bn(total) + 'টি পণ্য · ' + bn(outN) + 'টি স্টক আউট';
+        var editedN = Object.keys(wsPriceEdits).length;
+        var rst = el('ws-reset-all'); if (rst) rst.style.display = editedN ? '' : 'none';
+        var rows = wholesaleProducts.filter(function(p){
+          if (wsFilter === 'in' && p.out) return false;
+          if (wsFilter === 'out' && !p.out) return false;
+          if (q && p.name.toLowerCase().indexOf(q) === -1) return false;
+          return true;
+        });
+        list.innerHTML = '';
+        rows.forEach(function(p){
+          var row = document.createElement('div'); row.className = 'ws-row';
+          var top = document.createElement('div'); top.className = 'ws-top';
+          var nm = document.createElement('div'); nm.className = 'ws-name'; nm.textContent = p.name;
+          var bd = document.createElement('span'); bd.className = 'badge ' + (p.out ? 'out' : 'okb'); bd.textContent = p.out ? 'স্টক আউট' : 'স্টক আছে';
+          top.appendChild(nm); top.appendChild(bd); row.appendChild(top);
+          var line = document.createElement('div'); line.className = 'ws-line';
+          var pr = document.createElement('span'); pr.className = 'ws-price'; pr.textContent = money(wsPriceOf(p));
+          line.appendChild(pr);
+          if (wsIsEdited(p)){ var ed = document.createElement('span'); ed.className = 'ws-edited'; ed.textContent = 'বদলানো'; line.appendChild(ed); }
+          var eb = document.createElement('button'); eb.type = 'button'; eb.className = 'ws-editbtn'; eb.setAttribute('data-ws', 'edit'); eb.setAttribute('data-id', p.id); eb.textContent = '✎ দাম';
+          line.appendChild(eb);
+          if (wsIsEdited(p)){ var rv = document.createElement('button'); rv.type = 'button'; rv.className = 'ws-mini'; rv.setAttribute('data-ws', 'revert'); rv.setAttribute('data-id', p.id); rv.textContent = 'আগের দামে ফিরুন'; line.appendChild(rv); }
+          row.appendChild(line);
+          if (wsEditingId === p.id){
+            var box = document.createElement('div'); box.className = 'ws-editbox';
+            var inp = document.createElement('input'); inp.type = 'number'; inp.min = '0'; inp.step = '1'; inp.inputMode = 'numeric'; inp.value = wsPriceOf(p); inp.setAttribute('aria-label', 'নতুন পাইকারি দাম'); inp.id = 'ws-edit-input';
+            var sv = document.createElement('button'); sv.type = 'button'; sv.className = 'btn small'; sv.setAttribute('data-ws', 'save'); sv.setAttribute('data-id', p.id); sv.textContent = 'সংরক্ষণ করুন';
+            var cx = document.createElement('button'); cx.type = 'button'; cx.className = 'btn ghost small'; cx.setAttribute('data-ws', 'cancel'); cx.setAttribute('data-id', p.id); cx.textContent = 'বাতিল';
+            box.appendChild(inp); box.appendChild(sv); box.appendChild(cx); row.appendChild(box);
+          }
+          list.appendChild(row);
+        });
+        el('ws-empty').style.display = rows.length ? 'none' : 'block';
+        var box2 = el('ws-edit-input'); if (box2 && wsEditingId !== null) box2.focus();
+      }
+      (function(){
+        if (el('ws-search')) el('ws-search').addEventListener('input', renderWholesale);
+        document.querySelectorAll('.ws-chip').forEach(function(c){
+          c.addEventListener('click', function(){
+            wsFilter = c.getAttribute('data-wsf');
+            document.querySelectorAll('.ws-chip').forEach(function(x){ x.classList.toggle('on', x === c); });
+            renderWholesale();
+          });
+        });
+        var list = el('ws-list');
+        if (list) list.addEventListener('click', function(ev){
+          var b = ev.target.closest('[data-ws]'); if (!b) return;
+          var act = b.getAttribute('data-ws'); var id = +b.getAttribute('data-id');
+          if (act === 'edit'){ wsEditingId = id; renderWholesale(); }
+          else if (act === 'cancel'){ wsEditingId = null; renderWholesale(); }
+          else if (act === 'revert'){ delete wsPriceEdits[id]; wsSaveEdits(); wsEditingId = null; renderWholesale(); }
+          else if (act === 'save'){
+            var inp = el('ws-edit-input'); var v = inp ? parseInt(inp.value, 10) : NaN;
+            if (isNaN(v) || v < 0) return;
+            wsPriceEdits[id] = v; wsSaveEdits(); wsEditingId = null; renderWholesale();
+          }
+        });
+        if (el('ws-reset-all')) el('ws-reset-all').addEventListener('click', function(){
+          wsPriceEdits = {}; wsSaveEdits(); wsEditingId = null; renderWholesale();
+        });
+      })();
 
       (function(){
         var _t = new Date();
@@ -2619,7 +2898,7 @@
           document.querySelectorAll('.fblock.fkeep').forEach(function(b){ b.classList.remove('fkeep'); });
         }
         function focusBlock(id){
-          if (currentUser === 'konok' && (id === 'fb-expense' || id === 'fb-monthly' || id === 'fb-loyalty')) return;
+          if (currentUser === 'konok' && (id === 'fb-expense' || id === 'fb-monthly' || id === 'fb-loyalty' || id === 'fb-wholesale')) return;
           clearFocus();
           var b = el(id); if(!b) return;
           var panel = b.closest('section.panel'); if(!panel) return;
@@ -3031,7 +3310,7 @@
       renderDaily();
       renderDeliveries();
       renderExpenses();
-      renderReorder(); renderExpSoon(); renderCustomers();
+      renderReorder(); renderExpSoon(); renderCustomers(); renderWholesale();
       refreshTotals();
       }
     </script>

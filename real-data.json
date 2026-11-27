@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400 + Jesmin Cosrx 150ml return -1100 + Saima Web #7944 1950 (Saima order change 27 Nov: Anua x3, Saem bad) + 2026-11-27 (Poppy + Rabeya + Aymuna Chowdhury + Farjana Niko + Moskan orders) 5850",
+ "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400 + Jesmin Cosrx 150ml return -1100 + Saima Web #7944 1950 (Saima order change 27 Nov: Anua x3, Saem bad) + 2026-11-27 (Poppy + Rabeya + Aymuna Chowdhury + Farjana Niko + Moskan orders) 5850 + 2026-11-27 Anua Oil transfer (LB SL119 -> KSS SL399 x3)",
  "kss": {
   "products": [
    {
@@ -3173,10 +3173,10 @@
    {
     "sl": 399,
     "name": "Anua Heartleaf Pore Control Cleansing Oil 200ml",
-    "sale": 1750.0,
+    "sale": 1850.0,
     "opening": 2.0,
-    "current": -1.0,
-    "expiry": ""
+    "current": 2.0,
+    "expiry": "Exp: 21-10-27"
    },
    {
     "sl": 400,
@@ -3692,10 +3692,10 @@
    }
   ],
   "count": 461,
-  "out": 44,
-  "low": 259,
-  "total_current": 2300,
-  "stock_value": 2686995
+  "out": 43,
+  "low": 260,
+  "total_current": 2303,
+  "stock_value": 2692445
  },
  "lovebirds": {
   "products": [
@@ -4648,7 +4648,7 @@
     "name": "Cleansing Oil 200ml",
     "sale": 1400.0,
     "opening": 5.0,
-    "current": 5.0,
+    "current": 2.0,
     "expiry": "21-10-27"
    },
    {
@@ -6294,9 +6294,9 @@
   ],
   "count": 324,
   "out": 41,
-  "low": 227,
-  "total_current": 533,
-  "stock_value": 249000
+  "low": 228,
+  "total_current": 530,
+  "stock_value": 244800
  },
  "november": {
   "kss_orders": 131,
