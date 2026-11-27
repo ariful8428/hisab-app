@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400 + Jesmin Cosrx 150ml return -1100 + Saima Web #7944 1950",
+ "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400 + Jesmin Cosrx 150ml return -1100 + Saima Web #7944 1950 (Saima order change 27 Nov: Anua x3, Saem bad)",
  "kss": {
   "products": [
    {
@@ -3175,7 +3175,7 @@
     "name": "Anua Heartleaf Pore Control Cleansing Oil 200ml",
     "sale": 1750.0,
     "opening": 2.0,
-    "current": 0.0,
+    "current": -1.0,
     "expiry": ""
    },
    {
@@ -3694,8 +3694,8 @@
   "count": 461,
   "out": 43,
   "low": 260,
-  "total_current": 2306,
-  "stock_value": 2694595
+  "total_current": 2305,
+  "stock_value": 2692845
  },
  "lovebirds": {
   "products": [
