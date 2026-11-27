@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400 + Jesmin Cosrx 150ml return -1100 + Saima Web #7944 1950 (Saima order change 27 Nov: Anua x3, Saem bad)",
+ "generated": "2026-11-26 (Nargis Sultana + Mony + Shagufta Rabbani + Tanjina Akter Mim + Farhana Akter orders) + Sidratul Muntaha Aqua Fresh return -1400 + Jesmin Cosrx 150ml return -1100 + Saima Web #7944 1950 (Saima order change 27 Nov: Anua x3, Saem bad) + 2026-11-27 (Poppy + Rabeya + Aymuna Chowdhury + Farjana Niko + Moskan orders) 5850",
  "kss": {
   "products": [
    {
@@ -223,7 +223,7 @@
     "name": "Dr. Althea 345 Relief Cream New Version",
     "sale": 1850.0,
     "opening": 42.0,
-    "current": 32.0,
+    "current": 31.0,
     "expiry": "Exp: 05-04-29; qty 27+8 + 08-09-29 (7 pcs)"
    },
    {
@@ -775,7 +775,7 @@
     "name": "Beauty of Joseon Relief Sun  Rice + Niacinamide 50ml",
     "sale": 1450.0,
     "opening": 15.0,
-    "current": 13.0,
+    "current": 12.0,
     "expiry": "Exp: 20-04-29 (5 pcs) + 14-8-29 (10 pcs)"
    },
    {
@@ -2247,7 +2247,7 @@
     "name": "Beaute Glutathione Brightening Tone Up Cream 45ml",
     "sale": 750.0,
     "opening": 4.0,
-    "current": 1.0,
+    "current": 0.0,
     "expiry": "Exp: 06-05-29"
    },
    {
@@ -2943,7 +2943,7 @@
     "name": "SKIN1004 Madagascar Centella Tone Brightening Ampoule 30ml",
     "sale": 850.0,
     "opening": 30.0,
-    "current": 14.0,
+    "current": 13.0,
     "expiry": "Exp; 29-06-29"
    },
    {
@@ -2983,7 +2983,7 @@
     "name": "Anua Niacinamide 10 TXA 4 Serum 10ml",
     "sale": 950.0,
     "opening": 3.0,
-    "current": 2.0,
+    "current": 1.0,
     "expiry": "Exp: 13-4-29"
    },
    {
@@ -3692,10 +3692,10 @@
    }
   ],
   "count": 461,
-  "out": 43,
-  "low": 260,
-  "total_current": 2305,
-  "stock_value": 2692845
+  "out": 44,
+  "low": 259,
+  "total_current": 2300,
+  "stock_value": 2686995
  },
  "lovebirds": {
   "products": [
@@ -6299,24 +6299,19 @@
   "stock_value": 249000
  },
  "november": {
-  "kss_orders": 126,
-  "kss_sales": 343727,
+  "kss_orders": 131,
+  "kss_sales": 349577,
   "lb_orders": 45,
   "lb_sales": 147360,
-  "orders": 171,
-  "sales_total": 491087,
-  "note": "Product total (delivery charge chara). KSS November sell sheet-e 120 order / 343,277 — DSR theke 6 order beshi (lag/return row); app DSR number dekhabe."
+  "orders": 176,
+  "sales_total": 496937,
+  "note": "Product total (delivery charge chara). KSS November sell sheet-e 125 order / 349,127 — DSR theke 6 order beshi (lag/return row); app DSR number dekhabe."
  },
  "today": {
-  "date": "2026-11-26",
-  "orders": 6,
-  "total": 12490,
-  "note": "Product total (delivery chara): Nargis Sultana 1990 + Mony 1450 + Shagufta Rabbani 3850 + Tanjina Akter Mim 950 + Farhana Akter 2300 + Saima 1950",
-  "delivery_batch": {
-   "orders": 5,
-   "cod": 10910,
-   "note": "26 Nov Pathao batch: Nargis Sultana COD 2,070 + Mony COD 1,580 + Shagufta Rabbani COD 3,930 + Tanjina Akter Mim COD 1,030 + Farhana Akter COD 2,300 (mot 10,910)"
-  }
+  "date": "2026-11-27",
+  "orders": 5,
+  "total": 5850,
+  "note": "Product total (delivery chara): Poppy 950 + Rabeya 850 + Aymuna Chowdhury 750 + Farjana Niko 1450 + Moskan 1850"
  },
  "last7days": [
   {
@@ -6914,11 +6909,18 @@
     "lb": 0,
     "total": 9990,
     "orders": 6
+   },
+   {
+    "date": "2026-11-27",
+    "kss": 5850,
+    "lb": 0,
+    "total": 5850,
+    "orders": 5
    }
   ],
-  "total_income": 491087,
+  "total_income": 496937,
   "total_expense": 0,
-  "net": 491087
+  "net": 496937
  },
  "loyalty": {
   "rule": "1 order = 1 stamp (phone diye), 5 order-e VIP free delivery, 10 stamp-e gift box"
